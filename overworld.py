@@ -7,15 +7,17 @@ import random, sys, copy, os, pygame
 from pygame.locals import *
 
 FPS = 30 # frames per second to update the screen
-WINWIDTH = 800 # width of the program's window, in pixels
-WINHEIGHT = 600 # height in pixels
+WINWIDTH = 2732 # width of the program's window, in pixels
+WINHEIGHT = 2048 # height in pixels
 HALF_WINWIDTH = int(WINWIDTH / 2)
 HALF_WINHEIGHT = int(WINHEIGHT / 2)
 
+'''
 # The total width and height of each tile in pixels.
 TILEWIDTH = 50
 TILEHEIGHT = 85
 TILEFLOORHEIGHT = 40
+'''
 
 CAM_MOVE_SPEED = 5 # how many pixels per frame the camera moves
 
@@ -46,6 +48,18 @@ def main():
     # Surface object that is drawn to the actual computer screen
     # when pygame.display.update() is called.
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
+
+    #Add background image
+    BGIMAGE = pygame.image.load('')
+    BGIMAGE = pygame.transform.scale(BGIMAGE, (WINWIDTH, WINHEIGHT))
+
+    running = True
+    while running:
+        DISPLAYSURF.blit(BGIMAGE,(0,0))
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            running = False
+    pygame.display.update()
 
     pygame.display.set_caption('Star Pusher')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
