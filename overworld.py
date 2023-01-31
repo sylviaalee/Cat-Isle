@@ -52,8 +52,8 @@ def main():
 
     # A global dict value that will contain all the Pygame
     # Surface objects returned by pygame.image.load().
-    IMAGESDICT = {'uncovered goal': pygame.image.load('RedSelector.png'),
-                  'covered goal': pygame.image.load('Selector.png'),
+    IMAGESDICT = {'bush': pygame.image.load('bush.png'),
+                  'cat_sample': pygame.image.load('cat_sample.png'),
                   'star': pygame.image.load('Star.png'),
                   'corner': pygame.image.load('Wall_Block_Tall.png'),
                   'wall': pygame.image.load('Wood_Block_Tall.png'),
