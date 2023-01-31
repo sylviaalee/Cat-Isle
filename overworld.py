@@ -6,6 +6,7 @@
 import random, sys, copy, os, pygame
 from pygame.locals import *
 
+
 FPS = 30 # frames per second to update the screen
 WINWIDTH = 2732 # width of the program's window, in pixels
 WINHEIGHT = 2048 # height in pixels
@@ -49,18 +50,6 @@ def main():
     # when pygame.display.update() is called.
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
 
-    #Add background image
-    BGIMAGE = pygame.image.load('')
-    BGIMAGE = pygame.transform.scale(BGIMAGE, (WINWIDTH, WINHEIGHT))
-
-    running = True
-    while running:
-        DISPLAYSURF.blit(BGIMAGE,(0,0))
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            running = False
-    pygame.display.update()
-
     pygame.display.set_caption('Star Pusher')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
@@ -84,6 +73,19 @@ def main():
                   'short tree': pygame.image.load('Tree_Short.png'),
                   'tall tree': pygame.image.load('Tree_Tall.png'),
                   'ugly tree': pygame.image.load('Tree_Ugly.png')}
+
+    
+    #Add background image
+    BGIMAGE = pygame.image.load('cat_sample')
+    BGIMAGE = pygame.transform.scale(BGIMAGE, (WINWIDTH, WINHEIGHT))
+
+    running = True
+    while running:
+        DISPLAYSURF.blit(BGIMAGE,(0,0))
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            running = False
+    pygame.display.update()
 
     # These dict values are global, and map the character that appears
     # in the level file to the Surface object it represents.
