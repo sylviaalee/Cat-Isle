@@ -50,6 +50,18 @@ def main():
     # when pygame.display.update() is called.
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
 
+    # Add background image
+    BGIMAGE = pygame.image.load('background.png')
+    BGIMAGE = pygame.transform.scale(BGIMAGE, (WINWIDTH, WINHEIGHT))
+
+    running = True
+    while running:
+        DISPLAYSURF.blit(BGIMAGE,(0,0))
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            running = False
+    pygame.display.update()
+
     pygame.display.set_caption('Star Pusher')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
