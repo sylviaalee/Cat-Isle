@@ -49,7 +49,7 @@ def main():
     # when pygame.display.update() is called.
     DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT))
 
-    #Add background image
+    # Add background image
     BGIMAGE = pygame.image.load('')
     BGIMAGE = pygame.transform.scale(BGIMAGE, (WINWIDTH, WINHEIGHT))
 
