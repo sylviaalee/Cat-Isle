@@ -27,3 +27,10 @@ def main():
 
 
 
+# should be at end of file
+def terminate():
+    pygame.quit()
+    sys.exit()
+
+if __name__ == '__main__':
+    main()
