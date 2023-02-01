@@ -4,8 +4,8 @@ import random, sys, copy, os, pygame
 from pygame.locals import *
 
 FPS = 30
-WINWIDTH = 
-WINDLENGTH = 
+WINWIDTH = 2732
+WINDLENGTH = 2048
 
-BGCOLOR = 
-TEXTCOLOR = 
+BGCOLOR = "white"
+TEXTCOLOR = "black"
