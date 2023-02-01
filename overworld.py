@@ -18,3 +18,12 @@ def main():
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
     IMAGESDICT = {}
+
+
+    while True: # main game loop
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                terminate()
+
+
+
