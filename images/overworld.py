@@ -18,6 +18,7 @@ def main():
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
     bg = pygame.image.load("background.png")
+    window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
 
     IMAGESDICT = {"background" : pygame.image.load("background.png"), 
                 "bush" : pygame.image.load("bush.png"), 
@@ -27,9 +28,7 @@ def main():
     PLAYERIMAGES = []
     IMAGESDICT = {}
 
-    window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
     while True: # main game loop
-        window.blit(bg, (0, 0))
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
