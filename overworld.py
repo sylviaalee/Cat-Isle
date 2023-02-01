@@ -9,3 +9,12 @@ WINDLENGTH =
 
 BGCOLOR = 
 TEXTCOLOR = 
+
+def main():
+    global BASICFONT, IMAGESDICT, PLAYERIMAGES # add global things
+    
+    pygame.init()
+    pygame.display.set_caption('Cat Isle')
+    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+
+    IMAGESDICT = {}
