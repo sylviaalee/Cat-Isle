@@ -17,6 +17,8 @@ def main():
     pygame.display.set_caption('Cat Isle')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
+    bg = pygame.image.load("background.png")
+
     IMAGESDICT = {"background" : pygame.image.load("background.png"), 
                 "bush" : pygame.image.load("bush.png"), 
                 "cat" : pygame.image.load("cat_sample.png")}
@@ -27,6 +29,7 @@ def main():
 
 
     while True: # main game loop
+        bg.blit(bg, (0, 0))
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
