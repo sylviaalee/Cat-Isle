@@ -27,9 +27,9 @@ def main():
     PLAYERIMAGES = []
     IMAGESDICT = {}
 
-
+    window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
     while True: # main game loop
-        bg.blit(bg, (0, 0))
+        window.blit(bg, (0, 0))
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
