@@ -5,7 +5,7 @@ from pygame.locals import *
 
 FPS = 30
 WINWIDTH = 2732
-WINDLENGTH = 2048
+WINLENGTH = 2048
 
 BGCOLOR = "white"
 TEXTCOLOR = "black"
