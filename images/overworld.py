@@ -19,6 +19,7 @@ def main():
 
     bg = pygame.image.load("background.png")
     window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
+    bg = pygame.transform.scale(bg,(WINWIDTH, WINLENGTH))
 
     IMAGESDICT = {"background" : pygame.image.load("background.png"), 
                 "bush" : pygame.image.load("bush.png"), 
