@@ -29,10 +29,11 @@ def main():
     IMAGESDICT = {}
 
     while True: # main game loop
+        window.blit(bg,(0,0))
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
-
+        pygame.display.update()
 
 
 # should be at end of file
