@@ -10,8 +10,14 @@ WINLENGTH = 850
 BGCOLOR = "white"
 TEXTCOLOR = "black"
 
+UP = 'up'
+DOWN = 'down'
+LEFT = 'left'
+RIGHT = 'right'
+
 def main():
-    global BASICFONT, IMAGESDICT, PLAYERIMAGES # add global things
+    result = runGame()
+    global BASICFONT, IMAGESDICT, PLAYERIMAGES, window, bg # add global things
     
     pygame.init()
     pygame.display.set_caption('Cat Isle')
@@ -21,21 +27,66 @@ def main():
     window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
     bg = pygame.transform.scale(bg,(WINWIDTH, WINLENGTH))
 
-    IMAGESDICT = {"background" : pygame.image.load("background.png"), 
-                "bush" : pygame.image.load("bush.png"), 
-                "cat" : pygame.image.load("cat_sample.png")}
+    IMAGESDICT = {'background' : pygame.image.load("background.png"), 
+                'bush' : pygame.image.load("bush.png"), 
+                'cat' : pygame.image.load("cat_sample.png")}
 
     currentImage = 0
-    PLAYERIMAGES = []
-    IMAGESDICT = {}
+    PLAYERIMAGES = [IMAGESDICT['cat']]
+
+
+def runGame():
+    # add levels and levelNum as parameters later!!
 
     while True: # main game loop
         window.blit(bg,(0,0))
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                terminate()
-        pygame.display.update()
+        cat = pygame.image.load('cat')
+        window.blit(cat, (0, 0))
 
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    terminate()
+    
+        playerMoveTo = None
+        keyPressed = False
+        for event in pygame.event.get(): # event handling loop
+            if event.type == pygame.QUIT:
+            # Player clicked the "X" at the corner of the window.
+                terminate()
+
+            elif event.type == pygame.KEYDOWN:
+                # Handle key presses
+                keyPressed = True
+                if event.key == pygame.K_LEFT:
+                    playerMoveTo = LEFT
+                elif event.key == pygame.K_RIGHT:
+                    playerMoveTo = RIGHT
+                elif event.key == pygame.K_UP:
+                    playerMoveTo = UP
+                elif event.key == pygame.K_DOWN:
+                    playerMoveTo = DOWN
+
+                elif event.key == pygame.K_ESCAPE:
+                    # escape key quits
+                    terminate()
+
+                elif event.key == pygame.K_p:
+                    # change player image to next one.
+                    currentImage += 1
+                    if currentImage >= len(PLAYERIMAGES):
+                        # after last player image use first one
+                        currentImage = 0
+                
+        pygame.display.update() 
+
+def displayScreen():
+    pass
+
+def isBlocked():
+    pass
+
+def isGameFinished():
+    pass
 
 # should be at end of file
 def terminate():
