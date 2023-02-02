@@ -16,8 +16,8 @@ LEFT = 'left'
 RIGHT = 'right'
 
 def main():
-    result = runGame()
-    global BASICFONT, IMAGESDICT, PLAYERIMAGES, window, bg # add global things
+    
+    global BASICFONT, IMAGESDICT, PLAYERIMAGES, window, bg # add global variables
     
     pygame.init()
     pygame.display.set_caption('Cat Isle')
@@ -33,15 +33,16 @@ def main():
 
     currentImage = 0
     PLAYERIMAGES = [IMAGESDICT['cat']]
+    result = runGame()
 
 
 def runGame():
     # add levels and levelNum as parameters later!!
-    
+
     while True: # main game loop
         window.blit(bg,(0,0))
-        cat = pygame.image.load('cat')
-        window.blit(cat, (0, 0))
+        cat = pygame.image.load('cat_sample.png')
+        window.blit(cat, (0, 0)) # create sprite
 
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
