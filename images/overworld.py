@@ -37,7 +37,7 @@ def main():
 
 def runGame():
     # add levels and levelNum as parameters later!!
-
+    
     while True: # main game loop
         window.blit(bg,(0,0))
         cat = pygame.image.load('cat')
