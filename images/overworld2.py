@@ -35,8 +35,27 @@ class Sprite(pygame.sprite.Sprite):
         self.rect.y -= speed * speed/10
  
  
+
 pygame.init()
- 
+pygame.display.set_caption('Cat Isle')
+BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+
+text = BASICFONT.render('Cat Isle', True, 'brown')
+textRect = text.get_rect()
+textRect.center = (1470 // 2, 850 // 2)
+
+
+# background
+bg = pygame.image.load("background.png")
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+
+# load images used
+IMAGESDICT = {'background' : pygame.image.load("background.png"), 
+            'bush' : pygame.image.load("bush.png"), 
+            'cat' : pygame.image.load("cat_sample.png")}
+
+
  
 RED = (255, 0, 0)
  
