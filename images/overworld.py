@@ -35,6 +35,11 @@ def main():
     pygame.display.set_caption('Cat Isle')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
+    text = BASICFONT.render('Cat Isle', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
+
+
     # background
     bg = pygame.image.load("background.png")
     window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
@@ -57,17 +62,11 @@ def main():
     object_.rect.x = 200
     object_.rect.y = 300
 
-    # run game
-    result = runGame()
-
-
-def runGame():
-    # add levels and levelNum as parameters later!!
-
     while True: # main game loop
         window.blit(bg,(0,0))
         cat = pygame.image.load('cat_sample.png')
         window.blit(cat, (0, 0)) # create sprite
+        window.blit(text, textRect)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -76,8 +75,14 @@ def runGame():
         all_sprites_list.update()
         all_sprites_list.draw(window)
         pygame.display.flip()
-                
-    
+
+    # run game
+    result = runGame()
+
+
+def runGame():
+    # add levels and levelNum as parameters later!!
+
         playerMoveTo = None
         keyPressed = False
         for event in pygame.event.get(): # event handling loop
