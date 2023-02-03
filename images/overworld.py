@@ -59,6 +59,9 @@ def main():
     
     all_sprites_list.add(object_)
 
+    all_sprites_list.update()
+    all_sprites_list.draw(window)
+
     # run game
     result = runGame()
 
