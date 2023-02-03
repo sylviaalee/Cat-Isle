@@ -49,7 +49,7 @@ def main():
     currentImage = 0
     PLAYERIMAGES = [IMAGESDICT['cat']]
 
-
+    # sprites list
     all_sprites_list = pygame.sprite.Group()
     
     # make sprite
@@ -58,6 +58,7 @@ def main():
     object_.rect.y = 300
     
     all_sprites_list.add(object_)
+    
 
     # run game
     result = runGame()
