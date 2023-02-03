@@ -10,16 +10,29 @@ HEIGHT = 850
 # Object class
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, color, height, width):
+        global player_image, player_rect
         super().__init__()
- 
+
         self.image = pygame.Surface([width, height])
         self.image.fill(SURFACE_COLOR)
         self.image.set_colorkey(COLOR)
- 
+        #PYGAME SURFACE
+
+        player_image = pygame.image.load("cat_sample.png").convert_alpha()
+        player_rect = player_image.get_rect(center = (350, 350))
+     
+
+        '''
+        self.image = pygame.Surface([width, height])
+        self.image.fill(SURFACE_COLOR)
+        self.image.set_colorkey(COLOR)
+        '''
+        '''
         pygame.draw.rect(self.image,
                          color,
                          pygame.Rect(0, 0, width, height))
- 
+        
+        '''
         self.rect = self.image.get_rect()
  
     def moveRight(self, pixels):
@@ -44,26 +57,17 @@ text = BASICFONT.render('Cat Isle', True, 'brown')
 textRect = text.get_rect()
 textRect.center = (1470 // 2, 850 // 2)
 
-
-# background
-bg = pygame.image.load("background.png")
-window = pygame.display.set_mode((WIDTH, HEIGHT))
-bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
-
 # load images used
 IMAGESDICT = {'background' : pygame.image.load("background.png"), 
             'bush' : pygame.image.load("bush.png"), 
             'cat' : pygame.image.load("cat_sample.png")}
 
+# background
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+bg = pygame.image.load("background.png")
+bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
- 
 RED = (255, 0, 0)
- 
- 
-size = (WIDTH, HEIGHT)
-screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Creating Sprite")
- 
  
 all_sprites_list = pygame.sprite.Group()
  
@@ -96,8 +100,9 @@ while exit:
         cat.moveBack(10)
  
     all_sprites_list.update()
-    screen.fill(SURFACE_COLOR)
-    all_sprites_list.draw(screen)
+    window.blit(bg, (0,0))
+    window.blit(player_image, player_rect)
+    all_sprites_list.draw(window)
     pygame.display.flip()
     clock.tick(60)
  
