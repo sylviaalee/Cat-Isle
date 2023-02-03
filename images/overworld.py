@@ -56,12 +56,6 @@ def main():
     object_ = Player('red', 20, 30)
     object_.rect.x = 200
     object_.rect.y = 300
-    
-    all_sprites_list.add(object_)
-    
-
-    all_sprites_list.update()
-    all_sprites_list.draw(window)
 
     # run game
     result = runGame()
@@ -76,8 +70,13 @@ def runGame():
         window.blit(cat, (0, 0)) # create sprite
 
         for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    terminate()
+            if event.type == pygame.QUIT:
+                terminate()
+        all_sprites_list.add(object_)
+        all_sprites_list.update()
+        all_sprites_list.draw(window)
+                pygame.display.flip()
+                
     
         playerMoveTo = None
         keyPressed = False
