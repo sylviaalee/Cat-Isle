@@ -15,6 +15,21 @@ DOWN = 'down'
 LEFT = 'left'
 RIGHT = 'right'
 
+class Player(pygame.sprite.Sprite):
+    def __init__(self, color, height, width):
+        super().__init__()
+  
+        self.image = pygame.Surface([width, height])
+        self.image.fill('red')
+        self.image.set_colorkey('red')
+  
+        pygame.draw.rect(self.image,color,pygame.Rect(0, 0, width, height))
+  
+        self.rect = self.image.get_rect()
+  
+  
+
+
 def main():
     
     global BASICFONT, IMAGESDICT, PLAYERIMAGES, window, bg # add global variables
@@ -33,6 +48,16 @@ def main():
 
     currentImage = 0
     PLAYERIMAGES = [IMAGESDICT['cat']]
+
+
+    all_sprites_list = pygame.sprite.Group()
+    
+    object_ = Player('red', 20, 30)
+    object_.rect.x = 200
+    object_.rect.y = 300
+    
+    all_sprites_list.add(object_)
+
     result = runGame()
 
 
