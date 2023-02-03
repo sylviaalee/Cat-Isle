@@ -26,9 +26,6 @@ class Player(pygame.sprite.Sprite):
         pygame.draw.rect(self.image,color,pygame.Rect(0, 0, width, height))
   
         self.rect = self.image.get_rect()
-  
-  
-
 
 def main():
     
@@ -38,26 +35,31 @@ def main():
     pygame.display.set_caption('Cat Isle')
     BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
+    # background
     bg = pygame.image.load("background.png")
     window = pygame.display.set_mode((WINWIDTH, WINLENGTH))
     bg = pygame.transform.scale(bg,(WINWIDTH, WINLENGTH))
 
+    # load images used
     IMAGESDICT = {'background' : pygame.image.load("background.png"), 
                 'bush' : pygame.image.load("bush.png"), 
                 'cat' : pygame.image.load("cat_sample.png")}
 
+    # set current character image
     currentImage = 0
     PLAYERIMAGES = [IMAGESDICT['cat']]
 
 
     all_sprites_list = pygame.sprite.Group()
     
+    # make sprite
     object_ = Player('red', 20, 30)
     object_.rect.x = 200
     object_.rect.y = 300
     
     all_sprites_list.add(object_)
 
+    # run game
     result = runGame()
 
 
