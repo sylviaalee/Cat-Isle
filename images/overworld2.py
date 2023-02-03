@@ -51,7 +51,11 @@ all_sprites_list = pygame.sprite.Group()
 playerCar = Sprite(RED, 20, 30)
 playerCar.rect.x = 200
 playerCar.rect.y = 300
- 
+
+# text
+text = BASICFONT.render('Cat Isle', True, 'brown')
+textRect = text.get_rect()
+textRect.center = (1470 // 2, 850 // 2)
  
 all_sprites_list.add(playerCar)
  
@@ -59,6 +63,16 @@ exit = True
 clock = pygame.time.Clock()
  
 while exit:
+    # window
+    window.blit(bg,(0,0))
+    cat = pygame.image.load('cat_sample.png')
+    window.blit(cat, (0, 0)) # create sprite
+    window.blit(text, textRect) # create text
+
+    # sprites
+    all_sprites_list.add(object_)
+    all_sprites_list.update()
+    all_sprites_list.draw(window)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit = False
