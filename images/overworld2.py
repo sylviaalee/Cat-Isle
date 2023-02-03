@@ -80,7 +80,6 @@ cat = Sprite(RED, 20, 30)
 cat.rect.x = 200
 cat.rect.y = 300
  
- 
 all_sprites_list.add(cat)
  
 exit = True
