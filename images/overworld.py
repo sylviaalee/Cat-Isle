@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
 
 def main():
     
-    global BASICFONT, IMAGESDICT, PLAYERIMAGES, window, bg # add global variables
+    global BASICFONT, IMAGESDICT, PLAYERIMAGES, window, bg, all_sprites_list, object_# add global variables
     
     pygame.init()
     pygame.display.set_caption('Cat Isle')
@@ -75,7 +75,7 @@ def runGame():
         all_sprites_list.add(object_)
         all_sprites_list.update()
         all_sprites_list.draw(window)
-                pygame.display.flip()
+        pygame.display.flip()
                 
     
         playerMoveTo = None
