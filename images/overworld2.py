@@ -4,8 +4,8 @@ import pygame
 # Global Variables
 COLOR = (255, 100, 98)
 SURFACE_COLOR = (167, 255, 100)
-WIDTH = 500
-HEIGHT = 500
+WIDTH = 1470
+HEIGHT = 850
  
 # Object class
 class Sprite(pygame.sprite.Sprite):
@@ -35,8 +35,27 @@ class Sprite(pygame.sprite.Sprite):
         self.rect.y -= speed * speed/10
  
  
+
 pygame.init()
- 
+pygame.display.set_caption('Cat Isle')
+BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+
+text = BASICFONT.render('Cat Isle', True, 'brown')
+textRect = text.get_rect()
+textRect.center = (1470 // 2, 850 // 2)
+
+
+# background
+bg = pygame.image.load("background.png")
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+
+# load images used
+IMAGESDICT = {'background' : pygame.image.load("background.png"), 
+            'bush' : pygame.image.load("bush.png"), 
+            'cat' : pygame.image.load("cat_sample.png")}
+
+
  
 RED = (255, 0, 0)
  
@@ -56,8 +75,13 @@ playerCar.rect.y = 300
 text = BASICFONT.render('Cat Isle', True, 'brown')
 textRect = text.get_rect()
 textRect.center = (1470 // 2, 850 // 2)
+
+cat = Sprite(RED, 20, 30)
+cat.rect.x = 200
+cat.rect.y = 300
  
-all_sprites_list.add(playerCar)
+ 
+all_sprites_list.add(cat)
  
 exit = True
 clock = pygame.time.Clock()
@@ -82,13 +106,13 @@ while exit:
  
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        playerCar.moveLeft(10)
+        cat.moveLeft(10)
     if keys[pygame.K_RIGHT]:
-        playerCar.moveRight(10)
+        cat.moveRight(10)
     if keys[pygame.K_DOWN]:
-        playerCar.moveForward(10)
+        cat.moveForward(10)
     if keys[pygame.K_UP]:
-        playerCar.moveBack(10)
+        cat.moveBack(10)
  
     all_sprites_list.update()
     screen.fill(SURFACE_COLOR)
