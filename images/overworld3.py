@@ -15,7 +15,10 @@ loop = True
 while loop:
     cat = pygame.image.load('cat_sample.png')
     window.blit(cat, (x, y))
+    window.blit(bg, (0,0))
 
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
+
+pygame.quit()
