@@ -84,7 +84,7 @@ clock = pygame.time.Clock()
 while exit:
     # window
     window.blit(bg,(0,0))
-    cat = pygame.image.load('cat_sample.png')
+    cat2 = pygame.image.load('cat_sample.png')
     window.blit(cat, (cat.rect.x, cat.rect.y)) # create sprite
     window.blit(text, textRect) # create text
 
