@@ -9,5 +9,6 @@ bg = pygame.image.load("background.png")
 bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
 # cat
+x, y = 100, 100
 cat = pygame.image.load('cat_sample.png')
-window.blit(cat, (100, 100))
+window.blit(cat, (x, y))
