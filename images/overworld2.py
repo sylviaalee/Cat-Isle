@@ -14,26 +14,8 @@ class Sprite(pygame.sprite.Sprite):
         global player_image, player_rect
         super().__init__()
 
-        self.image = pygame.Surface([width, height])
-        self.image.fill(SURFACE_COLOR)
-        self.image.set_colorkey(COLOR)
-        #PYGAME SURFACE
-
-        player_image = pygame.image.load("cat_sample.png").convert_alpha()
+        player_image = pygame.image.load("cat_sample.png")
         player_rect = player_image.get_rect(center = (350, 350))
-     
-
-        '''
-        self.image = pygame.Surface([width, height])
-        self.image.fill(SURFACE_COLOR)
-        self.image.set_colorkey(COLOR)
-        '''
-        '''
-        pygame.draw.rect(self.image,
-                         color,
-                         pygame.Rect(0, 0, width, height))
-        
-        '''
         self.rect = self.image.get_rect()
  
     def moveRight(self, pixels):
