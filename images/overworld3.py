@@ -10,5 +10,11 @@ bg = pygame.transform.scale(bg,(500, 500))
 
 # cat
 x, y = 100, 100
-cat = pygame.image.load('cat_sample.png')
-window.blit(cat, (x, y))
+
+while True:
+    cat = pygame.image.load('cat_sample.png')
+    window.blit(cat, (x, y))
+
+    for event in pygame.event.get():
+        if event.type == quit:
+            loop = False
