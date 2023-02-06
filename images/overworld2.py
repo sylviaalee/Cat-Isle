@@ -2,7 +2,7 @@ import random
 import pygame
  
 # Global Variables
-FPS =60
+FPS = 60
 COLOR = (255, 100, 98)
 SURFACE_COLOR = (167, 255, 100)
 WIDTH = 1470
