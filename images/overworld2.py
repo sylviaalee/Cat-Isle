@@ -79,7 +79,7 @@ textRect.center = (1470 // 2, 850 // 2)
 cat = Sprite(RED, 20, 30)
 cat.rect.x = 200
 cat.rect.y = 300
- 
+
 all_sprites_list.add(cat)
  
 exit = True
@@ -93,7 +93,7 @@ while exit:
     window.blit(text, textRect) # create text
 
     # sprites
-    all_sprites_list.add(object_)
+    all_sprites_list.add(cat)
     all_sprites_list.update()
     all_sprites_list.draw(window)
     for event in pygame.event.get():
