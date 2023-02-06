@@ -21,4 +21,6 @@ while loop:
         if event.type == quit:
             loop = False
 
+    pygame.display.flip()
+
 pygame.quit()
