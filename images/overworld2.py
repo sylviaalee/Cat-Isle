@@ -74,21 +74,21 @@ all_sprites_list = pygame.sprite.Group()
 cat = Sprite(RED, 20, 30)
 cat.rect.x = 200
 cat.rect.y = 300
-
 all_sprites_list.add(cat)
- 
+
+
 exit = True
 clock = pygame.time.Clock()
- 
+
 while exit:
     # window
     window.blit(bg,(0,0))
     cat = pygame.image.load('cat_sample.png')
-    window.blit(cat, (0, 0)) # create sprite
+    window.blit(cat, (cat.rect.x, cat.rect.y)) # create sprite
     window.blit(text, textRect) # create text
 
     # sprites
-    all_sprites_list.add(cat)
+    # all_sprites_list.add(cat) # causes error
     all_sprites_list.update()
     all_sprites_list.draw(window)
     for event in pygame.event.get():
@@ -100,13 +100,13 @@ while exit:
  
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        cat.moveLeft(10)
+        cat.rect.x -= 2
     if keys[pygame.K_RIGHT]:
-        cat.moveRight(10)
+        cat.rect.x += 2
     if keys[pygame.K_DOWN]:
-        cat.moveForward(10)
+        cat.rect.y -= 2
     if keys[pygame.K_UP]:
-        cat.moveBack(10)
+        cat.rect.y += 2
  
     all_sprites_list.update()
     window.blit(bg, (0,0))
