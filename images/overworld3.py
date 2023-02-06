@@ -10,12 +10,13 @@ bg = pygame.transform.scale(bg,(500, 500))
 
 # cat
 cat = pygame.image.load('cat_sample.png')
+cat = pygame.transform.scale(cat, (200, 200))
 x, y = 100, 100
 
 loop = True
 while loop:
-    window.blit(cat, (x, y))
     window.blit(bg, (0,0))
+    window.blit(cat, (x, y))
 
     for event in pygame.event.get():
         if event.type == quit:
@@ -23,13 +24,13 @@ while loop:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        x += 2
+        x -= 5
     if keys[pygame.K_RIGHT]:
-        x += 2
-    if keys[pygame.K_DOWN]:
-        y -= 2
+        x += 5
     if keys[pygame.K_UP]:
-        y += 2
+        y -= 5
+    if keys[pygame.K_DOWN]:
+        y += 5
     pygame.display.flip()
 
 pygame.quit()
