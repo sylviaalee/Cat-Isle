@@ -30,5 +30,6 @@ while loop:
         y -= 2
     if keys[pygame.K_UP]:
         y += 2
+    pygame.display.flip()
 
 pygame.quit()
