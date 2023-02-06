@@ -2,6 +2,7 @@ import random
 import pygame
  
 # Global Variables
+FPS =60
 COLOR = (255, 100, 98)
 SURFACE_COLOR = (167, 255, 100)
 WIDTH = 1470
@@ -113,6 +114,6 @@ while exit:
     window.blit(player_image, player_rect)
     all_sprites_list.draw(window)
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(FPS)
  
 pygame.quit()
