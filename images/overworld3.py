@@ -21,4 +21,14 @@ while loop:
         if event.type == quit:
             loop = False
 
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        x += 2
+    if keys[pygame.K_RIGHT]:
+        x += 2
+    if keys[pygame.K_DOWN]:
+        y -= 2
+    if keys[pygame.K_UP]:
+        y += 2
+
 pygame.quit()
