@@ -30,7 +30,10 @@ while loop:
     window.blit(text, textRect) # create text
 
     # make portals
-    pygame.draw.circle(window, 'red', (50, 50), 50)
+    pygame.draw.circle(window, 'red', (100, 100), 50)
+    pygame.draw.circle(window, 'red', (1370, 100), 50)
+    pygame.draw.circle(window, 'red', (1370, 750), 50)
+    pygame.draw.circle(window, 'red', (100, 750), 50)
 
     for event in pygame.event.get():
         if event.type == quit:
