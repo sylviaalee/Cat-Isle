@@ -6,6 +6,7 @@ pygame.init()
 WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # add text
 pygame.display.set_caption('Cat Isle')
@@ -14,7 +15,6 @@ textRect = text.get_rect()
 textRect.center = (1470 // 2, 850 // 2)
 
 # window
-window = pygame.display.set_mode((WIDTH, HEIGHT))
 bg = pygame.image.load("background.png")
 bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
