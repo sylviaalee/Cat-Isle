@@ -11,7 +11,7 @@ BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 pygame.display.set_caption('Cat Isle')
 text = BASICFONT.render('Cat Isle', True, 'brown')
 textRect = text.get_rect()
-textRect.center = (1470 // 2, 850 // 2)
+textRect.center = (1470 // 2, 100)
 
 # window
 window = pygame.display.set_mode((WIDTH, HEIGHT))
