@@ -25,21 +25,29 @@ def main_screen():
 
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
+    pygame.draw.rect(window, "red", pygame.Rect(50, 50, 100, 100))
 
 # cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
-x, y = 100, 100
+x, y = 200, 200
 
 def terminate():
     pygame.quit()
 
+screen = "main"
+
 loop = True
 while loop:
+    # switch screens
+    if screen == "main":
+        main_screen()
+    
+    if screen == "game1":
+        screen_game1.game1()
+    
     window.blit(cat, (x, y))
-    main_screen()
-
-
+    
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
@@ -53,6 +61,18 @@ while loop:
         y -= 8
     if keys[pygame.K_DOWN] and y < 600:
         y += 8
+
+    # conditions in which screen changes
+    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
+        screen = "game1"
+
+    # display directions
+    if x < 12 and x > -300 and y < 12 and y > -300:
+        game1_instruct = BASICFONT.render('Press ENTER to go to game', True, 'brown')
+        rect1 = game1_instruct.get_rect()
+        rect1.center = (1470 // 2, 30)
+        window.blit(game1_instruct, rect1)
+
     pygame.display.flip()
 
 terminate()
