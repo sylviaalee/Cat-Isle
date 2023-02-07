@@ -1,4 +1,8 @@
 import pygame
+import screen_game1
+import screen_game2
+import screen_game3
+import screen_game4
 
 pygame.init()
 
@@ -6,6 +10,7 @@ pygame.init()
 WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 def main_screen():
     # add text
@@ -21,6 +26,9 @@ def main_screen():
 
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
+# window
+bg = pygame.image.load("background.png")
+bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
 # cat
 cat = pygame.image.load('cat_sample.png')
