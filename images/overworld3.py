@@ -14,8 +14,11 @@ bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
 # cat
 cat = pygame.image.load('cat_sample.png')
-cat = pygame.transform.scale(cat, (300, 350))
+cat = pygame.transform.scale(cat, (300, 300))
 x, y = 100, 100
+
+# text
+
 
 loop = True
 while loop:
