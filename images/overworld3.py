@@ -23,7 +23,6 @@ cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
 x, y = 100, 100
 
-
 loop = True
 while loop:
     window.blit(bg, (0,0))
