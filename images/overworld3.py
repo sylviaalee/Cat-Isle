@@ -1,11 +1,12 @@
 import pygame
 
+pygame.init()
+
 # GLOBAL
 WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
-pygame.init()
 pygame.display.set_caption('Cat Isle')
 
 # add text
