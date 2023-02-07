@@ -23,13 +23,12 @@ cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (300, 300))
 x, y = 100, 100
 
-# text
-
 
 loop = True
 while loop:
     window.blit(bg, (0,0))
     window.blit(cat, (x, y))
+    window.blit(text, textRect) # create text
 
     for event in pygame.event.get():
         if event.type == quit:
