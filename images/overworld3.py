@@ -35,7 +35,7 @@ while loop:
             loop = False
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] and x > -90:
         x -= 8
     if keys[pygame.K_RIGHT]:
         x += 8
