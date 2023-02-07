@@ -1,16 +1,20 @@
 import pygame
 
+# GLOBAL
+WIDTH = 1470
+HEIGHT = 850
+
 pygame.init()
 pygame.display.set_caption('Cat Isle')
 
 # window
-window = pygame.display.set_mode((500, 500))
+window = pygame.display.set_mode((WIDTH, HEIGHT))
 bg = pygame.image.load("background.png")
-bg = pygame.transform.scale(bg,(500, 500))
+bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
 # cat
 cat = pygame.image.load('cat_sample.png')
-cat = pygame.transform.scale(cat, (200, 200))
+cat = pygame.transform.scale(cat, (300, 350))
 x, y = 100, 100
 
 loop = True
@@ -24,13 +28,13 @@ while loop:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        x -= 5
+        x -= 8
     if keys[pygame.K_RIGHT]:
-        x += 5
+        x += 8
     if keys[pygame.K_UP]:
-        y -= 5
+        y -= 8
     if keys[pygame.K_DOWN]:
-        y += 5
+        y += 8
     pygame.display.flip()
 
 pygame.quit()
