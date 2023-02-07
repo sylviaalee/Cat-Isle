@@ -23,12 +23,14 @@ cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
 x, y = 100, 100
 
-
 loop = True
 while loop:
-    window.blit(bg, (0,0))
-    window.blit(cat, (x, y))
+    window.blit(bg, (0,0)) # create bg
+    window.blit(cat, (x, y)) # spawn cat
     window.blit(text, textRect) # create text
+
+    # make portals
+    pygame.draw.circle(window, 'red', (50, 50), 50)
 
     for event in pygame.event.get():
         if event.type == quit:
