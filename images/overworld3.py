@@ -50,6 +50,8 @@ while loop:
         y -= 8
     if keys[pygame.K_DOWN] and y < 600:
         y += 8
+    if keys[pygame.K_KP_ENTER]:
+        
     pygame.display.flip()
 
 pygame.quit()
