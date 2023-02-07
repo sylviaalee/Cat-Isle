@@ -20,15 +20,11 @@ def main_screen():
     textRect.center = (1470 // 2, 850 // 2)
 
     # window
-    window = pygame.display.set_mode((WIDTH, HEIGHT))
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
-# window
-bg = pygame.image.load("background.png")
-bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
 # cat
 cat = pygame.image.load('cat_sample.png')
@@ -41,6 +37,8 @@ def terminate():
 loop = True
 while loop:
     window.blit(cat, (x, y))
+    main_screen()
+
 
     for event in pygame.event.get():
         if event.type == quit:
