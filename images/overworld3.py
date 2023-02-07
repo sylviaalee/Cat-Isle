@@ -1,4 +1,8 @@
 import pygame
+import screen_game1
+import screen_game2
+import screen_game3
+import screen_game4
 
 pygame.init()
 
