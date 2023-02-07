@@ -1,11 +1,12 @@
 import pygame
 
 pygame.init()
+print(pygame.font.get_fonts()
 
 # GLOBAL
 WIDTH = 1470
 HEIGHT = 850
-BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+BASICFONT = pygame.font.Font('freesansbold.ttf', 25)
 
 # add text
 pygame.display.set_caption('Cat Isle')
@@ -26,14 +27,15 @@ x, y = 100, 100
 loop = True
 while loop:
     window.blit(bg, (0,0)) # create bg
-    window.blit(cat, (x, y)) # spawn cat
     window.blit(text, textRect) # create text
 
     # make portals
-    pygame.draw.circle(window, 'red', (100, 100), 50)
-    pygame.draw.circle(window, 'red', (1370, 100), 50)
-    pygame.draw.circle(window, 'red', (1370, 750), 50)
-    pygame.draw.circle(window, 'red', (100, 750), 50)
+    pygame.draw.circle(window, 'aquamarine4', (100, 100), 50)
+    pygame.draw.circle(window, 'aquamarine4', (1370, 100), 50)
+    pygame.draw.circle(window, 'aquamarine4', (1370, 750), 50)
+    pygame.draw.circle(window, 'aquamarine4', (100, 750), 50)
+
+    window.blit(cat, (x, y)) # spawn cat
 
     for event in pygame.event.get():
         if event.type == quit:
