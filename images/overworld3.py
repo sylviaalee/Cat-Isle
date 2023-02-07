@@ -7,25 +7,26 @@ pygame.font.get_fonts()
 WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 25)
-
-# add text
-pygame.display.set_caption('Cat Isle')
-text = BASICFONT.render('Cat Isle', True, 'brown')
-textRect = text.get_rect()
-textRect.center = (1470 // 2, 100)
-
-# window
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-bg = pygame.image.load("background.png")
-bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+
+# add caption
+pygame.display.set_caption('Cat Isle')
 
 # cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
 x, y = 100, 100
 
-loop = True
-while loop:
+def main_screen():
+    # add text
+    text = BASICFONT.render('Cat Isle', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 100)
+
+    # window
+    bg = pygame.image.load("background.png")
+    bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+
     window.blit(bg, (0,0)) # create bg
     window.blit(text, textRect) # create text
 
@@ -35,6 +36,8 @@ while loop:
     pygame.draw.circle(window, 'aquamarine4', (1370, 750), 50)
     pygame.draw.circle(window, 'aquamarine4', (100, 750), 50)
 
+loop = True
+while loop:
     window.blit(cat, (x, y)) # spawn cat
 
     for event in pygame.event.get():
@@ -51,7 +54,7 @@ while loop:
     if keys[pygame.K_DOWN] and y < 600:
         y += 8
     if keys[pygame.K_KP_ENTER]:
-        
+        pass
     pygame.display.flip()
 
 pygame.quit()
