@@ -1,7 +1,7 @@
 import pygame
 
 pygame.init()
-print(pygame.font.get_fonts()
+pygame.font.get_fonts()
 
 # GLOBAL
 WIDTH = 1470
