@@ -21,3 +21,4 @@ def game1():
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
     window.blit(bg, (0,0))
+    window.blit(text, textRect)
