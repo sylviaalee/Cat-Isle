@@ -20,9 +20,14 @@ def main_screen():
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
+    # bush
+    bush = pygame.image.load('bush.png')
+    bush = pygame.transform.scale(bush, (300, 250))
+
     # display bg + text
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
+    window.blit(bush, (200, 200))
 
     # add 4 portals
     pygame.draw.circle(window, "aquamarine4", (100, 100), 50)
