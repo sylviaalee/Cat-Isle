@@ -34,7 +34,7 @@ def main_screen():
     pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
     pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
 
-# functions for MINIGAMES   
+# functions for MINI GAMES   
 def minigame1():
     pass
 
@@ -76,11 +76,11 @@ while loop:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > -130:
         x -= 8
-    if keys[pygame.K_RIGHT] and x < 1200:
+    if keys[pygame.K_RIGHT] and x < 1220:
         x += 8
     if keys[pygame.K_UP] and y > -110:
         y -= 8
-    if keys[pygame.K_DOWN] and y < 600:
+    if keys[pygame.K_DOWN] and y < 615:
         y += 8
 
     # conditions in which screen changes
