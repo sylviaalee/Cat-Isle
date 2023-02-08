@@ -85,7 +85,7 @@ while loop:
     if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
         screen = "game1"
 
-    # display directions
+    # display directions if cat is on portal
     if x < 12 and x > -300 and y < 12 and y > -300 and screen == "main":
         game1_instruct = BASICFONT.render('Press ENTER to go to game', True, 'brown')
         rect1 = game1_instruct.get_rect()
