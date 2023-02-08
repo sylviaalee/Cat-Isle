@@ -52,13 +52,13 @@ while loop:
         screen_game1.game1()
 
     if screen == "game2":
-        screen_game1.game2()
+        screen_game2.game2()
 
     if screen == "game3":
-        screen_game1.game3()
+        screen_game3.game3()
 
     if screen == "game4":
-        screen_game1.game4()
+        screen_game4.game4()
     
     # spawn cat
     window.blit(cat, (x, y))
