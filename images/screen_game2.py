@@ -12,20 +12,20 @@ BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 def game2():
-    while True:
-        # text
-        pygame.display.set_caption('Cat Isle')
-        text = BASICFONT.render('Pong', True, 'brown')
-        textRect = text.get_rect()
-        textRect.center = (1470 // 2, 850 // 2)
+    # text
+    pygame.display.set_caption('Cat Isle')
+    text = BASICFONT.render('Pong', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
 
-        # background
-        bg = pygame.image.load("background.png")
-        bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+    # background
+    bg = pygame.image.load("background.png")
+    bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-        window.blit(bg, (0,0))
-        window.blit(text, textRect)
+    window.blit(bg, (0,0))
+    window.blit(text, textRect)
 
+    # while True:
 #         for event in pygame.event.get():
 #             if event.type == KEYDOWN:
 #                 keydown(event)
