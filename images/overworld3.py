@@ -6,12 +6,13 @@ import screen_game4
 
 pygame.init()
 
-# GLOBAL
+# GLOBAL VARIABLES
 WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+# function for MAIN SCREEN
 def main_screen():
     # add text
     pygame.display.set_caption('Cat Isle')
@@ -32,7 +33,8 @@ def main_screen():
     pygame.draw.circle(window, "aquamarine4", (1370, 100), 50)
     pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
     pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
-    
+
+# functions for MINIGAMES   
 def minigame1():
     pass
 
