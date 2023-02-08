@@ -1,4 +1,4 @@
-from overworld3 import *
+#from overworld3 import *
 import pygame, sys
 import random
 from pygame.locals import *
