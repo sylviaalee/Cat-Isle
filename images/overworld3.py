@@ -108,7 +108,7 @@ while loop:
     if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
         screen = "game1"
     
-    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
+    if x < 1370 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
         screen = "game2"
 
     if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
