@@ -33,6 +33,17 @@ def main_screen():
     pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
     pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
     
+def minigame1():
+    pass
+
+def minigame2():
+    pass
+
+def minigame3():
+    pass
+
+def minigame4():
+    pass
 
 # create cat
 cat = pygame.image.load('cat_sample.png')
