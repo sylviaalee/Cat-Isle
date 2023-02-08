@@ -67,7 +67,7 @@ while loop:
         screen = "game1"
 
     # display directions
-    if x < 12 and x > -300 and y < 12 and y > -300:
+    if x < 12 and x > -300 and y < 12 and y > -300 and screen == "main":
         game1_instruct = BASICFONT.render('Press ENTER to go to game', True, 'brown')
         rect1 = game1_instruct.get_rect()
         rect1.center = (1470 // 2, 30)
