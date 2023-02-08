@@ -19,22 +19,27 @@ def main_screen():
     textRect = text.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
 
-    # window
+    # create bg
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
+    # display bg + text
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
-    pygame.draw.rect(window, "red", pygame.Rect(50, 50, 100, 100))
 
-# cat
+    # add 4 portals
+    pygame.draw.circle(window, "aquamarine4", (100, 100), 50)
+    pygame.draw.circle(window, "aquamarine4", (1370, 100), 50)
+    pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
+    pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
+    
+
+# create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
 x, y = 200, 200
 
-def terminate():
-    pygame.quit()
-
+# main screen appears at the beginning of the game
 screen = "main"
 
 loop = True
@@ -46,12 +51,15 @@ while loop:
     if screen == "game1":
         screen_game1.game1()
     
+    # spawn cat
     window.blit(cat, (x, y))
     
+    # quit?
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
 
+    # key pressed?
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > -130:
         x -= 8
@@ -73,6 +81,10 @@ while loop:
         rect1.center = (1470 // 2, 30)
         window.blit(game1_instruct, rect1)
 
+    # update display every frame
     pygame.display.flip()
+
+def terminate():
+    pygame.quit()
 
 terminate()
