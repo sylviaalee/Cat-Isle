@@ -34,19 +34,6 @@ def main_screen():
     pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
     pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
 
-# functions for MINI GAMES   
-def minigame1():
-    pass
-
-def minigame2():
-    pass
-
-def minigame3():
-    pass
-
-def minigame4():
-    pass
-
 # create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
@@ -63,6 +50,15 @@ while loop:
     
     if screen == "game1":
         screen_game1.game1()
+
+    if screen == "game2":
+        screen_game1.game2()
+
+    if screen == "game3":
+        screen_game1.game3()
+
+    if screen == "game4":
+        screen_game1.game4()
     
     # spawn cat
     window.blit(cat, (x, y))
@@ -82,10 +78,6 @@ while loop:
         y -= 8
     if keys[pygame.K_DOWN] and y < 615:
         y += 8
-
-    # conditions in which screen changes
-    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
-        screen = "game1"
 
     # display directions if cat is on portal
     if x < 12 and x > -300 and y < 12 and y > -300 and screen == "main":
@@ -111,6 +103,20 @@ while loop:
         rect4 = game4_instruct.get_rect()
         rect4.center = (1470 // 2, 30)
         window.blit(game4_instruct, rect1)
+
+    # conditions in which screen changes
+    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
+        screen = "game1"
+    
+    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
+        screen = "game2"
+
+    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
+        screen = "game3"
+
+    if x < 15 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
+        screen = "game4"
+    
 
     # update display every frame
     pygame.display.flip()
