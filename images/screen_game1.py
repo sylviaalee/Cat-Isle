@@ -23,3 +23,8 @@ def game1():
 
     window.blit(bg, (0,0))
     window.blit(text, textRect)
+    x, y = 200, 200
+    pygame.draw.rect(window, 'brown', [x, y, 10, 10])
+
+    if x >= WIDTH or x < 0 or y >= HEIGHT or y < 0:
+        game_over = True
