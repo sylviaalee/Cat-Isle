@@ -35,6 +35,14 @@ def game1():
         pass
 
     def gameLoop():
+        game_over = False
+        game_close = False
+        x1 = WIDTH / 2
+        y1 = HEIGHT / 2
+
+        snake_list = []
+        length_of_snake = 1
+        
         while not game_over:
             window.blit(bg, (0,0))
             window.blit(text, textRect)
