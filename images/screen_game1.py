@@ -1,5 +1,5 @@
 #from overworld3 import *
-import pygame
+import pygame, random
 
 pygame.init()
 
@@ -26,6 +26,10 @@ def game1():
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
+    # snake
+    snake_block = 10
+    snake_speed = 30
+    
     game_over = False
 
     def your_score(score):
@@ -35,6 +39,9 @@ def game1():
         pass
 
     def gameLoop():
+
+        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0) 
         while not game_over:
             window.blit(bg, (0,0))
             window.blit(text, textRect)
