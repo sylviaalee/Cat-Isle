@@ -12,7 +12,7 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 def game3():
     # text
     pygame.display.set_caption('Cat Isle')
-    text = BASICFONT.render('Snakecat', True, 'brown')
+    text = BASICFONT.render('Flappy Cat', True, 'brown')
     textRect = text.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
 
