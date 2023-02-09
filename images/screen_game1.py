@@ -26,21 +26,25 @@ def game1():
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-    window.blit(bg, (0,0))
-    window.blit(text, textRect)
-    x1, y1 = 200, 200
-    pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
+    game_over = False
 
-    if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
-        game_over = True
+    while not game_over:
+        window.blit(bg, (0,0))
+        window.blit(text, textRect)
+        x1, y1 = 200, 200
+        pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
 
-    message('You Lost... smh', 'brown')
+        if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
+            game_over = True
 
+    while game_over:
+        message('You Lost... smh', 'brown')
 
     def Your_score(score):
         pass
 
     def our_snake(snack_block, snake_list):
         pass
+
     def gameLoop():
         pass
