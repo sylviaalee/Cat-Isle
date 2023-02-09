@@ -35,13 +35,11 @@ def game1():
         pass
 
     def gameLoop():
-        pass
-
-    while not game_over:
-        window.blit(bg, (0,0))
-        window.blit(text, textRect)
-        x1, y1 = 200, 200
-        pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
+        while not game_over:
+            window.blit(bg, (0,0))
+            window.blit(text, textRect)
+            x1, y1 = 200, 200
+            pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
 
         if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
             game_over = True
