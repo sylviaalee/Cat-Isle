@@ -20,5 +20,16 @@ def game1():
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-    window.blit(bg, (0,0))
-    window.blit(text, textRect)
+    game_over = False
+    while not game_over:
+        window.blit(bg, (0,0))
+        window.blit(text, textRect)
+        x, y = 200, 200
+        pygame.draw.rect(window, 'brown', [x, y, 10, 10])
+
+        if x >= WIDTH or x < 0 or y >= HEIGHT or y < 0:
+            game_over = True
+
+    text = BASICFONT.render('You Lost', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
