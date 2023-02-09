@@ -21,6 +21,8 @@ def game1():
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
+    game_over = False
+
     window.blit(bg, (0,0))
     window.blit(text, textRect)
     x1, y1 = 200, 200
