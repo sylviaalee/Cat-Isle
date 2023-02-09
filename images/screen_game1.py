@@ -38,10 +38,7 @@ def game1():
     def our_snake(snack_block, snake_list):
         pass
 
-    def gameLoop():
-        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
-        
+    def gameLoop(): 
         game_over = False
         game_close = False
         x1 = WIDTH / 2
@@ -49,6 +46,9 @@ def game1():
 
         snake_list = []
         length_of_snake = 1
+        
+        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
 
         while not game_over:
 
