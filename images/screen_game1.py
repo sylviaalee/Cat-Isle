@@ -8,6 +8,7 @@ WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
+BODYCOLOR = "0D6C8C5"
 
 def game1():
     # text
