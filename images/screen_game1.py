@@ -49,8 +49,8 @@ def game1():
             x1, y1 = 200, 200
             pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
 
-        if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
-            game_over = True
+            if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
+                game_over = True
 
-        while game_over:
-            message('You Lost... smh', 'brown')
+        # game over
+        message('You Lost... smh', 'brown')
