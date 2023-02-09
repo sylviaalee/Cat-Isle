@@ -44,5 +44,5 @@ def game1():
         if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
             game_over = True
 
-    while game_over:
-        message('You Lost... smh', 'brown')
+        while game_over:
+            message('You Lost... smh', 'brown')
