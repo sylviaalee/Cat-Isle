@@ -28,6 +28,15 @@ def game1():
 
     game_over = False
 
+    def your_score(score):
+        pass
+
+    def our_snake(snack_block, snake_list):
+        pass
+
+    def gameLoop():
+        pass
+
     while not game_over:
         window.blit(bg, (0,0))
         window.blit(text, textRect)
@@ -39,12 +48,3 @@ def game1():
 
     while game_over:
         message('You Lost... smh', 'brown')
-
-    def Your_score(score):
-        pass
-
-    def our_snake(snack_block, snake_list):
-        pass
-
-    def gameLoop():
-        pass
