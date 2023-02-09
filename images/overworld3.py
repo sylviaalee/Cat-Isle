@@ -34,6 +34,9 @@ def main_screen():
     pygame.draw.circle(window, "aquamarine4", (1370, 100), 50)
     pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
     pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
+    
+    # spawn cat
+    window.blit(cat, (x, y))
 
 # create cat
 cat = pygame.image.load('cat_sample.png')
@@ -60,9 +63,6 @@ while loop:
 
     if screen == "game4":
         screen_game4.game4()
-    
-    # spawn cat
-    window.blit(cat, (x, y))
     
     # quit?
     for event in pygame.event.get():
