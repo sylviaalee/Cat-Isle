@@ -21,8 +21,6 @@ def game1():
     bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-    game_over = False
-
     window.blit(bg, (0,0))
     window.blit(text, textRect)
     x1, y1 = 200, 200
@@ -34,3 +32,12 @@ def game1():
     game_over_message = BASICFONT.render('You Lost... smh', True, 'brown')
     textRect = game_over_message.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
+
+
+    def Your_score(score):
+        pass
+
+    def our_snake(snack_block, snake_list):
+        pass
+    def gameLoop():
+        pass
