@@ -28,3 +28,7 @@ def game1():
 
     if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
         game_over = True
+
+    game_over_message = BASICFONT.render('You Lost... smh', True, 'brown')
+    textRect = game_over_message.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
