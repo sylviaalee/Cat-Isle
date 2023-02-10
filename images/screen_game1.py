@@ -42,6 +42,7 @@ def game1():
     def gameLoop():
         foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
         foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
+        
 
         game_over = False
         game_close = False
@@ -72,13 +73,13 @@ def game1():
                     game_over = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        x1 -= 10
+                        x1 -= 1
                     elif event.key == pygame.K_RIGHT:
-                        x1 += 10
+                        x1 += 1
                     elif event.key == pygame.K_UP:
-                        y1 -= 10
+                        y1 -= 1
                     elif event.key == pygame.K_DOWN:
-                        y1 += 10
+                        y1 += 1
             
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
                 game_over = True
