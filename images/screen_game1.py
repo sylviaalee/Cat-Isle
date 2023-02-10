@@ -38,19 +38,33 @@ def game1():
         pass
 
     def gameLoop():
-        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
-
         game_over = False
         game_close = False
-        
+
         x1 = WIDTH / 2
         y1 = HEIGHT / 2
+
+        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
 
         snake_list = []
         length_of_snake = 1
 
         while not game_over:
+
+            while game_close == True:
+                window.blit(bg, (0,0))
+                message("You Lost! Press Q-Quit or C-Play Again", "brown")
+                pygame.display.update()
+ 
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_q:
+                            game_over = True
+                            game_close = False
+                        if event.key == pygame.K_c:
+                            gameLoop()
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     game_over = True
