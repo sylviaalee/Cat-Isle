@@ -88,6 +88,21 @@ def game1():
             window.blit(text, textRect)
             pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
             pygame.draw.rect(window, 'pink', [foodx, foody, snake_block, snake_block])
+
+            snake_head = []
+            snake_head.append(x1)
+            snake_head.append(y1)
+            snake_list.append(snake_head)
+            if len(snake_list) > length_of_snake:
+                del snake_list[0]
+ 
+            for x in snake_list[:-1]:
+                if x == snake_head:
+                    game_close = True
+    
+            our_snake(snake_block, snake_list)
+ 
+
             pygame.display.update()
 
             if x1 == foodx and y1 == foody:
