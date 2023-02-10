@@ -117,7 +117,6 @@ while loop:
 
     if x < -5 and x > -300 and y < 2000 and y > 475 and keys[pygame.K_RETURN]:
         screen = "game4"
-    
 
     # update display every frame
     pygame.display.flip()
