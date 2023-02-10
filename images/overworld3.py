@@ -72,13 +72,13 @@ while loop:
     # key pressed?
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > -130:
-        x -= 8
+        x -= 20
     if keys[pygame.K_RIGHT] and x < 1220:
-        x += 8
+        x += 20
     if keys[pygame.K_UP] and y > -110:
-        y -= 8
+        y -= 20
     if keys[pygame.K_DOWN] and y < 615:
-        y += 8
+        y += 20
 
     # display directions if cat is on portal
     if x < -5 and x > -300 and y < 15 and y > -300 and screen == "main":
