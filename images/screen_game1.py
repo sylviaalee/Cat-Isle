@@ -38,7 +38,7 @@ def game1():
     # message function
     def message(msg, color):
         msg = BASICFONT.render(msg, True, color)
-        window.blit(msg, [WIDTH/2, HEIGHT/2])
+        window.blit(msg, [WIDTH / 2, 100])
 
     def gameLoop():
         foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
@@ -55,7 +55,6 @@ def game1():
         length_of_snake = 1
 
         while not game_over:
-
             while game_close == True:
                 window.blit(bg, (0,0))
                 message("You Lost! Press Q-Quit or C-Play Again", "brown")
@@ -115,6 +114,7 @@ def game1():
         # game over
         message('You Lost... smh', 'brown')
         pygame.display.update()
+        time.sleep(2)
         game_close = True
 
     gameLoop()
