@@ -12,11 +12,6 @@ BODYCOLOR = "0D6C8C5"
 clock = pygame.time.Clock()
 
 def game1():
-    # message function
-    def message(msg, color):
-        msg = BASICFONT.render(msg, True, color)
-        window.blit(msg, [WIDTH/2, HEIGHT/2])
-    
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -37,7 +32,13 @@ def game1():
         pass
 
     def our_snake(snack_block, snake_list):
-        pass
+        for x in snake_list:
+            pygame.draw.rect(window, "brown", [x[0], x[1], snake_block, snake_block])
+    
+    # message function
+    def message(msg, color):
+        msg = BASICFONT.render(msg, True, color)
+        window.blit(msg, [WIDTH/2, HEIGHT/2])
 
     def gameLoop():
         foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
@@ -91,7 +92,9 @@ def game1():
             pygame.display.update()
 
             if x1 == foodx and y1 == foody:
-                print("Yummy!!")
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                length_of_snake += 1
             clock.tick(snake_speed)
 
         # game over
