@@ -115,5 +115,6 @@ def game1():
         # game over
         message('You Lost... smh', 'brown')
         pygame.display.update()
+        game_close = True
 
     gameLoop()
