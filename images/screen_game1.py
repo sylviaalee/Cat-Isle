@@ -70,16 +70,10 @@ def game1():
             window.blit(bg, (0,0))
             window.blit(text, textRect)
             pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
-
             pygame.display.update()
 
-            
         # game over
         message('You Lost... smh', 'brown')
-<<<<<<< HEAD
+        pygame.display.update()
 
     gameLoop()
-=======
-        pygame.display.update()
-        
->>>>>>> 562af840209ce2563ac9068f3e291728671f019f
