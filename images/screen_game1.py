@@ -55,23 +55,27 @@ def game1():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     game_over = True
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    x1 -= 10
-                elif event.key == pygame.K_RIGHT:
-                    x1 += 10
-                elif event.key == pygame.K_UP:
-                    y1 -= 10
-                elif event.key == pygame.K_DOWN:
-                    y1 += 10
-
-            window.blit(bg, (0,0))
-            window.blit(text, textRect)
-            x1, y1 = 200, 200
-            pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
-
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        x1 -= 10
+                    elif event.key == pygame.K_RIGHT:
+                        x1 += 10
+                    elif event.key == pygame.K_UP:
+                        y1 -= 10
+                    elif event.key == pygame.K_DOWN:
+                        y1 += 10
+            
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
                 game_over = True
 
+            window.blit(bg, (0,0))
+            window.blit(text, textRect)
+            pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
+
+            pygame.display.update()
+
+            
         # game over
         message('You Lost... smh', 'brown')
+        pygame.display.update()
+        
