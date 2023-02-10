@@ -10,11 +10,6 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 BODYCOLOR = "0D6C8C5"
 
 def game1():
-    # message function
-    def message(msg, color):
-        msg = BASICFONT.render(msg, True, color)
-        window.blit(msg, [WIDTH/2, HEIGHT/2])
-    
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -35,7 +30,13 @@ def game1():
         pass
 
     def our_snake(snack_block, snake_list):
-        pass
+        for x in snake_list:
+            pygame.draw.rect(window, "brown", [x[0], x[1], snake_block, snake_block])
+    
+    # message function
+    def message(msg, color):
+        msg = BASICFONT.render(msg, True, color)
+        window.blit(msg, [WIDTH/2, HEIGHT/2])
 
     def gameLoop():
         game_over = False
