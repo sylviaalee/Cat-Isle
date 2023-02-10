@@ -77,7 +77,7 @@ def game1():
                     elif event.key == pygame.K_RIGHT:
                         x1 += 10
                     elif event.key == pygame.K_UP:
-                        y1 -= 10
+                        y1 -= 100
                     elif event.key == pygame.K_DOWN:
                         y1 += 10
             
@@ -115,6 +115,6 @@ def game1():
         message('You Lost... smh', 'brown')
         pygame.display.update()
         time.sleep(2)
-        game_close = True
+        game_ovder = True
 
     gameLoop()
