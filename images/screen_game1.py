@@ -1,5 +1,5 @@
 # from overworld3 import *
-import pygame, random
+import pygame, random, time
 pygame.init()
 
 # GLOBAL
@@ -8,6 +8,8 @@ HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 BODYCOLOR = "0D6C8C5"
+
+clock = pygame.time.Clock()
 
 def game1():
     # message function
@@ -38,7 +40,7 @@ def game1():
         pass
 
     def gameLoop():
-        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
         foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
 
         game_over = False
@@ -70,7 +72,12 @@ def game1():
             window.blit(bg, (0,0))
             window.blit(text, textRect)
             pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
+            pygame.draw.rect(window, 'pink', [foodx, foody, snake_block, snake_block])
             pygame.display.update()
+
+            if x1 == foodx and y1 == foody:
+                print("Yummy!!")
+            clock.tick(snake_speed)
 
         # game over
         message('You Lost... smh', 'brown')
