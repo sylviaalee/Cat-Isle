@@ -74,13 +74,13 @@ def game1():
                     game_over = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        x1 -= 1
+                        x1 -= 10
                     elif event.key == pygame.K_RIGHT:
-                        x1 += 1
+                        x1 += 10
                     elif event.key == pygame.K_UP:
-                        y1 -= 1
+                        y1 -= 10
                     elif event.key == pygame.K_DOWN:
-                        y1 += 1
+                        y1 += 10
             
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
                 game_over = True
@@ -92,8 +92,8 @@ def game1():
             pygame.display.update()
 
             if x1 == foodx and y1 == foody:
-                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
                 length_of_snake += 1
             clock.tick(snake_speed)
 
