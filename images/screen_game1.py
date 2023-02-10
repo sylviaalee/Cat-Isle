@@ -50,13 +50,21 @@ def game1():
 
         snake_list = []
         length_of_snake = 1
-        
-        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
 
         while not game_over:
-            while game_close == True:
-                pass
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    game_over = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x1 -= 10
+                elif event.key == pygame.K_RIGHT:
+                    x1 += 10
+                elif event.key == pygame.K_UP:
+                    y1 -= 10
+                elif event.key == pygame.K_DOWN:
+                    y1 += 10
+
             window.blit(bg, (0,0))
             window.blit(text, textRect)
             x1, y1 = 200, 200
