@@ -41,6 +41,10 @@ def game1():
         window.blit(msg, [WIDTH / 2, 100])
 
     def gameLoop():
+        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+        foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
+        
+
         game_over = False
         game_close = False
 
