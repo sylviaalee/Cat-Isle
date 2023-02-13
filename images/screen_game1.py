@@ -61,10 +61,10 @@ def game1():
         foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
 
         while not game_over:
-
             while game_close == True:
                 window.blit(bg, (0,0))
                 message("You Lost! Press Q-Quit or C-Play Again", "brown")
+                
                 pygame.display.update()
         
                 for event in pygame.event.get():

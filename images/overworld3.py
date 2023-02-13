@@ -8,6 +8,11 @@ HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+# message function
+def message(msg, color):
+        msg = BASICFONT.render(msg, True, color)
+        window.blit(msg, [WIDTH / 2, 100])
+
 # function for MAIN SCREEN
 def main_screen():
     # add text
@@ -37,6 +42,9 @@ def main_screen():
     
     # spawn cat
     window.blit(cat, (x, y))
+
+# score system
+score = 1
 
 # create cat
 cat = pygame.image.load('cat_sample.png')
@@ -120,6 +128,9 @@ while loop:
 
     # update display every frame
     pygame.display.flip()
+
+    if score == 4:
+        message('You Won!!!!')
 
 def terminate():
     pygame.quit()
