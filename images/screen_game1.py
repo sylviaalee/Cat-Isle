@@ -42,7 +42,7 @@ def game1():
 
     def gameLoop():
         foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
-        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
+        foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0)
         
 
         game_over = False
@@ -61,13 +61,13 @@ def game1():
                     game_over = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        x1 -= 10
+                        x1 -= 20
                     elif event.key == pygame.K_RIGHT:
-                        x1 += 10
+                        x1 += 20
                     elif event.key == pygame.K_UP:
-                        y1 -= 100
+                        y1 -= 20
                     elif event.key == pygame.K_DOWN:
-                        y1 += 10
+                        y1 += 20
             
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
                 game_over = True
@@ -99,18 +99,18 @@ def game1():
                 length_of_snake += 1
             clock.tick(snake_speed)
         
-        while game_close == True:
-            window.blit(bg, (0,0))
-            message("You Lost! Press Q-Quit or C-Play Again", "brown")
-            pygame.display.update()
+            while game_close == True:
+                window.blit(bg, (0,0))
+                message("You Lost! Press Q-Quit or C-Play Again", "brown")
+                pygame.display.update()
 
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_q:
-                        game_over = True
-                        game_close = False
-                    if event.key == pygame.K_c:
-                        gameLoop()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_q:
+                            game_over = True
+                            game_close = False
+                        if event.key == pygame.K_c:
+                            gameLoop()
 
         # game over
         message('You Lost... smh', 'brown')
