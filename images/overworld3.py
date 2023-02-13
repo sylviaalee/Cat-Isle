@@ -44,7 +44,7 @@ def main_screen():
     window.blit(cat, (x, y))
 
 # score system
-score = 1
+score = 0
 
 # create cat
 cat = pygame.image.load('cat_sample.png')
