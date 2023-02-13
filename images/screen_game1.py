@@ -41,9 +41,8 @@ def game1():
         window.blit(msg, [WIDTH / 2, 100])
 
     def gameLoop():
-        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
-        foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0)
-        
+        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10
+        foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10
 
         game_over = False
         game_close = False
@@ -89,7 +88,6 @@ def game1():
     
             our_snake(snake_block, snake_list)
  
-
             pygame.display.update()
 
             if (x1 + 5) > foodx and foodx > (x1 - 5) and (y1 + 5) > foody and foody > (y1 - 5):
