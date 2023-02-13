@@ -24,7 +24,7 @@ def game1():
 
     # snake
     snake_block = 20
-    snake_speed = 30
+    snake_speed = 20
 
     game_over = False
 
@@ -50,6 +50,9 @@ def game1():
 
         x1 = WIDTH / 2
         y1 = HEIGHT / 2
+
+        x1_change = 0
+        y1_change = 0
 
         snake_list = []
         length_of_snake = 1
@@ -77,23 +80,27 @@ def game1():
                     game_over = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        x1 -= 20
+                        x1_change = -snake_block
+                        y1_change = 0
                     elif event.key == pygame.K_RIGHT:
-                        x1 += 20
+                        x1_change = snake_block
+                        y1_change = 0
                     elif event.key == pygame.K_UP:
-                        y1 -= 20
+                        y1_change = -snake_block
+                        x1_change = 0
                     elif event.key == pygame.K_DOWN:
-                        y1 += 20
+                        y1_change = snake_block
+                        x1_change = 0
             
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
                 game_close = True
-            x1 += 20
-            y1 += 20
+            x1 += x1_change
+            y1 += y1_change
 
             window.blit(bg, (0,0))
             window.blit(text, textRect)
             pygame.draw.rect(window, 'pink', [foodx, foody, snake_block, snake_block])
-            pygame.draw.rect(window, 'brown', [foodx, foody, snake_block, snake_block])
+            #pygame.draw.rect(window, 'brown', [foodx, foody, snake_block, snake_block])
             snake_head = []
             snake_head.append(x1)
             snake_head.append(y1)
