@@ -65,6 +65,7 @@ def game1():
                 pygame.display.update()
 
                 for event in pygame.event.get():
+            for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
                             game_over = True
@@ -93,18 +94,28 @@ def game1():
             window.blit(bg, (0,0))
             window.blit(text, textRect)
             pygame.draw.rect(window, 'pink', [foodx, foody, snake_block, snake_block])
+
+            window.blit(bg, (0,0))
+            window.blit(text, textRect)
+            pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
+
+            if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
+                game_over = True
+
+            pygame.draw.rect(window, 'brown', [foodx, foody, snake_block, snake_block])
             snake_head = []
             snake_head.append(x1)
             snake_head.append(y1)
             snake_list.append(snake_head)
             if len(snake_list) > length_of_snake:
                 del snake_list[0]
- 
+
             for x in snake_list[:-1]:
                 if x == snake_head:
                     game_close = True
     
             our_snake(snake_block, snake_list)
+            your_score(length_of_snake - 1)
  
             pygame.display.update()
 
@@ -115,13 +126,11 @@ def game1():
 
             clock.tick(snake_speed)
         
+
         # game over
-        
         message('You Lost... smh', 'brown')
         pygame.display.update()
         time.sleep(2)
         game_over = True
         
     gameLoop()
-
-    #pygame.draw.rect(window, 'brown', [x1, y1, 10, 10])
