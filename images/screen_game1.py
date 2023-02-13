@@ -24,7 +24,7 @@ def game1():
 
     # snake
     snake_block = 20
-    snake_speed = 30
+    snake_speed = 20
 
     game_over = False
 
