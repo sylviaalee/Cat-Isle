@@ -31,7 +31,7 @@ def game1():
     def your_score(score):
         pass
 
-    def our_snake(snack_block, snake_list):
+    def our_snake(snake_block, snake_list):
         for x in snake_list:
             pygame.draw.rect(window, "brown", [x[0], x[1], snake_block, snake_block])
     
@@ -55,7 +55,6 @@ def game1():
         length_of_snake = 1
 
         while not game_over:
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     game_over = True
@@ -116,6 +115,6 @@ def game1():
         message('You Lost... smh', 'brown')
         pygame.display.update()
         time.sleep(2)
-        game_ovder = True
+        game_over = True
 
     gameLoop()
