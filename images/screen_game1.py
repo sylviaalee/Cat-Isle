@@ -42,7 +42,7 @@ def game1():
 
     def gameLoop():
         foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0)
-        foody = round(random.randrange(0, WIDTH - snake_block) / 10.0)
+        foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0)
         
 
         game_over = False
