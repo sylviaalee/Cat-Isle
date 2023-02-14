@@ -1,4 +1,4 @@
-import pygame, screen_game1, screen_game2, screen_game3, screen_game4
+import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
 
 pygame.init()
 
