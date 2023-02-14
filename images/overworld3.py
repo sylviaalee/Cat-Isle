@@ -8,6 +8,8 @@ HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+clock = pygame.time.Clock()
+
 # main screen appears at the beginning of the game
 SCREEN = "main"
 
