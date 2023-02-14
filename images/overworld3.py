@@ -16,7 +16,7 @@ SCREEN = "main"
 # function for MAIN SCREEN
 def main_screen():
     # music
-    pygame.mixer.music.load('theme.wav')
+    #pygame.mixer.music.load('theme.wav')
 
     # add text
     pygame.display.set_caption('Cat Isle')
@@ -53,6 +53,8 @@ x, y = 200, 200
 
 # game 1
 def game1():
+    clock = pygame.time.Clock()
+
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -109,7 +111,7 @@ def game1():
                         if event.key == pygame.K_q:
                             game_over = True
                             game_close = False
-                            #SCREEN = "main"
+                            SCREEN = "main"
                         if event.key == pygame.K_c:
                             gameLoop()
 
