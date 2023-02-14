@@ -1,4 +1,4 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
+import pygame, random, time, screen_game2, screen_game3, screen_game4
 
 pygame.init()
 
@@ -107,9 +107,9 @@ def game1():
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
-                            game_over = True
-                            game_close = False
                             SCREEN = "main"
+                            #game_over = True
+                            #game_close = False
                         if event.key == pygame.K_c:
                             gameLoop()
 
