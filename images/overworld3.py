@@ -56,7 +56,7 @@ while loop:
         main_screen()
     
     if SCREEN == "game1":
-        screen_game1.game1()
+        game1()
 
     if SCREEN == "game2":
         screen_game2.game2()
