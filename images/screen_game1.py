@@ -24,7 +24,7 @@ def game1():
 
     # snake
     snake_block = 20
-    snake_speed = 30
+    snake_speed = 20
 
     game_over = False
 
@@ -68,6 +68,7 @@ def game1():
                         if event.key == pygame.K_q:
                             game_over = True
                             game_close = False
+                            #screen = "main"
                         if event.key == pygame.K_c:
                             gameLoop()
 
@@ -82,10 +83,10 @@ def game1():
                         x1_change = snake_block
                         y1_change = 0
                     elif event.key == pygame.K_UP:
-                        y1_change = snake_block
+                        y1_change = -snake_block
                         x1_change = 0
                     elif event.key == pygame.K_DOWN:
-                        y1_change = -snake_block
+                        y1_change = snake_block
                         x1_change = 0
             
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
