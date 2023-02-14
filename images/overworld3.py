@@ -177,6 +177,7 @@ def game1():
 
         # game over
         message('You Lost... smh', 'brown')
+        main_screen()
         pygame.display.update()
         time.sleep(2)
         game_over = True
