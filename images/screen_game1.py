@@ -68,7 +68,7 @@ def game1():
                         if event.key == pygame.K_q:
                             game_over = True
                             game_close = False
-                            #screen = "main"
+                            #SCREEN = "main"
                         if event.key == pygame.K_c:
                             gameLoop()
 
