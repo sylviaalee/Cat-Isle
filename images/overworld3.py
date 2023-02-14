@@ -100,10 +100,10 @@ def game1():
         length_of_snake = 1
 
         while not game_over:
-
             while game_close == True:
                 window.blit(bg, (0,0))
                 message("You Lost! Press Q-Quit or C-Play Again", "brown")
+                main_screen()
                 pygame.display.update()
 
                 for event in pygame.event.get():
