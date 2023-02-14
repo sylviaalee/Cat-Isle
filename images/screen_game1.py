@@ -100,7 +100,7 @@ def game1():
         
             while game_close == True:
                 window.blit(bg, (0,0))
-                message("You Lost! Press Q-Quit or C-Play Again", "brown")
+                message("You Lost! Press Q-Quit to go back to main screen or C-Play Again", "brown")
                 pygame.display.update()
 
                 for event in pygame.event.get():
