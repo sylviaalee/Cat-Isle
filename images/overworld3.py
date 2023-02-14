@@ -124,6 +124,9 @@ while loop:
     # update display every frame
     pygame.display.flip()
 
+def game1():
+    
+
 def terminate():
     pygame.quit()
 
