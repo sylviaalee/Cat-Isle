@@ -16,7 +16,7 @@ SCREEN = "main"
 # function for MAIN SCREEN
 def main_screen():
     # music
-    #pygame.mixer.music.load('theme.wav')
+    # pygame.mixer.music.load('theme.wav')
 
     # add text
     pygame.display.set_caption('Cat Isle')
@@ -169,6 +169,7 @@ def game1():
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
+                            main_screen()
                             game_over = True
                             game_close = False
                         if event.key == pygame.K_c:
