@@ -10,6 +10,9 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # function for MAIN SCREEN
 def main_screen():
+    # music
+    pygame.mixer.music.load('theme.wav')
+
     # add text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('Cat Isle', True, 'brown')
