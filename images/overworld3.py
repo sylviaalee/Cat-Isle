@@ -50,7 +50,6 @@ cat = pygame.transform.scale(cat, (400, 300))
 x, y = 200, 200
 
 # game 1
-
 def game1():
     clock = pygame.time.Clock()
 
