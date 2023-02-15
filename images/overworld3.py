@@ -25,7 +25,7 @@ def main_screen():
     textRect.center = (1470 // 2, 850 // 2)
 
     # create bg
-    bg = pygame.image.load("background.png")
+    bg = pygame.image.load("background2.jpeg")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
     # bush
@@ -36,12 +36,6 @@ def main_screen():
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
     window.blit(bush, (200, 200))
-
-    # add 4 portals
-    pygame.draw.circle(window, "aquamarine4", (100, 100), 50)
-    pygame.draw.circle(window, "aquamarine4", (1370, 100), 50)
-    pygame.draw.circle(window, "aquamarine4", (1370, 750), 50)
-    pygame.draw.circle(window, "aquamarine4", (100, 750), 50)
     
     # spawn cat
     window.blit(cat, (x, y))
