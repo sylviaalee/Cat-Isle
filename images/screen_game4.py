@@ -87,7 +87,7 @@ def game4():
             pygame.display.set_caption('Pygame pythonspot.com example')
             self._running = True
             self._image_surf = pygame.image.load("player.png").convert()
-            self._block_surf = pygame.image.load("block.png").convert()
+            self._block_surf = pygame.image.load("maze_block.png").convert()
     
         def on_event(self, event):
             if event.type == QUIT:
