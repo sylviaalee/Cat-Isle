@@ -20,7 +20,7 @@ def game1():
     textRect.center = (1470 // 2, 850 // 2)
 
     # background
-    bg = pygame.image.load("background2.jpeg")
+    bg = pygame.image.load("background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
     # snake
