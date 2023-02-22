@@ -8,6 +8,7 @@ HEIGHT = 850
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 BODYCOLOR = "0D6C8C5"
+SCREEN = "game1"
 
 clock = pygame.time.Clock()
 
@@ -68,7 +69,7 @@ def game1():
                         if event.key == pygame.K_q:
                             game_over = True
                             game_close = False
-                            #SCREEN = "main"
+                            SCREEN = "main"
                         if event.key == pygame.K_c:
                             gameLoop()
 
