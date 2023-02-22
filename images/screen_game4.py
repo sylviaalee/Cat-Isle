@@ -22,7 +22,6 @@ def game4():
 
     window.blit(bg, (0,0))
     window.blit(text, textRect)
-
      
     class Maze:
         def __init__(self):
