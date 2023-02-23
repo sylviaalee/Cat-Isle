@@ -45,7 +45,7 @@ def game4():
         def __init__(self):
             self.M = 10
             self.N = 8
-            maze = [1,1,1,1,1,1,1,1,0,1,
+            self.maze = [1,1,1,1,1,1,1,1,0,1,
                     1,0,0,0,0,0,0,0,0,1,
                     1,0,0,0,0,0,0,0,0,1,
                     1,0,1,1,1,1,1,1,0,1,
@@ -59,17 +59,16 @@ def game4():
             by = 0
             for i in range(0,self.M*self.N):
                 if self.maze[ bx + (by*self.M) ] == 1:
-                    display_surf.blit(image_surf,( bx * 44 , by * 44))
+                    display_surf.blit(image_surf,( bx * 10 , by * 10))
         
                 bx = bx + 1
                 if bx > self.M-1:
                     bx = 0
                     by = by + 1
 
-    class App:
-    
-        windowWidth = 800
-        windowHeight = 600
+    class App:    
+        # windowWidth = 800
+        # windowHeight = 600
         player = 0
     
         def __init__(self):
@@ -82,12 +81,12 @@ def game4():
     
         def on_init(self):
             pygame.init()
-            self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
+            # self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
             
-            pygame.display.set_caption('Pygame pythonspot.com example')
+            pygame.display.set_caption('Moggie Maze')
             self._running = True
-            self._image_surf = pygame.image.load("player.png").convert()
-            self._block_surf = pygame.image.load("maze_block.png").convert()
+            self._image_surf = pygame.image.load("FISHY.png").convert()
+            self._block_surf = pygame.image.load("block.png").convert()
     
         def on_event(self, event):
             if event.type == pygame.QUIT:
@@ -97,7 +96,7 @@ def game4():
             pass
         
         def on_render(self):
-            self._display_surf.fill((0,0,0))
+            # self._display_surf.fill((0,0,0))
             self._display_surf.blit(self._image_surf,(self.player.x,self.player.y))
             self.maze.draw(self._display_surf, self._block_surf)
             pygame.display.flip()
@@ -132,3 +131,5 @@ def game4():
     if __name__ == "__main__" :
         theApp = App()
         theApp.on_execute()
+
+game4()
