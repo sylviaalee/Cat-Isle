@@ -45,7 +45,7 @@ def game4():
         def __init__(self):
             self.M = 10
             self.N = 8
-            maze = [1,1,1,1,1,1,1,1,0,1,
+            self.maze = [1,1,1,1,1,1,1,1,0,1,
                     1,0,0,0,0,0,0,0,0,1,
                     1,0,0,0,0,0,0,0,0,1,
                     1,0,1,1,1,1,1,1,0,1,
@@ -132,3 +132,5 @@ def game4():
     if __name__ == "__main__" :
         theApp = App()
         theApp.on_execute()
+
+game4()
