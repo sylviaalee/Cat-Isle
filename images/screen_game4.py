@@ -83,7 +83,7 @@ def game4():
             pygame.init()
             # self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
             
-            pygame.display.set_caption('ohmyohmygod -newjeans')
+            pygame.display.set_caption('Moggie Maze')
             self._running = True
             self._image_surf = pygame.image.load("FISHY.png").convert()
             self._block_surf = pygame.image.load("block.png").convert()
