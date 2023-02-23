@@ -89,7 +89,7 @@ def game4():
             self._block_surf = pygame.image.load("block.png").convert()
     
         def on_event(self, event):
-            if event.type == self.QUIT:
+            if event.type == pygame.QUIT:
                 self._running = False
     
         def on_loop(self):

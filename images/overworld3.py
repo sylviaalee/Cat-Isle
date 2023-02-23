@@ -25,7 +25,7 @@ def main_screen():
     textRect.center = (1470 // 2, 850 // 2)
 
     # create bg
-    bg = pygame.image.load("background2.jpeg")
+    bg = pygame.image.load("background2.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
     # bush
