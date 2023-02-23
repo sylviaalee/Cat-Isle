@@ -66,10 +66,9 @@ def game4():
                     bx = 0
                     by = by + 1
 
-    class App:
-    
-        windowWidth = 800
-        windowHeight = 600
+    class App:    
+        # windowWidth = 800
+        # windowHeight = 600
         player = 0
     
         def __init__(self):
@@ -82,7 +81,7 @@ def game4():
     
         def on_init(self):
             pygame.init()
-            self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
+            # self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
             
             pygame.display.set_caption('ohmyohmygod -newjeans')
             self._running = True
@@ -97,7 +96,7 @@ def game4():
             pass
         
         def on_render(self):
-            self._display_surf.fill((0,0,0))
+            # self._display_surf.fill((0,0,0))
             self._display_surf.blit(self._image_surf,(self.player.x,self.player.y))
             self.maze.draw(self._display_surf, self._block_surf)
             pygame.display.flip()
