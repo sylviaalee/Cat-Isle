@@ -226,7 +226,7 @@ def game3():
     birdGroup.add(bird)  
     
     # creating the restart button instance  
-    restartButton = Button(150, 100, button)  
+    restartButton = Button(590, 100, button)  
     
     # declaring a variable and initializing its value with True  
     game_run = True  
@@ -268,7 +268,7 @@ def game3():
                     passPipe = False  
     
         # calling the drawText() function to display the calculated score on the screen  
-        drawText(str(playerScore), fontStyle, black, int(SCREEN_WIDTH / 2), 15)  
+        drawText(str(playerScore), fontStyle, black, int(725), 15)  
     
         # looking for collision  
         if pygame.sprite.groupcollide(birdGroup, pipeGroup, False, False) or bird.rect.top < 0:  
@@ -305,6 +305,11 @@ def game3():
             if restartButton.draw() == True:  
                 gameOver = False  
                 playerScore = resetGame()  
+            '''
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_q]:
+                SCREEN = "main"
+            '''
     
         # using the for loop to iterate through the events of the game  
         for event in pygame.event.get():  
