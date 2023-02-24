@@ -16,7 +16,7 @@ SCREEN = "main"
 # function for MAIN SCREEN
 def main_screen():
     # music
-    #pygame.mixer.music.load('theme.wav')
+    # pygame.mixer.music.load('theme.wav')
 
     # add text
     pygame.display.set_caption('Cat Isle')
@@ -37,7 +37,7 @@ def main_screen():
     # display bg + text
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
-    window.blit(bush1, (40, 200))
+    window.blit(bush1, (50, 200))
     window.blit(bush2, (900, 50))
     window.blit(bush3, (700, 500))
 
@@ -47,7 +47,7 @@ def main_screen():
 # create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
-x, y = 540, 100
+x, y = 200, 200
 
 # game 1
 def game1():
@@ -254,6 +254,9 @@ while loop:
 
     # update display every frame
     pygame.display.flip()
+
+def collected_all_trophies():
+    pass
 
 def terminate():
     pygame.quit()

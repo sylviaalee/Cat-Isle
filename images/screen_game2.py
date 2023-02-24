@@ -250,6 +250,7 @@ def game2():
             else:
                 drawText("You WON!", 50)
                 drawText("R to restart", 35, 50)
+                you_won()
             # Draw time
             s = str(t // 15)
             screen_text = pygame.font.SysFont("Calibri", 50).render(s, True, (0, 0, 0))
@@ -262,6 +263,9 @@ def game2():
 
             timer.tick(15)  # Tick fps
 
+    def you_won():
+        pass
+        # play animation
 
     gameLoop()
     pygame.quit()
