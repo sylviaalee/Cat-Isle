@@ -48,14 +48,9 @@ def game3():
     # loading images  
     background = pygame.image.load('game3_images/game3_background.png')  
     background = pygame.transform.scale(background,(WIDTH, HEIGHT))
-<<<<<<< HEAD
-    base = pygame.image.load('base.png')  
     base = pygame.transform.scale(base(WIDTH, 250))
-    button = pygame.image.load('restart.png')  
-=======
     base = pygame.image.load('game3_images/base.png')  
     button = pygame.image.load('game3_images/restart.png')  
->>>>>>> 9726e89c0e1618a93a5a27ad2c7d13368d9b8df7
     
     # defining a function to draw the text on the screen  
     def drawText(text, fontStyle, textColor, x_coordinate, y_coordinate):  
@@ -329,5 +324,4 @@ def game3():
         pygame.display.update()  
     
     # using the quit() function to quit the game  
-    pygame.quit()  
-
+    pygame.quit()
