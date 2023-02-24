@@ -6,7 +6,7 @@ pygame.init()
 # GLOBAL
 WIDTH = 1470
 HEIGHT = 850
-BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+BASICFONT = pygame.font.Font('gooddog.ttf', 50)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 def game4():
