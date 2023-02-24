@@ -78,15 +78,18 @@ def game4():
             self._block_surf = None
             self.player = Player()
             self.maze = Maze()
+            self.windowWidth = WIDTH
+            self.windowHeight = HEIGHT
     
         def on_init(self):
             pygame.init()
-            # self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
+            self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
             
             pygame.display.set_caption('Moggie Maze')
             self._running = True
             self._image_surf = pygame.image.load("FISHY.png").convert()
             self._block_surf = pygame.image.load("block.png").convert()
+            self._image_surf = pygame.transform.scale(self._image_surf,(50, 50))
     
         def on_event(self, event):
             if event.type == pygame.QUIT:
@@ -96,7 +99,7 @@ def game4():
             pass
         
         def on_render(self):
-            # self._display_surf.fill((0,0,0))
+            self._display_surf.fill((0,0,0))
             self._display_surf.blit(self._image_surf,(self.player.x,self.player.y))
             self.maze.draw(self._display_surf, self._block_surf)
             pygame.display.flip()
