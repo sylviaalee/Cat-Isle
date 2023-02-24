@@ -49,6 +49,7 @@ def game3():
     background = pygame.image.load('game3_background.png')  
     background = pygame.transform.scale(background,(WIDTH, HEIGHT))
     base = pygame.image.load('base.png')  
+    base = pygame.transform.scale(base(WIDTH, 250))
     button = pygame.image.load('restart.png')  
     
     # defining a function to draw the text on the screen  
