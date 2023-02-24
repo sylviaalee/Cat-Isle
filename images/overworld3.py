@@ -43,7 +43,7 @@ def main_screen():
 # create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
-x, y = 200, 200
+x, y = 540, 100
 
 # game 1
 def game1():

@@ -116,7 +116,7 @@ def game1():
 
             pygame.display.update()
 
-            if (x1 + 50) > foodx and foodx > (x1 - 50) and (y1 + 50) > foody and foody > (y1 - 50):
+            if (x1 + 70) > foodx and foodx > (x1 - 25) and (y1 + 25) > foody and foody > (y1 - 50):
                 foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
                 foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
                 length_of_snake += 1
