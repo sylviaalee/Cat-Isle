@@ -5,11 +5,6 @@ import random               # importing the random module
 
 # using the init() function to initialize the pygame window  
 pygame.init()  
-# GLOBAL
-WIDTH = 1470
-HEIGHT = 850
-BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
-window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 def game3():
     # creating an object of the Clock() class of the pygame.time module  
@@ -47,9 +42,9 @@ def game3():
     
     # loading images  
     background = pygame.image.load('game3_images/game3_background.png')  
-    background = pygame.transform.scale(background,(WIDTH, HEIGHT))
-    base = pygame.transform.scale(base(WIDTH, 250))
-    base = pygame.image.load('game3_images/base.png')  
+    background = pygame.transform.scale(background,(SCREEN_WIDTH, SCREEN_HEIGHT))
+    base = pygame.image.load('game3_images/base.png')
+    base = pygame.transform.scale(base, (1800, 300)) 
     button = pygame.image.load('game3_images/restart.png')  
     
     # defining a function to draw the text on the screen  

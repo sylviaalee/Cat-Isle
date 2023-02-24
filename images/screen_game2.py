@@ -5,6 +5,7 @@ from pygame.locals import *
 
 pygame.init()
 
+
 # GLOBAL
 WIDTH = 1470
 HEIGHT = 850
