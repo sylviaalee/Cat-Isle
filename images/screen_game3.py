@@ -46,11 +46,16 @@ def game3():
     passPipe = False  
     
     # loading images  
-    background = pygame.image.load('game3_background.png')  
+    background = pygame.image.load('game3_images/game3_background.png')  
     background = pygame.transform.scale(background,(WIDTH, HEIGHT))
+<<<<<<< HEAD
     base = pygame.image.load('base.png')  
     base = pygame.transform.scale(base(WIDTH, 250))
     button = pygame.image.load('restart.png')  
+=======
+    base = pygame.image.load('game3_images/base.png')  
+    button = pygame.image.load('game3_images/restart.png')  
+>>>>>>> 9726e89c0e1618a93a5a27ad2c7d13368d9b8df7
     
     # defining a function to draw the text on the screen  
     def drawText(text, fontStyle, textColor, x_coordinate, y_coordinate):  
@@ -88,7 +93,7 @@ def game3():
             for i in range(1, 4):  
                 # loading the sprite bird images from the directory  
                 # using the load() function of the pygame.image module  
-                image = pygame.image.load(f'bird_{i}.png')  
+                image = pygame.image.load(f'game3_images/bird_{i}.png')  
                 
                 # using the append() function to add the image to the list  
                 self.image_list.append(image)  
@@ -172,7 +177,7 @@ def game3():
             pygame.sprite.Sprite.__init__(self)  
             # loading the sprite pipe image from the directory  
             # using the load() function of the pygame.image module  
-            self.image = pygame.image.load('pipe.png')  
+            self.image = pygame.image.load('game3_images/pipe.png')  
             
             # creating a rectangle to place the pipe image  
             self.rect = self.image.get_rect()  
