@@ -39,21 +39,21 @@ gameDisplay = pygame.display.set_mode((display_width, display_height))  # Create
 timer = pygame.time.Clock()  # Create timer
 
 # Import files
-spr_emptyGrid = pygame.image.load("Sprites/empty.png")
-spr_flag = pygame.image.load("Sprites/flag.png")
-spr_grid = pygame.image.load("Sprites/Grid.png")
-spr_grid1 = pygame.image.load("Sprites/grid1.png")
-spr_grid2 = pygame.image.load("Sprites/grid2.png")
-spr_grid3 = pygame.image.load("Sprites/grid3.png")
-spr_grid4 = pygame.image.load("Sprites/grid4.png")
-spr_grid5 = pygame.image.load("Sprites/grid5.png")
-spr_grid6 = pygame.image.load("Sprites/grid6.png")
-spr_grid7 = pygame.image.load("Sprites/grid7.png")
-spr_grid8 = pygame.image.load("Sprites/grid8.png")
-spr_grid7 = pygame.image.load("Sprites/grid7.png")
-spr_mine = pygame.image.load("Sprites/mine.png")
-spr_mineClicked = pygame.image.load("Sprites/mineClicked.png")
-spr_mineFalse = pygame.image.load("Sprites/mineFalse.png")
+spr_emptyGrid = pygame.image.load("game2_images/empty.png")
+spr_flag = pygame.image.load("game2_images/flag.png")
+spr_grid = pygame.image.load("game2_images/Grid.png")
+spr_grid1 = pygame.image.load("game2_images/grid1.png")
+spr_grid2 = pygame.image.load("game2_images/grid2.png")
+spr_grid3 = pygame.image.load("game2_images/grid3.png")
+spr_grid4 = pygame.image.load("game2_images/grid4.png")
+spr_grid5 = pygame.image.load("game2_images/grid5.png")
+spr_grid6 = pygame.image.load("game2_images/grid6.png")
+spr_grid7 = pygame.image.load("game2_images/grid7.png")
+spr_grid8 = pygame.image.load("game2_images/grid8.png")
+spr_grid7 = pygame.image.load("game2_images/grid7.png")
+spr_mine = pygame.image.load("game2_images/mine.png")
+spr_mineClicked = pygame.image.load("game2_images/mineClicked.png")
+spr_mineFalse = pygame.image.load("game2_images/mineFalse.png")
 
 
 # Create global values
