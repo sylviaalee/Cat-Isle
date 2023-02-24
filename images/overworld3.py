@@ -28,14 +28,18 @@ def main_screen():
     bg = pygame.image.load("background2.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-    # bush
+    # bushes
     bush = pygame.image.load('bush.png')
-    bush = pygame.transform.scale(bush, (300, 250))
+    bush1 = pygame.transform.scale(bush, (300, 250))
+    bush2 = pygame.transform.scale(bush, (300, 250))
+    bush3 = pygame.transform.scale(bush, (300, 250))
 
     # display bg + text
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
-    window.blit(bush, (200, 200))
+    window.blit(bush1, (40, 200))
+    window.blit(bush2, (900, 50))
+    window.blit(bush3, (700, 500))
 
     # spawn cat
     window.blit(cat, (x, y))
