@@ -267,3 +267,5 @@ def game2():
     gameLoop()
     pygame.quit()
     quit()
+
+game2()
