@@ -88,7 +88,7 @@ def game4():
             pygame.display.set_caption('Moggie Maze')
             self._running = True
             self._image_surf = pygame.image.load("FISHY.png").convert()
-            self._block_surf = pygame.image.load("block.png").convert()
+            self._block_surf = pygame.image.load("game4_images/block.png").convert()
             self._image_surf = pygame.transform.scale(self._image_surf,(50, 50))
     
         def on_event(self, event):
