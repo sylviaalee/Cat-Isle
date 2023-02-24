@@ -5,6 +5,7 @@ from pygame.locals import *
 
 pygame.init()
 
+
 # GLOBAL
 WIDTH = 1470
 HEIGHT = 850
@@ -261,7 +262,8 @@ def gameLoop():
 
         timer.tick(15)  # Tick fps
 
-
+'''
 gameLoop()
 pygame.quit()
 quit()
+'''
