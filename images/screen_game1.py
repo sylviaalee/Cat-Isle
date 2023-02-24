@@ -5,7 +5,7 @@ pygame.init()
 # GLOBAL
 WIDTH = 1470
 HEIGHT = 850
-BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+BASICFONT = pygame.font.Font('gooddog.ttf', 30)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 BODYCOLOR = "0D6C8C5"
 SCREEN = "game1"
@@ -39,11 +39,14 @@ def game1():
     # message function
     def message(msg, color):
         msg = BASICFONT.render(msg, True, color)
-        window.blit(msg, [WIDTH / 2, 100])
+        window.blit(msg, [350, 100])
 
     def gameLoop():
         game_over = False
         game_close = False
+
+        food = pygame.image.load('FISHY.png')
+        food = pygame.transform.scale(food, (100, 100))
 
         foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
         foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
@@ -96,7 +99,7 @@ def game1():
             y1 += y1_change
             window.blit(bg, (0,0))
             window.blit(text, textRect)
-            pygame.draw.rect(window, 'pink', [foodx, foody, snake_block, snake_block])
+            window.blit(food, (foodx, foody))
 
             snake_head = []
             snake_head.append(x1)
@@ -113,7 +116,7 @@ def game1():
 
             pygame.display.update()
 
-            if (x1 + 15) > foodx and foodx > (x1 - 15) and (y1 + 15) > foody and foody > (y1 - 15):
+            if (x1 + 50) > foodx and foodx > (x1 - 50) and (y1 + 50) > foody and foody > (y1 - 50):
                 foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
                 foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
                 length_of_snake += 1

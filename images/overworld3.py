@@ -5,7 +5,7 @@ pygame.init()
 # GLOBAL VARIABLES
 WIDTH = 1470
 HEIGHT = 850
-BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+BASICFONT = pygame.font.Font('gooddog.ttf', 30)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
