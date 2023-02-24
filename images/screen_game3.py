@@ -319,5 +319,4 @@ def game3():
         pygame.display.update()  
     
     # using the quit() function to quit the game  
-    pygame.quit()  
-
+    pygame.quit()
