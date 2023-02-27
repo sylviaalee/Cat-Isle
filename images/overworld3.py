@@ -1,6 +1,7 @@
 import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
-
+#from pygame import mixer
 pygame.init()
+#mixer.init()
 
 # GLOBAL VARIABLES
 WIDTH = 1470
@@ -9,6 +10,12 @@ BASICFONT = pygame.font.Font('gooddog.ttf', 30)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
+
+''' music
+mixer.music.load("name.mp3")
+mixer.music.set_volume(0.2)
+mixer.music.play()
+'''
 
 # main screen appears at the beginning of the game
 SCREEN = "main"
