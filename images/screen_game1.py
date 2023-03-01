@@ -118,7 +118,7 @@ def game1():
 
             # player wins
             if victory == True:
-                message("You Won! Congratulations!", "brown")
+                message("You Won! Congratulations! Press Q to go back to the main screen.", "brown")
                 pygame.display.update()
                 return True
 
@@ -132,7 +132,8 @@ def game1():
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
-                        victory = False
+                        # go back to main_screen
+                        SCREEN = 'main'
                     if event.key == pygame.K_c:
                         gameLoop()
 
