@@ -13,6 +13,8 @@ SCREEN = "game1"
 clock = pygame.time.Clock()
 
 def game1():
+    victory = ''
+    
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -27,10 +29,9 @@ def game1():
     snake_block = 20
     snake_speed = 15
 
-    game_over = False
-
     def your_score(score):
-        pass
+        value = BASICFONT.render("Your Score: " + str(score), True, 'yellow')
+        window.blit(value, [0, 0])
 
     def our_snake(snake_block, snake_list):
         for x in snake_list:
@@ -43,7 +44,6 @@ def game1():
 
     def gameLoop():
         game_over = False
-        game_close = False
 
         food = pygame.image.load('FISHY.png')
         food = pygame.transform.scale(food, (100, 100))
@@ -61,21 +61,6 @@ def game1():
         length_of_snake = 1
 
         while not game_over:
-
-            while game_close == True:
-                window.blit(bg, (0,0))
-                message("You Lost! Press Q-Quit or C-Play Again", "brown")
-                pygame.display.update()
-
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_q:
-                            game_over = True
-                            game_close = False
-                            SCREEN = "main"
-                        if event.key == pygame.K_c:
-                            gameLoop()
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     game_over = True
@@ -93,47 +78,67 @@ def game1():
                         y1_change = snake_block
                         x1_change = 0
             
+            # if player hits border
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
-                game_close = True
+                victory = False
             x1 += x1_change
             y1 += y1_change
             window.blit(bg, (0,0))
             window.blit(text, textRect)
             window.blit(food, (foodx, foody))
 
+            # snake head
             snake_head = []
             snake_head.append(x1)
             snake_head.append(y1)
             snake_list.append(snake_head)
             if len(snake_list) > length_of_snake:
                 del snake_list[0]
- 
+
+            # if player collides with head of snake
             for x in snake_list[:-1]:
                 if x == snake_head:
-                    game_close = True
+                    victory = False
     
+            # update snake + score
             our_snake(snake_block, snake_list)
+            your_score(length_of_snake - 1)
+            score = length_of_snake - 1
 
             pygame.display.update()
 
+            # food
             if (x1 + 70) > foodx and foodx > (x1 - 25) and (y1 + 25) > foody and foody > (y1 - 50):
                 foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
                 foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
                 length_of_snake += 1
             clock.tick(snake_speed)
-        
-            while game_close == True:
-                window.blit(bg, (0,0))
-                message("You Lost! Press Q-Quit to go back to main screen or C-Play Again", "brown")
-                pygame.display.update()
 
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_q:
-                            game_over = True
-                            game_close = False
-                        if event.key == pygame.K_c:
-                            gameLoop()
+            # if score is over 15
+            if score >= 15:
+                victory = True
+
+            # player wins
+            if victory == True:
+                message("You Won! Congratulations! Press Q to go back to the main screen.", "brown")
+                pygame.display.update()
+                return True
+
+            # player loses
+            while victory == False:
+                window.blit(bg, (0,0))
+                message("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", "brown")
+                pygame.display.update()
+                return False
+            
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        # go back to main_screen
+                        SCREEN = 'main'
+                    if event.key == pygame.K_c:
+                        gameLoop()
+
 
         # game over
         message('You Lost... smh', 'brown')
