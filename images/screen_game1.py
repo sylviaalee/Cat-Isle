@@ -30,7 +30,8 @@ def game1():
     game_over = False
 
     def your_score(score):
-        pass
+        value = BASICFONT.render("Your Score: " + str(score), True, 'yellow')
+        window.blit(value, [0, 0])
 
     def our_snake(snake_block, snake_list):
         for x in snake_list:
@@ -62,20 +63,6 @@ def game1():
 
         while not game_over:
 
-            while game_close == True:
-                window.blit(bg, (0,0))
-                message("You Lost! Press Q-Quit or C-Play Again", "brown")
-                pygame.display.update()
-
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_q:
-                            game_over = True
-                            game_close = False
-                            SCREEN = "main"
-                        if event.key == pygame.K_c:
-                            gameLoop()
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     game_over = True
@@ -94,7 +81,7 @@ def game1():
                         x1_change = 0
             
             if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
-                game_close = True
+                victory = False
             x1 += x1_change
             y1 += y1_change
             window.blit(bg, (0,0))
@@ -110,9 +97,11 @@ def game1():
  
             for x in snake_list[:-1]:
                 if x == snake_head:
-                    game_close = True
+                    victory = False
     
             our_snake(snake_block, snake_list)
+            your_score(length_of_snake - 1)
+            score = length_of_snake - 1
 
             pygame.display.update()
 
@@ -122,18 +111,25 @@ def game1():
                 length_of_snake += 1
             clock.tick(snake_speed)
         
-            while game_close == True:
+            while victory == False:
                 window.blit(bg, (0,0))
-                message("You Lost! Press Q-Quit to go back to main screen or C-Play Again", "brown")
+                message("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", "brown")
                 pygame.display.update()
 
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
-                            game_over = True
+                            victory = False
                             game_close = False
                         if event.key == pygame.K_c:
                             gameLoop()
+
+            if score >= 15:
+                victory = True
+
+            if victory == True:
+                return True
+
 
         # game over
         message('You Lost... smh', 'brown')
