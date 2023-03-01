@@ -2,6 +2,8 @@
 import pygame
 
 pygame.init()
+from pygame import mixer
+mixer.init()
 
 # GLOBAL
 WIDTH = 1470
@@ -11,6 +13,11 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 trophy4 = False
 
 def game4():
+    # music
+    mixer.music.load("music/game4.mp3")
+    mixer.music.set_volume(0.2)
+    mixer.music.play()
+
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('CatMaze', True, 'brown')

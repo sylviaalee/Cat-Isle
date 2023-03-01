@@ -1,5 +1,7 @@
 # from overworld3 import *
 import pygame, random, time
+from pygame import mixer
+mixer.init()
 pygame.init()
 
 # GLOBAL
@@ -14,6 +16,11 @@ clock = pygame.time.Clock()
 trophy1 = False
 
 def game1():
+    # music
+    mixer.music.load("music/game1.mp3")
+    mixer.music.set_volume(0.2)
+    mixer.music.play()
+
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')

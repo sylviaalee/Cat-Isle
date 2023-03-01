@@ -1,7 +1,7 @@
 import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
-# from pygame import mixer
+from pygame import mixer
 pygame.init()
-# mixer.init()
+mixer.init()
 
 # GLOBAL VARIABLES
 WIDTH = 1470
@@ -11,20 +11,15 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
 
-''' music
-mixer.music.load("name.mp3")
+mixer.music.load("music/main_theme.mp3")
 mixer.music.set_volume(0.2)
 mixer.music.play()
-'''
 
 # main screen appears at the beginning of the game
 SCREEN = "main"
 
 # function for MAIN SCREEN
 def main_screen():
-    # music
-    # pygame.mixer.music.load('theme.wav')
-
     # add text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('Cat Isle', True, 'brown')

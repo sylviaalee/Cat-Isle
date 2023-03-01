@@ -1,6 +1,8 @@
 # from overworld3 import *
 import pygame, sys
 import random
+from pygame import mixer
+mixer.init()
 from pygame.locals import *
 
 pygame.init()
@@ -13,6 +15,11 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 trophy2 = False
 
 def game2():
+    # music
+    mixer.music.load("music/game2.mp3")
+    mixer.music.set_volume(0.2)
+    mixer.music.play()
+
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('CatSweeper', True, 'brown')
