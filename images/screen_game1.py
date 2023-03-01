@@ -133,6 +133,9 @@ def game1():
                 game_over = True
                 return False
             
+            if game_over == True:
+                exit()
+            
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
