@@ -39,6 +39,7 @@ def game3():
     lastPipe = pygame.time.get_ticks() - pipeFrequency  
     playerScore = 0  
     passPipe = False  
+    victory = False
     
     # loading images  
     background = pygame.image.load('game3_images/game3_background.png')  
@@ -278,10 +279,16 @@ def game3():
         if bird.rect.bottom >= 576:  
             gameOver = True  
             birdFlying = False  
-    
+
+        # check if player has score of 10 or higher
+        if playerScore >= 1:
+            victory = True
+        
+        if victory == True:
+            gameOver = True
+
         # checking if the game is not over  
         if gameOver == False and birdFlying == True:  
-    
             # generating new pipes  
             timeNow = pygame.time.get_ticks()  
             if timeNow - lastPipe > pipeFrequency:  
@@ -302,14 +309,17 @@ def game3():
     
         # checking if the game over and reset  
         if gameOver == True:  
-            if restartButton.draw() == True:  
+            if victory == True:
+                basee = pygame.image.load("game3_images/base.png")
+                display_screen.blit(basee, (100, 100))  
+            elif restartButton.draw() == True:  
                 gameOver = False  
                 playerScore = resetGame()  
-            '''
+            
             keys = pygame.key.get_pressed()
             if keys[pygame.K_q]:
                 SCREEN = "main"
-            '''
+        
     
         # using the for loop to iterate through the events of the game  
         for event in pygame.event.get():  
