@@ -124,8 +124,7 @@ def game1():
                 return True
 
             # player loses
-            while victory == False:
-                window.blit(bg, (0,0))
+            if victory == False:
                 message("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", "brown")
                 pygame.display.update()
                 return False
