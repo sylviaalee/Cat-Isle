@@ -37,16 +37,30 @@ def main_screen():
 
     # bushes
     bush = pygame.image.load('bush.png')
-    bush1 = pygame.transform.scale(bush, (300, 250))
-    bush2 = pygame.transform.scale(bush, (300, 250))
-    bush3 = pygame.transform.scale(bush, (300, 250))
+    bush1 = pygame.transform.scale(bush, (250, 250))
+    bush2 = pygame.transform.scale(bush, (250, 250))
+    bush3 = pygame.transform.scale(bush, (250, 250))
 
-    # display bg + text
+    # trees
+    tree = pygame.image.load('tree.png')
+    tree1 = pygame.transform.scale(tree, (250, 250))
+    tree2 = pygame.transform.scale(tree, (250, 250))
+    tree3 = pygame.transform.scale(tree, (250, 250))
+
+    # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
-    window.blit(bush1, (50, 200))
-    window.blit(bush2, (900, 50))
-    window.blit(bush3, (700, 500))
+
+    # bushes
+    window.blit(bush1, (75, 225))
+    window.blit(bush2, (900, 75))
+    window.blit(bush3, (385, 525))
+
+    # trees
+    window.blit(tree1, (275, 75))
+    window.blit(tree1, (1125, 400))
+    window.blit(tree1, (850, 520))
+
 
     # spawn cat
     window.blit(cat, (x, y))
@@ -54,7 +68,7 @@ def main_screen():
 # create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
-x, y = 200, 200
+x, y = 530, 110
 
 loop = True
 while loop:
