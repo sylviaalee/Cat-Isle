@@ -21,6 +21,8 @@ def game1():
     mixer.music.set_volume(0.2)
     mixer.music.play()
 
+    get_trophy = crash_sound = pygame.mixer.Sound("music/get_trophy.mp3")
+
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -114,6 +116,7 @@ def game1():
 
             pygame.display.update()
 
+
             # food
             if (x1 + 70) > foodx and foodx > (x1 - 25) and (y1 + 25) > foody and foody > (y1 - 50):
                 foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
@@ -129,6 +132,8 @@ def game1():
             if victory == True:
                 window.blit(bg, (0,0))
                 message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")
+                pygame.mixer.Sound.play(get_trophy)
+                pygame.mixer.music.stop()
                 pygame.display.update()
                 game_over = True
                 trophy1 = True
