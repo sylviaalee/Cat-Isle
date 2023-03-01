@@ -6,6 +6,8 @@ import random               # importing the random module
 # using the init() function to initialize the pygame window  
 pygame.init()  
 
+trophy3 = False
+
 def game3():
     # creating an object of the Clock() class of the pygame.time module  
     game_clock = pygame.time.Clock()  
