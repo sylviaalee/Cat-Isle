@@ -114,11 +114,12 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 15:
+            if score >= 2:
                 victory = True
 
             # player wins
             if victory == True:
+                window.blit(bg, (0,0))
                 message("You Won! Congratulations! Press Q to go back to the main screen.", "brown")
                 pygame.display.update()
                 game_over = True

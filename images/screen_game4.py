@@ -72,10 +72,10 @@ def game4():
         player = 0
     
         def __init__(self):
-            self._running = True
-            self._display_surf = None
-            self._image_surf = None
-            self._block_surf = None
+            self.running = True
+            self.display_surf = None
+            self.image_surf = None
+            self.block_surf = None
             self.player = Player()
             self.maze = Maze()
             self.windowWidth = WIDTH
@@ -83,25 +83,26 @@ def game4():
     
         def on_init(self):
             pygame.init()
-            self._display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
+            self.display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
             
             pygame.display.set_caption('Moggie Maze')
-            self._running = True
-            self._image_surf = pygame.image.load("FISHY.png").convert()
-            self._block_surf = pygame.image.load("game4_images/block.png").convert()
-            self._image_surf = pygame.transform.scale(self._image_surf,(50, 50))
+            self.running = True
+            self.image_surf = pygame.image.load("FISHY.png").convert()
+            self.block_surf = pygame.image.load("game4_images/block.png").convert()
+            self.image_surf = pygame.transform.scale(self.image_surf,(50, 50))
+            self.block_surf = pygame.transform.scale(self.block_surf,(50, 50))
     
         def on_event(self, event):
             if event.type == pygame.QUIT:
-                self._running = False
+                self.running = False
     
         def on_loop(self):
             pass
         
         def on_render(self):
-            self._display_surf.fill((0,0,0))
-            self._display_surf.blit(self._image_surf,(self.player.x,self.player.y))
-            self.maze.draw(self._display_surf, self._block_surf)
+            self.display_surf.fill((0,0,0))
+            self.display_surf.blit(self.image_surf,(self.player.x,self.player.y))
+            self.maze.draw(self.display_surf, self.block_surf)
             pygame.display.flip()
     
         def on_cleanup(self):
@@ -109,9 +110,9 @@ def game4():
     
         def on_execute(self):
             if self.on_init() == False:
-                self._running = False
+                self.running = False
     
-            while( self._running ):
+            while( self.running ):
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         game_over = True
