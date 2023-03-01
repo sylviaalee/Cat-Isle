@@ -112,11 +112,7 @@ def game4():
             if self.on_init() == False:
                 self.running = False
     
-<<<<<<< HEAD
-            while( self.running ):
-=======
             while(self._running):
->>>>>>> ea0be791896d3d8cfb0fa9c3ed733a8db0fe8192
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         game_over = True
