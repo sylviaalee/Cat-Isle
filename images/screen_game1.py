@@ -13,8 +13,6 @@ SCREEN = "game1"
 clock = pygame.time.Clock()
 
 def game1():
-    victory = ''
-    
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -30,8 +28,8 @@ def game1():
     snake_speed = 15
 
     def your_score(score):
-        value = BASICFONT.render("Your Score: " + str(score), True, 'yellow')
-        window.blit(value, [0, 0])
+        value = BASICFONT.render("Your Score: " + str(score), True, 'gold')
+        window.blit(value, [50, 50])
 
     def our_snake(snake_block, snake_list):
         for x in snake_list:
@@ -43,6 +41,7 @@ def game1():
         window.blit(msg, [350, 100])
 
     def gameLoop():
+        victory = ''
         game_over = False
 
         food = pygame.image.load('FISHY.png')
@@ -62,8 +61,8 @@ def game1():
 
         while not game_over:
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    game_over = True
+                # if event.type == pygame.QUIT:
+                #     game_over = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         x1_change = -snake_block
@@ -138,12 +137,5 @@ def game1():
                         SCREEN = 'main'
                     if event.key == pygame.K_c:
                         gameLoop()
-
-
-        # game over
-        message('You Lost... smh', 'brown')
-        pygame.display.update()
-        time.sleep(2)
-        game_over = True
 
     gameLoop()
