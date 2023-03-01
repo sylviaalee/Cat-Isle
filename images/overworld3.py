@@ -1,7 +1,7 @@
 import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
-#from pygame import mixer
+# from pygame import mixer
 pygame.init()
-#mixer.init()
+# mixer.init()
 
 # GLOBAL VARIABLES
 WIDTH = 1470
@@ -70,6 +70,9 @@ cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
 x, y = 530, 110
 
+def collected_all_trophies():
+    pass
+
 loop = True
 while loop:
     # switch screens
@@ -92,6 +95,16 @@ while loop:
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
+
+    # trophy won?
+    if screen_game1.trophy1:
+        pass
+    if screen_game2.trophy2:
+        pass
+    if screen_game3.trophy3:
+        pass
+    if screen_game4.trophy4:
+        pass
 
     # key pressed?
     keys = pygame.key.get_pressed()
@@ -142,11 +155,12 @@ while loop:
     if x < -5 and x > -300 and y < 2000 and y > 475 and keys[pygame.K_RETURN]:
         SCREEN = "game4"
 
+    # collected all trophies?
+    if screen_game1.trophy1 and screen_game2.trophy2 and screen_game3.trophy3 and screen_game4.trophy4:
+        collected_all_trophies()
+
     # update display every frame
     pygame.display.flip()
-
-def collected_all_trophies():
-    pass
 
 def terminate():
     pygame.quit()

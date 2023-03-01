@@ -5,10 +5,9 @@ from pygame.locals import *
 
 pygame.init()
 
-
 # GLOBAL
-WIDTH = 1470
-HEIGHT = 850
+WIDTH = 10
+HEIGHT = 10
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -28,14 +27,12 @@ def game2():
 
     grid_color = (128, 128, 128)
 
-    game_width = 10  # Change this to increase size
-    game_height = 10  # Change this to increase size
     numMine = 9  # Number of mines
     grid_size = 32  # Size of grid (WARNING: macke sure to change the images dimension as well)
     border = 16  # Top border
     top_border = 100  # Left, Right, Bottom border
-    display_width = grid_size * game_width + border * 2  # Display width
-    display_height = grid_size * game_height + border + top_border  # Display height
+    display_width = grid_size * WIDTH + border * 2  # Display width
+    display_height = grid_size * HEIGHT + border + top_border  # Display height
     gameDisplay = pygame.display.set_mode((display_width, display_height))  # Create display
     timer = pygame.time.Clock()  # Create timer
 
@@ -62,11 +59,11 @@ def game2():
     mines = []  # Pos of the mines
 
 
-    # Create funtion to draw texts
+    # Create function to draw texts
     def drawText(txt, s, yOff=0):
         screen_text = pygame.font.SysFont("Calibri", s, True).render(txt, True, (0, 0, 0))
         rect = screen_text.get_rect()
-        rect.center = (game_width * grid_size / 2 + border, game_height * grid_size / 2 + top_border + yOff)
+        rect.center = (WIDTH * grid_size / 2 + border, HEIGHT * grid_size / 2 + top_border + yOff)
         gameDisplay.blit(screen_text, rect)
 
 
@@ -125,9 +122,9 @@ def game2():
             # Auto reveal if it's a 0
             if self.val == 0:
                 for x in range(-1, 2):
-                    if self.xGrid + x >= 0 and self.xGrid + x < game_width:
+                    if self.xGrid + x >= 0 and self.xGrid + x < WIDTH:
                         for y in range(-1, 2):
-                            if self.yGrid + y >= 0 and self.yGrid + y < game_height:
+                            if self.yGrid + y >= 0 and self.yGrid + y < HEIGHT:
                                 if not grid[self.yGrid + y][self.xGrid + x].clicked:
                                     grid[self.yGrid + y][self.xGrid + x].revealGrid()
             elif self.val == -1:
@@ -140,9 +137,9 @@ def game2():
             # Update the value when all grid is generated
             if self.val != -1:
                 for x in range(-1, 2):
-                    if self.xGrid + x >= 0 and self.xGrid + x < game_width:
+                    if self.xGrid + x >= 0 and self.xGrid + x < WIDTH:
                         for y in range(-1, 2):
-                            if self.yGrid + y >= 0 and self.yGrid + y < game_height:
+                            if self.yGrid + y >= 0 and self.yGrid + y < HEIGHT:
                                 if grid[self.yGrid + y][self.xGrid + x].val == -1:
                                     self.val += 1
 
@@ -156,26 +153,26 @@ def game2():
         t = 0  # Set time to 0
 
         # Generating mines
-        mines = [[random.randrange(0, game_width),
-                random.randrange(0, game_height)]]
+        mines = [[random.randrange(0, WIDTH),
+                random.randrange(0, HEIGHT)]]
 
         for c in range(numMine - 1):
-            pos = [random.randrange(0, game_width),
-                random.randrange(0, game_height)]
+            pos = [random.randrange(0, WIDTH),
+                random.randrange(0, HEIGHT)]
             same = True
             while same:
                 for i in range(len(mines)):
                     if pos == mines[i]:
-                        pos = [random.randrange(0, game_width), random.randrange(0, game_height)]
+                        pos = [random.randrange(0, WIDTH), random.randrange(0, HEIGHT)]
                         break
                     if i == len(mines) - 1:
                         same = False
             mines.append(pos)
 
         # Generating entire grid
-        for j in range(game_height):
+        for j in range(HEIGHT):
             line = []
-            for i in range(game_width):
+            for i in range(WIDTH):
                 if [i, j] in mines:
                     line.append(Grid(i, j, -1))
                 else:
@@ -189,7 +186,6 @@ def game2():
 
         # Main Loop
         while gameState != "Exit":
-
             # User inputs
             for event in pygame.event.get():
                 # Check if player close window
@@ -199,7 +195,7 @@ def game2():
                 if gameState == "Game Over" or gameState == "Win":
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_r:
-                            gameState = "Exit"
+                            gameState = "Playing"
                             gameLoop()
                 else:
                     if event.type == pygame.MOUSEBUTTONUP:
@@ -248,8 +244,6 @@ def game2():
                         if j.flag and j.val != -1:
                             j.mineFalse = True
             else:
-                drawText("You WON!", 50)
-                drawText("R to restart", 35, 50)
                 you_won()
             # Draw time
             s = str(t // 15)
@@ -264,8 +258,9 @@ def game2():
             timer.tick(15)  # Tick fps
 
     def you_won():
-        pass
         # play animation
+        drawText("You WON!", 50)
+        drawText("C to go back to main screen", 35, 50)
 
     gameLoop()
     pygame.quit()

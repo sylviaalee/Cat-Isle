@@ -120,10 +120,10 @@ def game1():
             # player wins
             if victory == True:
                 window.blit(bg, (0,0))
-                message("You Won! Congratulations! Press Q to go back to the main screen.", "brown")
+                message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")
                 pygame.display.update()
                 game_over = True
-                return True
+                trophy1 = True
 
             # player loses
             while victory == False:
@@ -131,7 +131,6 @@ def game1():
                 message("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", "brown")
                 pygame.display.update()
                 game_over = True
-                return False
             
             if game_over == True:
                 exit()
