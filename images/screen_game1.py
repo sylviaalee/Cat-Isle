@@ -61,8 +61,8 @@ def game1():
 
         while not game_over:
             for event in pygame.event.get():
-                # if event.type == pygame.QUIT:
-                #     game_over = True
+                if event.type == pygame.QUIT:
+                    game_over = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         x1_change = -snake_block
@@ -121,21 +121,23 @@ def game1():
             if victory == True:
                 message("You Won! Congratulations! Press Q to go back to the main screen.", "brown")
                 pygame.display.update()
+                game_over = True
                 return True
 
             # player loses
-            while victory == False:
+            if victory == False:
                 window.blit(bg, (0,0))
                 message("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", "brown")
                 pygame.display.update()
+                game_over = True
                 return False
             
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_q:
-                        # go back to main_screen
-                        SCREEN = 'main'
-                    if event.key == pygame.K_c:
-                        gameLoop()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    # go back to main_screen
+                    SCREEN = 'main'
+                if event.key == pygame.K_c:
+                    gameLoop()
 
     gameLoop()
