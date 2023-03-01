@@ -90,7 +90,7 @@ while loop:
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
-
+    
     # trophy won?
     if screen_game1.trophy1:
         pass
@@ -100,7 +100,7 @@ while loop:
         pass
     if screen_game4.trophy4:
         pass
-
+        
     # key pressed?
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > -130:
