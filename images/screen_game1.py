@@ -114,7 +114,7 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 15:
+            if score >= 2:
                 victory = True
 
             # player wins
@@ -131,6 +131,9 @@ def game1():
                 pygame.display.update()
                 game_over = True
                 return False
+            
+            if game_over == True:
+                exit()
             
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
