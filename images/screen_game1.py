@@ -13,6 +13,8 @@ SCREEN = "game1"
 clock = pygame.time.Clock()
 
 def game1():
+    victory = ''
+    
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
