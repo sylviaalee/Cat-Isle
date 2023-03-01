@@ -10,6 +10,7 @@ WIDTH = 10
 HEIGHT = 10
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
+trophy2 = False
 
 def game2():
     # text
@@ -28,7 +29,7 @@ def game2():
     grid_color = (128, 128, 128)
 
     numMine = 9  # Number of mines
-    grid_size = 32  # Size of grid (WARNING: macke sure to change the images dimension as well)
+    grid_size = 32  # Size of grid (WARNING: make sure to change the images dimension as well)
     border = 16  # Top border
     top_border = 100  # Left, Right, Bottom border
     display_width = grid_size * WIDTH + border * 2  # Display width
