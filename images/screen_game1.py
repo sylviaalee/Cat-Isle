@@ -13,7 +13,7 @@ BODYCOLOR = "0D6C8C5"
 SCREEN = "game1"
 
 clock = pygame.time.Clock()
-trophy1 = True
+trophy1 = False
 
 def game1():
     # music
