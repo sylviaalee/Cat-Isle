@@ -1,7 +1,7 @@
 import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
-# from pygame import mixer
+from pygame import mixer
 pygame.init()
-# mixer.init()
+mixer.init()
 
 # GLOBAL VARIABLES
 WIDTH = 1470
@@ -11,20 +11,15 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
 
-''' music
-mixer.music.load("name.mp3")
+mixer.music.load("music/main_theme.mp3")
 mixer.music.set_volume(0.2)
 mixer.music.play()
-'''
 
 # main screen appears at the beginning of the game
 SCREEN = "main"
 
 # function for MAIN SCREEN
 def main_screen():
-    # music
-    # pygame.mixer.music.load('theme.wav')
-
     # add text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('Cat Isle', True, 'brown')
@@ -37,30 +32,32 @@ def main_screen():
 
     # bushes
     bush = pygame.image.load('bush.png')
-    bush1 = pygame.transform.scale(bush, (250, 250))
-    bush2 = pygame.transform.scale(bush, (250, 250))
-    bush3 = pygame.transform.scale(bush, (250, 250))
+    bush = pygame.transform.scale(bush, (250, 250))
 
     # trees
     tree = pygame.image.load('tree.png')
-    tree1 = pygame.transform.scale(tree, (250, 250))
-    tree2 = pygame.transform.scale(tree, (250, 250))
-    tree3 = pygame.transform.scale(tree, (250, 250))
+    tree = pygame.transform.scale(tree, (250, 250))
+
+    # trophy case
+    trophy_case = pygame.image.load('trophy_case.png')
+    trophy_case = pygame.transform.scale(trophy_case, (450, 325))
 
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
 
     # bushes
-    window.blit(bush1, (75, 225))
-    window.blit(bush2, (900, 75))
-    window.blit(bush3, (385, 525))
+    window.blit(bush, (75, 225))
+    window.blit(bush, (900, 75))
+    window.blit(bush, (385, 525))
 
     # trees
-    window.blit(tree1, (275, 75))
-    window.blit(tree1, (1125, 400))
-    window.blit(tree1, (850, 520))
+    window.blit(tree, (275, 75))
+    window.blit(tree, (1125, 400))
+    window.blit(tree, (850, 520))
 
+    # trophy case
+    window.blit(trophy_case, (870, 575))
 
     # spawn cat
     window.blit(cat, (x, y))
@@ -98,13 +95,21 @@ while loop:
 
     # trophy won?
     if screen_game1.trophy1:
-        pass
+        trophy = pygame.image.load('game1_spring.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (970, 697))
     if screen_game2.trophy2:
-        pass
+        trophy = pygame.image.load('game2_summer.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (1034, 697))
     if screen_game3.trophy3:
-        pass
+        trophy = pygame.image.load('game3_fall.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (1093, 697))
     if screen_game4.trophy4:
-        pass
+        trophy = pygame.image.load('game4_winter.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (1153, 697))
         
     # key pressed?
     keys = pygame.key.get_pressed()

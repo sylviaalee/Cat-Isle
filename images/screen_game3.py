@@ -1,14 +1,21 @@
 # importing the required modules  
 import pygame               # importing the pygame module  
 from pygame.locals import * # importing everything from the pygame.locals module  
-import random               # importing the random module  
+import random               # importing the random module
+from pygame import mixer
+mixer.init()
 
 # using the init() function to initialize the pygame window  
 pygame.init()  
 
-trophy3 = False
+trophy3 = True
 
 def game3():
+    # music
+    mixer.music.load("music/game3.mp3")
+    mixer.music.set_volume(0.2)
+    mixer.music.play()
+
     # creating an object of the Clock() class of the pygame.time module  
     game_clock = pygame.time.Clock()  
     
