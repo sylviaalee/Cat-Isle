@@ -65,7 +65,7 @@ def main_screen():
 # create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
-x, y = 530, 110
+x, y = 530, 110 
 
 def collected_all_trophies():
     pass
@@ -92,7 +92,7 @@ while loop:
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
-    
+
     # trophy won?
     if screen_game1.trophy1 and SCREEN == 'main':
         trophy = pygame.image.load('game1_spring.png')
