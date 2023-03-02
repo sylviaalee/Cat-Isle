@@ -65,7 +65,7 @@ def main_screen():
 # create cat
 cat = pygame.image.load('cat_sample.png')
 cat = pygame.transform.scale(cat, (400, 300))
-x, y = 530, 110
+x, y = 530, 110 
 
 def collected_all_trophies():
     pass

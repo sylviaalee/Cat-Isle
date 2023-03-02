@@ -1,4 +1,5 @@
 # importing the required modules  
+#import overworld3
 import pygame               # importing the pygame module  
 from pygame.locals import * # importing everything from the pygame.locals module  
 import random               # importing the random module
@@ -319,15 +320,15 @@ def game3():
         # checking if the game over and reset  
         if gameOver == True:  
             if victory == True:
-                basee = pygame.image.load("game3_images/base.png")
-                display_screen.blit(basee, (100, 100))  
+                winning_screen = pygame.image.load("game3_images/winning_screen.png")
+                display_screen.blit(winning_screen, (590, 100))  
             elif restartButton.draw() == True:  
                 gameOver = False  
                 playerScore = resetGame()  
             
             keys = pygame.key.get_pressed()
             if keys[pygame.K_q]:
-                SCREEN = "main"
+                exec(open('overworld3.py').read())
         
     
         # using the for loop to iterate through the events of the game  
