@@ -328,7 +328,7 @@ def game3():
             
             keys = pygame.key.get_pressed()
             if keys[pygame.K_q]:
-                exec(open('overworld3.py').read())
+                pass
         
     
         # using the for loop to iterate through the events of the game  
