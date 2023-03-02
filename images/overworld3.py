@@ -42,6 +42,10 @@ def main_screen():
     tree2 = pygame.transform.scale(tree, (250, 250))
     tree3 = pygame.transform.scale(tree, (250, 250))
 
+    # trophy case
+    tc = pygame.image.load('trophy_case.png')
+    trophy_case = pygame.transform.scale(tc, (228, 128))
+
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
@@ -56,6 +60,8 @@ def main_screen():
     window.blit(tree1, (1125, 400))
     window.blit(tree1, (850, 520))
 
+    # trophy case
+    window.blit(trophy_case, (600, 800))
 
     # spawn cat
     window.blit(cat, (x, y))
