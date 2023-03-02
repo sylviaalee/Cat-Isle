@@ -63,7 +63,7 @@ def main_screen():
     window.blit(cat, (x, y))
 
 # create cat
-cat = pygame.image.load('cat_sample.png')
+cat = pygame.image.load('cat.png')
 cat = pygame.transform.scale(cat, (400, 300))
 x, y = 530, 110 
 
