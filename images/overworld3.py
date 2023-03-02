@@ -32,33 +32,29 @@ def main_screen():
 
     # bushes
     bush = pygame.image.load('bush.png')
-    bush1 = pygame.transform.scale(bush, (250, 250))
-    bush2 = pygame.transform.scale(bush, (250, 250))
-    bush3 = pygame.transform.scale(bush, (250, 250))
+    bush = pygame.transform.scale(bush, (250, 250))
 
     # trees
     tree = pygame.image.load('tree.png')
-    tree1 = pygame.transform.scale(tree, (250, 250))
-    tree2 = pygame.transform.scale(tree, (250, 250))
-    tree3 = pygame.transform.scale(tree, (250, 250))
+    tree = pygame.transform.scale(tree, (250, 250))
 
     # trophy case
-    tc = pygame.image.load('trophy_case.png')
-    trophy_case = pygame.transform.scale(tc, (228, 128))
+    trophy_case = pygame.image.load('trophy_case.png')
+    trophy_case = pygame.transform.scale(trophy_case, (228, 128))
 
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
 
     # bushes
-    window.blit(bush1, (75, 225))
-    window.blit(bush2, (900, 75))
-    window.blit(bush3, (385, 525))
+    window.blit(bush, (75, 225))
+    window.blit(bush, (900, 75))
+    window.blit(bush, (385, 525))
 
     # trees
-    window.blit(tree1, (275, 75))
-    window.blit(tree1, (1125, 400))
-    window.blit(tree1, (850, 520))
+    window.blit(tree, (275, 75))
+    window.blit(tree, (1125, 400))
+    window.blit(tree, (850, 520))
 
     # trophy case
     window.blit(trophy_case, (600, 800))
