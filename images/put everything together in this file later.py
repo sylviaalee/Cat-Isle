@@ -141,7 +141,7 @@ def game1():
                 #pygame.display.update()
                 #game_over = True
                 trophy1 = True
-                
+
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
@@ -170,6 +170,8 @@ def game1():
     gameLoop()
 
 def game3():
+    trophy3 = False
+
     # music
     mixer.music.load("music/game3.mp3")
     mixer.music.set_volume(0.2)
@@ -478,6 +480,7 @@ def game3():
         # checking if the game over and reset  
         if gameOver == True:  
             if victory == True:
+                trophy3 = True
                 winning_screen = pygame.image.load("game3_images/winning_screen.png")
                 display_screen.blit(winning_screen, (590, 100))  
             elif restartButton.draw() == True:  
@@ -567,7 +570,7 @@ def loop():
             main_screen()
         
         if SCREEN == "game1":
-            screen_game1.game1()
+            game1()
 
         if SCREEN == "game2":
             screen_game2.game2()
