@@ -95,7 +95,7 @@ while loop:
     for event in pygame.event.get():
         if event.type == quit:
             loop = False
-    
+
     # trophy won?
     if screen_game1.trophy1:
         pass
