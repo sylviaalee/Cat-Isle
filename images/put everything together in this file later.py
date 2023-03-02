@@ -508,7 +508,7 @@ def game3():
     pygame.quit()
 
 def collected_all_trophies():
-    pass
+    pass        
 
 # function for MAIN SCREEN
 def main_screen():
@@ -587,19 +587,19 @@ def loop():
                 loop = False
 
         # trophy won?
-        if screen_game1.trophy1:
+        if game1.trophy1 and SCREEN == 'main':
             trophy = pygame.image.load('game1_spring.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (970, 697))
-        if screen_game2.trophy2:
+        if screen_game2.trophy2 and SCREEN == 'main':
             trophy = pygame.image.load('game2_summer.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1034, 697))
-        if screen_game3.trophy3:
+        if screen_game3.trophy3 and SCREEN == 'main':
             trophy = pygame.image.load('game3_fall.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1093, 697))
-        if screen_game4.trophy4:
+        if screen_game4.trophy4 and SCREEN == 'main':
             trophy = pygame.image.load('game4_winter.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1153, 697))
