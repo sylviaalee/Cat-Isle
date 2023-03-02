@@ -40,7 +40,7 @@ def main_screen():
 
     # trophy case
     trophy_case = pygame.image.load('trophy_case.png')
-    trophy_case = pygame.transform.scale(trophy_case, (228, 128))
+    trophy_case = pygame.transform.scale(trophy_case, (450, 325))
 
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
@@ -57,7 +57,7 @@ def main_screen():
     window.blit(tree, (850, 520))
 
     # trophy case
-    window.blit(trophy_case, (600, 800))
+    window.blit(trophy_case, (870, 575))
 
     # spawn cat
     window.blit(cat, (x, y))
@@ -95,13 +95,21 @@ while loop:
     
     # trophy won?
     if screen_game1.trophy1:
-        pass
+        trophy = pygame.image.load('game1_spring.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (970, 697))
     if screen_game2.trophy2:
-        pass
+        trophy = pygame.image.load('game2_summer.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (1034, 697))
     if screen_game3.trophy3:
-        pass
+        trophy = pygame.image.load('game3_fall.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (1093, 697))
     if screen_game4.trophy4:
-        pass
+        trophy = pygame.image.load('game4_winter.png')
+        trophy = pygame.transform.scale(trophy, (65, 65))
+        window.blit(trophy, (1153, 697))
         
     # key pressed?
     keys = pygame.key.get_pressed()

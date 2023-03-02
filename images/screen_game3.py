@@ -8,7 +8,7 @@ mixer.init()
 # using the init() function to initialize the pygame window  
 pygame.init()  
 
-trophy3 = False
+trophy3 = True
 
 def game3():
     # music
