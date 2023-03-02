@@ -10,7 +10,7 @@ WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('gooddog.ttf', 50)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-trophy4 = True
+trophy4 = False
 
 def game4():
     # music
