@@ -59,6 +59,9 @@ def game1():
         window.blit(msg, [350, 100])
 
     def gameLoop():
+        global trophy1
+        trophy1 = False
+
         victory = ''
         game_over = False
 
@@ -138,13 +141,13 @@ def game1():
 
             # player wins
             if victory == True:
+                trophy1 = True
+                pygame.mixer.music.stop()
+                pygame.mixer.Sound.play(get_trophy)
                 window.blit(bg, (0,0))
                 message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")
-                pygame.mixer.Sound.play(get_trophy)
-                #pygame.mixer.music.stop()
-                #pygame.display.update()
-                #game_over = True
-                trophy1 = True
+                pygame.display.update()
+            
 
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
@@ -163,8 +166,8 @@ def game1():
                         if event.key == pygame.K_q:
                             # go back to main_screen
                             loop()
-                    if event.key == pygame.K_c:
-                        gameLoop()
+                        if event.key == pygame.K_c:
+                            gameLoop()
 
             
             #if game_over == True:
@@ -174,6 +177,8 @@ def game1():
     gameLoop()
 
 def game3():
+    global trophy3
+
     trophy3 = False
 
     # music
