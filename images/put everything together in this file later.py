@@ -65,9 +65,6 @@ def game1():
         window.blit(msg, [350, 100])
 
     def gameLoop():
-        global trophy1
-        trophy1 = False
-
         victory = ''
         game_over = False
 
@@ -147,13 +144,13 @@ def game1():
 
             # player wins
             if victory == True:
-                trophy1 = True
-                pygame.mixer.music.stop()
-                pygame.mixer.Sound.play(get_trophy)
                 window.blit(bg, (0,0))
                 message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")
-                pygame.display.update()
-            
+                pygame.mixer.Sound.play(get_trophy)
+                #pygame.mixer.music.stop()
+                #pygame.display.update()
+                #game_over = True
+                trophy1 = True
 
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
@@ -172,8 +169,8 @@ def game1():
                         if event.key == pygame.K_q:
                             # go back to main_screen
                             loop()
-                        if event.key == pygame.K_c:
-                            gameLoop()
+                    if event.key == pygame.K_c:
+                        gameLoop()
 
             
             #if game_over == True:
@@ -445,8 +442,6 @@ def game2():
 
 # flappy cat
 def game3():
-    global trophy3
-
     trophy3 = False
 
     # music
@@ -963,14 +958,14 @@ def main_screen():
     window.blit(trophy_case, (870, 575))
 
     # spawn cat
-    window.blit(PLAYERIMAGES[currentImage], (x, y))
+    window.blit(cat, (x, y))
 
 def loop():
-    global SCREEN, x, y, currentImage, PLAYERIMAGES
+    global SCREEN, x, y, cat, currentImage, PLAYERIMAGES
     SCREEN = "main"
-    
     # create cat
-    PLAYERIMAGES[currentImage] = pygame.transform.scale(PLAYERIMAGES[currentImage], (400, 300))
+    cat = pygame.image.load('cat.png')
+    cat = pygame.transform.scale(cat, (400, 300))
     x, y = 530, 110 
     
     loop = True
@@ -983,13 +978,13 @@ def loop():
             game1()
 
         if SCREEN == "game2":
-            game2()
+            screen_game2.game2()
 
         if SCREEN == "game3":
             game3()
 
         if SCREEN == "game4":
-            game4()
+            screen_game4.game4()
         
         # quit?
         for event in pygame.event.get():

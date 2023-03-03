@@ -6,17 +6,16 @@ from pygame import mixer
 mixer.init()
 from pygame.locals import *
 
-pygame.init()
-
-# GLOBAL
-WIDTH = 10
-HEIGHT = 10
-BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
-window = pygame.display.set_mode((WIDTH, HEIGHT))
-trophy2 = False
-
-
 def game2():
+    pygame.init()
+
+    # GLOBAL
+    WIDTH = 10
+    HEIGHT = 10
+    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+    window = pygame.display.set_mode((WIDTH, HEIGHT))
+    trophy2 = False
+
     # music
     mixer.music.load("music/game2.mp3")
     mixer.music.set_volume(0.2)
@@ -275,3 +274,4 @@ def game2():
     gameLoop()
     pygame.quit()
     quit()
+game2()
