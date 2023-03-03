@@ -55,7 +55,7 @@ def game4():
     word = ''
     buttons = []
     guessed = []
-    hangmanPics = [pygame.image.load('hangman0.png'), pygame.image.load('hangman1.png'), pygame.image.load('hangman2.png'), pygame.image.load('hangman3.png'), pygame.image.load('hangman4.png'), pygame.image.load('hangman5.png'), pygame.image.load('hangman6.png')]
+    hangmanPics = [pygame.image.load('game4_images/hangman0.png'), pygame.image.load('game4_images/hangman1.png'), pygame.image.load('game4_images/hangman2.png'), pygame.image.load('game4_images/hangman3.png'), pygame.image.load('game4_images/hangman4.png'), pygame.image.load('game4_images/hangman5.png'), pygame.image.load('game4_images/hangman6.png')]
 
     limbs = 0
 
