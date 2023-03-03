@@ -517,6 +517,12 @@ def collected_all_trophies():
 
 # function for MAIN SCREEN
 def main_screen():
+    currentImage = 0
+    PLAYERIMAGES = [pygame.image.load('cat.png'),
+                    pygame.image.load('cat_w_hat.png'),
+                    pygame.image.load('cat_glasses.png'),
+                    pygame.image.load('cat_w_clothes.png')]
+    
     # add text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('Cat Isle', True, 'brown')
