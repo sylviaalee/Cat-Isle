@@ -8,6 +8,11 @@ WIDTH = 1470
 HEIGHT = 850
 BASICFONT = pygame.font.Font('gooddog.ttf', 30)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
+currentImage = 0
+PLAYERIMAGES = [pygame.image.load('cat.png'),
+                pygame.image.load('cat_w_hat.png'),
+                pygame.image.load('cat_w_glasses.png'),
+                pygame.image.load('cat_w_clothes.png')]
 
 clock = pygame.time.Clock()
 
@@ -517,12 +522,6 @@ def collected_all_trophies():
 
 # function for MAIN SCREEN
 def main_screen():
-    currentImage = 0
-    PLAYERIMAGES = [pygame.image.load('cat.png'),
-                    pygame.image.load('cat_w_hat.png'),
-                    pygame.image.load('cat_glasses.png'),
-                    pygame.image.load('cat_w_clothes.png')]
-    
     # add text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('Cat Isle', True, 'brown')
@@ -567,7 +566,7 @@ def main_screen():
 
 
 def loop():
-    global SCREEN, x, y, cat
+    global SCREEN, x, y, cat, currentImage, PLAYERIMAGES
     SCREEN = "main"
     # create cat
     cat = pygame.image.load('cat.png')
@@ -625,6 +624,12 @@ def loop():
             y -= 20
         if keys[pygame.K_DOWN] and y < 615:
             y += 20
+        if keys[pygame.K_p]:
+                # Change the player image to the next one.
+                currentImage += 1
+                if currentImage >= len(PLAYERIMAGES):
+                    # After the last player image, use the first one.
+                    currentImage = 0
 
         # display directions if cat is on portal
         if x < -5 and x > -300 and y < 15 and y > -300 and SCREEN == "main":
