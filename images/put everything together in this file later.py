@@ -18,6 +18,10 @@ mixer.music.play()
 # main screen appears at the beginning of the game
 SCREEN = "main"
 
+trophy1 = False
+trophy2 = False
+trophy3 = False
+trophy4 = False
 
 def game1():
     # music
@@ -479,16 +483,17 @@ def game3():
     
         # checking if the game over and reset  
         if gameOver == True:  
-            if victory == True:
+            if victory:
                 trophy3 = True
                 winning_screen = pygame.image.load("game3_images/winning_screen.png")
-                display_screen.blit(winning_screen, (590, 100))  
+                display_screen.blit(winning_screen, (590, 100))
             elif restartButton.draw() == True:  
                 gameOver = False  
                 playerScore = resetGame()  
             
             keys = pygame.key.get_pressed()
             if keys[pygame.K_q]:
+                SCREEN = 'main'
                 loop()
         
     
@@ -508,7 +513,7 @@ def game3():
     pygame.quit()
 
 def collected_all_trophies():
-    pass
+    pass        
 
 # function for MAIN SCREEN
 def main_screen():
@@ -587,19 +592,19 @@ def loop():
                 loop = False
 
         # trophy won?
-        if screen_game1.trophy1:
+        if trophy1 and SCREEN == 'main':
             trophy = pygame.image.load('game1_spring.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (970, 697))
-        if screen_game2.trophy2:
+        if trophy2 and SCREEN == 'main':
             trophy = pygame.image.load('game2_summer.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1034, 697))
-        if screen_game3.trophy3:
+        if trophy3 and SCREEN == 'main':
             trophy = pygame.image.load('game3_fall.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1093, 697))
-        if screen_game4.trophy4:
+        if trophy4 and SCREEN == 'main':
             trophy = pygame.image.load('game4_winter.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1153, 697))
@@ -654,7 +659,7 @@ def loop():
             SCREEN = "game4"
 
         # collected all trophies?
-        if screen_game1.trophy1 and screen_game2.trophy2 and screen_game3.trophy3 and screen_game4.trophy4:
+        if trophy1 and trophy2 and trophy3 and trophy4:
             collected_all_trophies()
 
         # update display every frame
