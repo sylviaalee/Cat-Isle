@@ -963,14 +963,14 @@ def main_screen():
     window.blit(trophy_case, (870, 575))
 
     # spawn cat
-    window.blit(cat, (x, y))
+    window.blit(PLAYERIMAGES[currentImage], (x, y))
 
 def loop():
-    global SCREEN, x, y, cat, currentImage, PLAYERIMAGES
+    global SCREEN, x, y, currentImage, PLAYERIMAGES
     SCREEN = "main"
+    
     # create cat
-    cat = pygame.image.load('cat.png')
-    cat = pygame.transform.scale(cat, (400, 300))
+    PLAYERIMAGES[currentImage] = pygame.transform.scale(PLAYERIMAGES[currentImage], (400, 300))
     x, y = 530, 110 
     
     loop = True
