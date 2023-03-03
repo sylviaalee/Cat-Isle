@@ -777,7 +777,7 @@ def game3():
     # using the quit() function to quit the game  
     pygame.quit()
 
-# cat maze
+# cat hang
 def game4():
     # music
     mixer.music.load("music/game4.mp3")
