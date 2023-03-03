@@ -983,13 +983,13 @@ def loop():
             game1()
 
         if SCREEN == "game2":
-            screen_game2.game2()
+            game2()
 
         if SCREEN == "game3":
             game3()
 
         if SCREEN == "game4":
-            screen_game4.game4()
+            game4()
         
         # quit?
         for event in pygame.event.get():
