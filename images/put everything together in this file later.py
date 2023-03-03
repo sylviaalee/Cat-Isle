@@ -65,6 +65,9 @@ def game1():
         window.blit(msg, [350, 100])
 
     def gameLoop():
+        global trophy1
+        trophy1 = False
+
         victory = ''
         game_over = False
 
@@ -143,15 +146,14 @@ def game1():
                 victory = True
 
             # player wins
-            if victory == True:
+            while victory == True:
+                trophy1 = True
                 window.blit(bg, (0,0))
                 message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")
-                pygame.mixer.Sound.play(get_trophy)
-                #pygame.mixer.music.stop()
-                #pygame.display.update()
-                #game_over = True
-                trophy1 = True
-
+                pygame.display.update()
+                pygame.mixer.music.stop()
+                pygame.mixer.Sound.play(get_trophy)            
+        
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
@@ -161,21 +163,15 @@ def game1():
             while victory == False:
                 window.blit(bg, (0,0))
                 message("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", "brown")
-                #pygame.display.update()
-                #game_over = True
+                pygame.display.update()
 
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
                             # go back to main_screen
                             loop()
-                    if event.key == pygame.K_c:
-                        gameLoop()
-
-            
-            #if game_over == True:
-               # exit()
-            
+                        if event.key == pygame.K_c:
+                            gameLoop()
 
     gameLoop()
 
@@ -442,6 +438,7 @@ def game2():
 
 # flappy cat
 def game3():
+    global trophy3
     trophy3 = False
 
     # music
@@ -978,7 +975,7 @@ def loop():
             game1()
 
         if SCREEN == "game2":
-            screen_game2.game2()
+            game2()
 
         if SCREEN == "game3":
             game3()
