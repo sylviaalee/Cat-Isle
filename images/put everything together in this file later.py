@@ -28,6 +28,7 @@ trophy2 = False
 trophy3 = False
 trophy4 = False
 
+# snakecat
 def game1():
     # music
     mixer.music.load("music/game1.mp3")
@@ -178,6 +179,7 @@ def game1():
 
     gameLoop()
 
+# cat sweeper
 def game2():
     # music
     mixer.music.load("music/game2.mp3")
@@ -438,6 +440,7 @@ def game2():
     pygame.quit()
     quit()
 
+# flappy cat
 def game3():
     trophy3 = False
 
@@ -777,6 +780,7 @@ def game3():
     # using the quit() function to quit the game  
     pygame.quit()
 
+# cat maze
 def game4():
     # music
     mixer.music.load("music/game4.mp3")
