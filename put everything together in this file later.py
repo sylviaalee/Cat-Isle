@@ -35,8 +35,6 @@ def game1():
     mixer.music.set_volume(0.2)
     mixer.music.play()
 
-    get_trophy = crash_sound = pygame.mixer.Sound("music/get_trophy.mp3")
-
     # text
     pygame.display.set_caption('Cat Isle')
     text = BASICFONT.render('SnakeCat', True, 'brown')
@@ -149,15 +147,14 @@ def game1():
             while victory == True:
                 trophy1 = True
                 window.blit(bg, (0,0))
-                message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")
-                pygame.display.update()
-                pygame.mixer.music.stop()
-                pygame.mixer.Sound.play(get_trophy)            
-        
+                message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")          
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
                             # go back to main_screen
+                            mixer.music.load("music/main_theme.mp3")
+                            mixer.music.set_volume(0.2)
+                            mixer.music.play()
                             loop()
             # player loses
             while victory == False:
@@ -181,260 +178,432 @@ def game2():
     mixer.music.load("music/game2.mp3")
     mixer.music.set_volume(0.2)
     mixer.music.play()
+    import pygame
+    import sys
+    import time
+    from solver import Cell, Sudoku
 
-    # text
-    pygame.display.set_caption('Cat Isle')
-    text = BASICFONT.render('CatSweeper', True, 'brown')
-    textRect = text.get_rect()
-    textRect.center = (1470 // 2, 850 // 2)
+    pygame.init()
 
-    # background
-    bg = pygame.image.load("background.png")
-    bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+    # Set size of game and other constants
+    cell_size = 50
+    minor_grid_size = 1
+    major_grid_size = 3
+    buffer = 5
+    button_height = 50
+    button_width = 125
+    button_border = 2
+    width = cell_size*9 + minor_grid_size*6 + major_grid_size*4 + buffer*2
+    height = cell_size*9 + minor_grid_size*6 + \
+        major_grid_size*4 + button_height + buffer*3 + button_border*2
+    size = width, height
+    white = 255, 255, 255
+    black = 0, 0, 0
+    gray = 200, 200, 200
+    green = 0, 175, 0
+    red = 200, 0, 0
+    inactive_btn = 51, 255, 255
+    active_btn = 51, 153, 255
 
-    window.blit(bg, (0,0))
-    window.blit(text, textRect)
+    screen = pygame.display.set_mode(size)
+    pygame.display.set_caption('Sudokat')
 
-    grid_color = (128, 128, 128)
+    class RectCell(pygame.Rect):
+        '''
+        A class built upon the pygame Rect class used to represent individual cells in the game.
+        This class has a few extra attributes not contained within the base Rect class.
+        '''
 
-    numMine = 9  # Number of mines
-    grid_size = 32  # Size of grid (WARNING: make sure to change the images dimension as well)
-    border = 16  # Top border
-    top_border = 100  # Left, Right, Bottom border
-    display_width = grid_size * WIDTH + border * 2  # Display width
-    display_height = grid_size * HEIGHT + border + top_border  # Display height
-    gameDisplay = pygame.display.set_mode((display_width, display_height))  # Create display
-    timer = pygame.time.Clock()  # Create timer
-
-    # Import files
-    spr_emptyGrid = pygame.image.load("game2_images/empty.png")
-    spr_flag = pygame.image.load("game2_images/flag.png")
-    spr_grid = pygame.image.load("game2_images/Grid.png")
-    spr_grid1 = pygame.image.load("game2_images/grid1.png")
-    spr_grid2 = pygame.image.load("game2_images/grid2.png")
-    spr_grid3 = pygame.image.load("game2_images/grid3.png")
-    spr_grid4 = pygame.image.load("game2_images/grid4.png")
-    spr_grid5 = pygame.image.load("game2_images/grid5.png")
-    spr_grid6 = pygame.image.load("game2_images/grid6.png")
-    spr_grid7 = pygame.image.load("game2_images/grid7.png")
-    spr_grid8 = pygame.image.load("game2_images/grid8.png")
-    spr_grid7 = pygame.image.load("game2_images/grid7.png")
-    spr_mine = pygame.image.load("game2_images/mine.png")
-    spr_mineClicked = pygame.image.load("game2_images/mineClicked.png")
-    spr_mineFalse = pygame.image.load("game2_images/mineFalse.png")
-
-
-    # Create global values
-    grid = []  # The main grid
-    mines = []  # Pos of the mines
+        def __init__(self, left, top, row, col):
+            super().__init__(left, top, cell_size, cell_size)
+            self.row = row
+            self.col = col
 
 
-    # Create function to draw texts
-    def drawText(txt, s, yOff=0):
-        screen_text = pygame.font.SysFont("Calibri", s, True).render(txt, True, (0, 0, 0))
-        rect = screen_text.get_rect()
-        rect.center = (WIDTH * grid_size / 2 + border, HEIGHT * grid_size / 2 + top_border + yOff)
-        gameDisplay.blit(screen_text, rect)
+    def create_cells():
+        '''Creates all 81 cells with RectCell class.'''
+        cells = [[] for _ in range(9)]
+
+        # Set attributes for for first RectCell
+        row = 0
+        col = 0
+        left = buffer + major_grid_size
+        top = buffer + major_grid_size
+
+        while row < 9:
+            while col < 9:
+                cells[row].append(RectCell(left, top, row, col))
+
+                # Update attributes for next RectCell
+                left += cell_size + minor_grid_size
+                if col != 0 and (col + 1) % 3 == 0:
+                    left = left + major_grid_size - minor_grid_size
+                col += 1
+
+            # Update attributes for next RectCell
+            top += cell_size + minor_grid_size
+            if row != 0 and (row + 1) % 3 == 0:
+                top = top + major_grid_size - minor_grid_size
+            left = buffer + major_grid_size
+            col = 0
+            row += 1
+
+        return cells
 
 
-    # Create class grid
-    class Grid:
-        def __init__(self, xGrid, yGrid, type):
-            self.xGrid = xGrid  # X pos of grid
-            self.yGrid = yGrid  # Y pos of grid
-            self.clicked = False  # Boolean var to check if the grid has been clicked
-            self.mineClicked = False  # Bool var to check if the grid is clicked and its a mine
-            self.mineFalse = False  # Bool var to check if the player flagged the wrong grid
-            self.flag = False  # Bool var to check if player flagged the grid
-            # Create rectObject to handle drawing and collisions
-            self.rect = pygame.Rect(border + self.xGrid * grid_size, top_border + self.yGrid * grid_size, grid_size, grid_size)
-            self.val = type  # Value of the grid, -1 is mine
+    def draw_grid():
+        '''Draws the major and minor grid lines for Sudoku.'''
+        # Draw minor grid lines
+        lines_drawn = 0
+        pos = buffer + major_grid_size + cell_size
+        while lines_drawn < 6:
+            pygame.draw.line(screen, black, (pos, buffer),
+                            (pos, width-buffer-1), minor_grid_size)
+            pygame.draw.line(screen, black, (buffer, pos),
+                            (width-buffer-1, pos), minor_grid_size)
 
-        def drawGrid(self):
-            # Draw the grid according to bool variables and value of grid
-            if self.mineFalse:
-                gameDisplay.blit(spr_mineFalse, self.rect)
-            else:
-                if self.clicked:
-                    if self.val == -1:
-                        if self.mineClicked:
-                            gameDisplay.blit(spr_mineClicked, self.rect)
-                        else:
-                            gameDisplay.blit(spr_mine, self.rect)
-                    else:
-                        if self.val == 0:
-                            gameDisplay.blit(spr_emptyGrid, self.rect)
-                        elif self.val == 1:
-                            gameDisplay.blit(spr_grid1, self.rect)
-                        elif self.val == 2:
-                            gameDisplay.blit(spr_grid2, self.rect)
-                        elif self.val == 3:
-                            gameDisplay.blit(spr_grid3, self.rect)
-                        elif self.val == 4:
-                            gameDisplay.blit(spr_grid4, self.rect)
-                        elif self.val == 5:
-                            gameDisplay.blit(spr_grid5, self.rect)
-                        elif self.val == 6:
-                            gameDisplay.blit(spr_grid6, self.rect)
-                        elif self.val == 7:
-                            gameDisplay.blit(spr_grid7, self.rect)
-                        elif self.val == 8:
-                            gameDisplay.blit(spr_grid8, self.rect)
+            # Update number of lines drawn
+            lines_drawn += 1
 
+            # Update pos for next lines
+            pos += cell_size + minor_grid_size
+            if lines_drawn % 2 == 0:
+                pos += cell_size + major_grid_size
+
+        # Draw major grid lines
+        for pos in range(buffer+major_grid_size//2, width, cell_size*3 + minor_grid_size*2 + major_grid_size):
+            pygame.draw.line(screen, black, (pos, buffer),
+                            (pos, width-buffer-1), major_grid_size)
+            pygame.draw.line(screen, black, (buffer, pos),
+                            (width-buffer-1, pos), major_grid_size)
+
+
+    def fill_cells(cells, board):
+        '''Fills in all the numbers for the game.'''
+        font = pygame.font.Font(None, 36)
+
+        # Fill in all cells with correct value
+        for row in range(9):
+            for col in range(9):
+                if board.board[row][col].value is None:
+                    continue
+
+                # Fill in given values
+                if not board.board[row][col].editable:
+                    font.bold = True
+                    text = font.render(f'{board.board[row][col].value}', 1, black)
+
+                # Fill in values entered by user
                 else:
-                    if self.flag:
-                        gameDisplay.blit(spr_flag, self.rect)
+                    font.bold = False
+                    if board.check_move(board.board[row][col], board.board[row][col].value):
+                        text = font.render(
+                            f'{board.board[row][col].value}', 1, green)
                     else:
-                        gameDisplay.blit(spr_grid, self.rect)
+                        text = font.render(
+                            f'{board.board[row][col].value}', 1, red)
 
-        def revealGrid(self):
-            self.clicked = True
-            # Auto reveal if it's a 0
-            if self.val == 0:
-                for x in range(-1, 2):
-                    if self.xGrid + x >= 0 and self.xGrid + x < WIDTH:
-                        for y in range(-1, 2):
-                            if self.yGrid + y >= 0 and self.yGrid + y < HEIGHT:
-                                if not grid[self.yGrid + y][self.xGrid + x].clicked:
-                                    grid[self.yGrid + y][self.xGrid + x].revealGrid()
-            elif self.val == -1:
-                # Auto reveal all mines if it's a mine
-                for m in mines:
-                    if not grid[m[1]][m[0]].clicked:
-                        grid[m[1]][m[0]].revealGrid()
-
-        def updateValue(self):
-            # Update the value when all grid is generated
-            if self.val != -1:
-                for x in range(-1, 2):
-                    if self.xGrid + x >= 0 and self.xGrid + x < WIDTH:
-                        for y in range(-1, 2):
-                            if self.yGrid + y >= 0 and self.yGrid + y < HEIGHT:
-                                if grid[self.yGrid + y][self.xGrid + x].val == -1:
-                                    self.val += 1
+                # Center text in cell
+                xpos, ypos = cells[row][col].center
+                textbox = text.get_rect(center=(xpos, ypos))
+                screen.blit(text, textbox)
 
 
-    def gameLoop():
-        gameState = "Playing"  # Game state
-        mineLeft = numMine  # Number of mine left
-        global grid  # Access global var
-        grid = []
-        global mines
-        t = 0  # Set time to 0
+    def draw_button(left, top, width, height, border, color, border_color, text):
+        '''Creates a button with a border.'''
+        # Draw the border as outer rect
+        pygame.draw.rect(
+            screen,
+            border_color,
+            (left, top, width+border*2, height+border*2),
+        )
 
-        # Generating mines
-        mines = [[random.randrange(0, WIDTH),
-                random.randrange(0, HEIGHT)]]
+        # Draw the inner button
+        button = pygame.Rect(
+            left+border,
+            top+border,
+            width,
+            height
+        )
+        pygame.draw.rect(screen, color, button)
 
-        for c in range(numMine - 1):
-            pos = [random.randrange(0, WIDTH),
-                random.randrange(0, HEIGHT)]
-            same = True
-            while same:
-                for i in range(len(mines)):
-                    if pos == mines[i]:
-                        pos = [random.randrange(0, WIDTH), random.randrange(0, HEIGHT)]
-                        break
-                    if i == len(mines) - 1:
-                        same = False
-            mines.append(pos)
+        # Set the text
+        font = pygame.font.Font(None, 26)
+        text = font.render(text, 1, black)
+        xpos, ypos = button.center
+        textbox = text.get_rect(center=(xpos, ypos))
+        screen.blit(text, textbox)
 
-        # Generating entire grid
-        for j in range(HEIGHT):
-            line = []
-            for i in range(WIDTH):
-                if [i, j] in mines:
-                    line.append(Grid(i, j, -1))
-                else:
-                    line.append(Grid(i, j, 0))
-            grid.append(line)
+        return button
 
-        # Update of the grid
-        for i in grid:
-            for j in i:
-                j.updateValue()
 
-        # Main Loop
-        while gameState != "Exit":
-            # User inputs
+    def draw_board(active_cell, cells, game):
+        '''Draws all elements making up the board.'''
+        # Draw grid and cells
+        draw_grid()
+        if active_cell is not None:
+            pygame.draw.rect(screen, gray, active_cell)
+
+        # Fill in cell values
+        fill_cells(cells, game)
+
+
+    def visual_solve(game, cells):
+        '''Solves the game while giving a visual representation of what is being done.'''
+        # Get first empty cell
+        cell = game.get_empty_cell()
+
+        # Solve is complete if cell is False
+        if not cell:
+            return True
+
+        # Check each possible move
+        for val in range(1, 10):
+            # Allow game to quit when being solved
             for event in pygame.event.get():
-                # Check if player close window
                 if event.type == pygame.QUIT:
-                    gameState = "Exit"
-                # Check if play restart
-                if gameState == "Game Over" or gameState == "Win":
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_r:
-                            gameState = "Playing"
-                            gameLoop()
-                else:
-                    if event.type == pygame.MOUSEBUTTONUP:
-                        for i in grid:
-                            for j in i:
-                                if j.rect.collidepoint(event.pos):
-                                    if event.button == 1:
-                                        # If player left clicked of the grid
-                                        j.revealGrid()
-                                        # Toggle flag off
-                                        if j.flag:
-                                            mineLeft += 1
-                                            j.falg = False
-                                        # If it's a mine
-                                        if j.val == -1:
-                                            gameState = "Game Over"
-                                            j.mineClicked = True
-                                    elif event.button == 3:
-                                        # If the player right clicked
-                                        if not j.clicked:
-                                            if j.flag:
-                                                j.flag = False
-                                                mineLeft += 1
-                                            else:
-                                                j.flag = True
-                                                mineLeft -= 1
+                    sys.exit()
 
-            # Check if won
-            w = True
-            for i in grid:
-                for j in i:
-                    j.drawGrid()
-                    if j.val != -1 and not j.clicked:
-                        w = False
-            if w and gameState != "Exit":
-                gameState = "Win"
+            # Place value in board
+            cell.value = val
 
-            # Draw Texts
-            if gameState != "Game Over" and gameState != "Win":
-                t += 1
-            elif gameState == "Game Over":
-                drawText("Game Over!", 50)
-                drawText("R to restart", 35, 50)
-                for i in grid:
-                    for j in i:
-                        if j.flag and j.val != -1:
-                            j.mineFalse = True
-            else:
-                you_won()
-            # Draw time
-            s = str(t // 15)
-            screen_text = pygame.font.SysFont("Calibri", 50).render(s, True, (0, 0, 0))
-            gameDisplay.blit(screen_text, (border, border))
-            # Draw mine left
-            screen_text = pygame.font.SysFont("Calibri", 50).render(mineLeft.__str__(), True, (0, 0, 0))
-            gameDisplay.blit(screen_text, (display_width - border - 50, border))
+            # Outline cell being changed in red
+            screen.fill(white)
+            draw_board(None, cells, game)
+            cell_rect = cells[cell.row][cell.col]
+            pygame.draw.rect(screen, red, cell_rect, 5)
+            pygame.display.update([cell_rect])
+            time.sleep(0.05)
 
-            pygame.display.update()  # Update screen
+            # Check if the value is a valid move
+            if not game.check_move(cell, val):
+                cell.value = None
+                continue
 
-            timer.tick(15)  # Tick fps
+            # If all recursive calls return True then board is solved
+            screen.fill(white)
+            pygame.draw.rect(screen, green, cell_rect, 5)
+            draw_board(None, cells, game)
+            pygame.display.update([cell_rect])
+            if visual_solve(game, cells):
+                return True
 
-    def you_won():
-        # play animation
-        drawText("You WON!", 50)
-        drawText("C to go back to main screen", 35, 50)
+            # Undo move is solve was unsuccessful
+            cell.value = None
 
-    gameLoop()
-    pygame.quit()
-    quit()
+        # No moves were successful
+        screen.fill(white)
+        pygame.draw.rect(screen, white, cell_rect, 5)
+        draw_board(None, cells, game)
+        pygame.display.update([cell_rect])
+        return False
+
+
+    def check_sudoku(sudoku):
+        '''
+        Takes a complete instance of Soduku and 
+        returns whether or not the solution is valid.
+        '''
+        # Ensure all cells are filled
+        if sudoku.get_empty_cell():
+            raise ValueError('Game is not complete')
+
+        # Will hold values for each row, column, and box
+        row_sets = [set() for _ in range(9)]
+        col_sets = [set() for _ in range(9)]
+        box_sets = [set() for _ in range(9)]
+
+        # Check all rows, columns, and boxes contain no duplicates
+        for row in range(9):
+            for col in range(9):
+                box = (row // 3) * 3 + col // 3
+                value = sudoku.board[row][col].value
+
+                # Check if number already encountered in row, column, or box
+                if value in row_sets[row] or value in col_sets[col] or value in box_sets[box]:
+                    return False
+
+                # Add value to corresponding set
+                row_sets[row].add(value)
+                col_sets[col].add(value)
+                box_sets[box].add(value)
+
+        # All rows, columns, and boxes are valid
+        return True
+
+
+    def play():
+        '''Contains all the functionality for playing a game of Sudoku.'''
+        easy = [
+            [0, 0, 0, 9, 0, 0, 0, 3, 0],
+            [3, 0, 6, 0, 2, 0, 0, 4, 0],
+            [2, 0, 4, 0, 0, 3, 1, 0, 6],
+            [0, 7, 0, 0, 5, 1, 0, 8, 0],
+            [0, 3, 1, 0, 6, 0, 0, 5, 7],
+            [5, 0, 9, 0, 0, 0, 6, 0, 0],
+            [4, 1, 0, 0, 0, 2, 0, 7, 8],
+            [7, 6, 3, 0, 0, 5, 4, 0, 0],
+            [9, 2, 8, 0, 0, 4, 0, 0, 1]
+        ]
+        game = Sudoku(easy)
+        cells = create_cells()
+        active_cell = None
+        solve_rect = pygame.Rect(
+            buffer,
+            height-button_height - button_border*2 - buffer,
+            button_width + button_border*2,
+            button_height + button_border*2
+        )
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+                # Handle mouse click
+                if event.type == pygame.MOUSEBUTTONUP:
+                    mouse_pos = pygame.mouse.get_pos()
+
+                    # Reset button is pressed
+                    if reset_btn.collidepoint(mouse_pos):
+                        game.reset()
+
+                    # Solve button is pressed
+                    if solve_btn.collidepoint(mouse_pos):
+                        screen.fill(white)
+                        active_cell = None
+                        draw_board(active_cell, cells, game)
+                        reset_btn = draw_button(
+                            width - buffer - button_border*2 - button_width,
+                            height - button_height - button_border*2 - buffer,
+                            button_width,
+                            button_height,
+                            button_border,
+                            inactive_btn,
+                            black,
+                            'Reset'
+                        )
+                        solve_btn = draw_button(
+                            width - buffer*2 - button_border*4 - button_width*2,
+                            height - button_height - button_border*2 - buffer,
+                            button_width,
+                            button_height,
+                            button_border,
+                            inactive_btn,
+                            black,
+                            'Stuck?'
+                        )
+                        pygame.display.flip()
+                        visual_solve(game, cells)
+
+                    # Test if point in any cell
+                    active_cell = None
+                    for row in cells:
+                        for cell in row:
+                            if cell.collidepoint(mouse_pos):
+                                active_cell = cell
+
+                    # Test if active cell is empty
+                    if active_cell and not game.board[active_cell.row][active_cell.col].editable:
+                        active_cell = None
+
+                # Handle key press
+                if event.type == pygame.KEYUP:
+                    if active_cell is not None:
+
+                        # Input number based on key press
+                        if event.key == pygame.K_0 or event.key == pygame.K_KP0:
+                            game.board[active_cell.row][active_cell.col].value = 0
+                        if event.key == pygame.K_1 or event.key == pygame.K_KP1:
+                            game.board[active_cell.row][active_cell.col].value = 1
+                        if event.key == pygame.K_2 or event.key == pygame.K_KP2:
+                            game.board[active_cell.row][active_cell.col].value = 2
+                        if event.key == pygame.K_3 or event.key == pygame.K_KP3:
+                            game.board[active_cell.row][active_cell.col].value = 3
+                        if event.key == pygame.K_4 or event.key == pygame.K_KP4:
+                            game.board[active_cell.row][active_cell.col].value = 4
+                        if event.key == pygame.K_5 or event.key == pygame.K_KP5:
+                            game.board[active_cell.row][active_cell.col].value = 5
+                        if event.key == pygame.K_6 or event.key == pygame.K_KP6:
+                            game.board[active_cell.row][active_cell.col].value = 6
+                        if event.key == pygame.K_7 or event.key == pygame.K_KP7:
+                            game.board[active_cell.row][active_cell.col].value = 7
+                        if event.key == pygame.K_8 or event.key == pygame.K_KP8:
+                            game.board[active_cell.row][active_cell.col].value = 8
+                        if event.key == pygame.K_9 or event.key == pygame.K_KP9:
+                            game.board[active_cell.row][active_cell.col].value = 9
+                        if event.key == pygame.K_BACKSPACE or event.key == pygame.K_DELETE:
+                            game.board[active_cell.row][active_cell.col].value = None
+
+            screen.fill(white)
+
+            # Draw board
+            draw_board(active_cell, cells, game)
+
+            # Create buttons
+            reset_btn = draw_button(
+                width - buffer - button_border*2 - button_width,
+                height - button_height - button_border*2 - buffer,
+                button_width,
+                button_height,
+                button_border,
+                inactive_btn,
+                black,
+                'Reset'
+            )
+            solve_btn = draw_button(
+                width - buffer*2 - button_border*4 - button_width*2,
+                height - button_height - button_border*2 - buffer,
+                button_width,
+                button_height,
+                button_border,
+                inactive_btn,
+                black,
+                'Stuck?'
+            )
+
+            # Check if mouse over either button
+            if reset_btn.collidepoint(pygame.mouse.get_pos()):
+                reset_btn = draw_button(
+                    width - buffer - button_border*2 - button_width,
+                    height - button_height - button_border*2 - buffer,
+                    button_width,
+                    button_height,
+                    button_border,
+                    active_btn,
+                    black,
+                    'Reset'
+                )
+            if solve_btn.collidepoint(pygame.mouse.get_pos()):
+                solve_btn = draw_button(
+                    width - buffer*2 - button_border*4 - button_width*2,
+                    height - button_height - button_border*2 - buffer,
+                    button_width,
+                    button_height,
+                    button_border,
+                    active_btn,
+                    black,
+                    'Stuck?'
+                )
+
+            # Check if game is complete
+            if not game.get_empty_cell():
+                if check_sudoku(game):
+                    # Set the text
+                    font = pygame.font.Font(None, 36)
+                    text = font.render('Solved! You have won the Summer Trophy! Press Q to go to Main Screen.', 1, green)
+                    textbox = text.get_rect(center=(solve_rect.center))
+                    screen.blit(text, textbox)
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_q]:
+                        SCREEN = 'main'
+                        mixer.music.load("music/main_theme.mp3")
+                        mixer.music.set_volume(0.2)
+                        mixer.music.play()
+                        loop()
+            # Update screen
+            pygame.display.flip()
+    play()
 
 # flappy cat
 def game3():
@@ -759,6 +928,9 @@ def game3():
             keys = pygame.key.get_pressed()
             if keys[pygame.K_q]:
                 SCREEN = 'main'
+                mixer.music.load("music/main_theme.mp3")
+                mixer.music.set_volume(0.2)
+                mixer.music.play()
                 loop()
         
     
@@ -786,7 +958,7 @@ def game4():
 
     # text
     pygame.display.set_caption('Cat Isle')
-    text = BASICFONT.render('CatMaze', True, 'brown')
+    text = BASICFONT.render('HangCat', True, 'brown')
     textRect = text.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
 
@@ -859,7 +1031,7 @@ def game4():
             pygame.init()
             self.display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
             
-            pygame.display.set_caption('Moggie Maze')
+            pygame.display.set_caption('CatMaze')
             self.running = True
             self.image_surf = pygame.image.load("FISHY.png").convert()
             self.block_surf = pygame.image.load("game4_images/block.png").convert()
@@ -960,6 +1132,7 @@ def main_screen():
 def loop():
     global SCREEN, x, y, cat, currentImage, PLAYERIMAGES
     SCREEN = "main"
+    window = pygame.display.set_mode((WIDTH, HEIGHT))
     # create cat
     cat = pygame.image.load('cat.png')
     cat = pygame.transform.scale(cat, (400, 300))

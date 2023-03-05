@@ -122,8 +122,8 @@ def game4():
 
 
     def end(winner=False):
-        lostTxt = 'You Lost, press any key to play again...'
-        winTxt = 'WINNER!, press any key to play again...'
+        lostTxt = 'You Lost... press any key to play again...'
+        winTxt = 'WINNER! You obtained the Winter trophy! Press any key to play again...'
         redraw_game_window()
         pygame.time.delay(1000)
         win.blit(bg, (0, 0))
@@ -158,7 +158,7 @@ def game4():
         guessed = []
         word = randomWord()
 
-    #MAINLINE
+    # MAINLINE
 
 
     # Setup buttons
