@@ -456,6 +456,9 @@ def game2():
         )
 
         while True:
+            global trophy2
+            trophy2 = False
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -589,6 +592,7 @@ def game2():
             # Check if game is complete
             if not game.get_empty_cell():
                 if check_sudoku(game):
+                    trophy2 = True
                     # Set the text
                     font = pygame.font.Font(None, 36)
                     text = font.render('Solved! You have won the Summer Trophy! Press Q to go to Main Screen.', 1, green)
