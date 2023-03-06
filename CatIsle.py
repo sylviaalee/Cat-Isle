@@ -1293,7 +1293,7 @@ def credits():
 def controls():
     controls = pygame.image.load('controls.png')
     controls = pygame.transform.scale(controls, (700, 700))
-    window.blit(credits, (400, 80))
+    window.blit(controls, (400, 80))
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_q]:
@@ -1390,6 +1390,9 @@ def loop():
         
         if SCREEN == "credits":
             credits()
+        
+        if SCREEN == "controls":
+            controls()
         
         # quit?
         for event in pygame.event.get():
