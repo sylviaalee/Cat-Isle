@@ -1,5 +1,4 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
-import cv2
+import pygame, random, time, cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
@@ -21,8 +20,11 @@ mixer.music.load("music/main_theme.mp3")
 mixer.music.set_volume(0.2)
 mixer.music.play()
 
-# intro screen appears at the beginning of the game
-SCREEN = "intro"
+# # intro screen appears at the beginning of the game
+# SCREEN = "intro"
+
+# main screen appears at the beginning of the game
+SCREEN = "main"
 
 trophy1 = False
 trophy2 = False
@@ -141,7 +143,7 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 2:
+            if score >= 15:
                 victory = True
 
             # player wins
@@ -895,7 +897,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 1:
+        if playerScore >= 10:
             victory = True
         
         if victory == True:
@@ -1065,11 +1067,12 @@ def game4():
 
 
     def end(winner=False):
-        global trophy3
+    
         victory = True
         while victory:
             while winner == True:
-                trophy3 = True
+                global trophy4
+                trophy4 = True
                 window.blit(bg, (0,0))
                 msg = BASICFONT.render("You won the Winter Trophy! Congratulations! Press Q to go back to the main screen.", True, "brown")
                 window.blit(msg, [350, 100]) 
@@ -1415,13 +1418,13 @@ def loop():
         # key pressed?
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and x > -130:
-            x -= 20
+            x -= 35
         if keys[pygame.K_RIGHT] and x < 1220:
-            x += 20
+            x += 35
         if keys[pygame.K_UP] and y > -110:
-            y -= 20
+            y -= 35
         if keys[pygame.K_DOWN] and y < 615:
-            y += 20
+            y += 35
         if keys[pygame.K_p]:
                 # Change the player image to the next one.
                 currentImage += 1
@@ -1459,6 +1462,25 @@ def loop():
             rectcredit = credits_instruct.get_rect()
             rectcredit.center = (1470 // 2, 30)
             window.blit(credits_instruct, rectcredit)
+        
+        if x < 1075 and x > 775 and y < 1500 and y > 425 and SCREEN == "main":
+            trophynum = 0 
+            if trophy1 == True:
+                trophynum += 1
+            if trophy2 == True:
+                trophynum += 1
+            if trophy3 == True:
+                trophynum += 1
+            if trophy4 == True:
+                trophynum += 1
+            if trophynum == 1:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophy', True, 'brown')
+            elif trophynum == 0 or trophynum >= 2:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophies', True, 'brown')
+            trophyrect = trophies.get_rect()
+            trophyrect.center = (1470 // 2, 30)
+            window.blit(trophies, trophyrect)
+        
 
         if x < 500 and x > 300 and y < 1500 and y > 425 and SCREEN == "main":
             controls_instruct = BASICFONT.render('Press ENTER to view controls', True, 'brown')
