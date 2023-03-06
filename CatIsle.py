@@ -1462,6 +1462,18 @@ def loop():
             rectcredit = credits_instruct.get_rect()
             rectcredit.center = (1470 // 2, 30)
             window.blit(credits_instruct, rectcredit)
+
+        if x < 500 and x > 300 and y < 1500 and y > 425 and SCREEN == "main":
+            controls_instruct = BASICFONT.render('Press ENTER to view controls', True, 'brown')
+            rectcontrols = controls_instruct.get_rect()
+            rectcontrols.center = (1470 // 2, 30)
+            window.blit(controls_instruct, rectcontrols)
+
+        if x < 1075 and x > 775 and y < 1500 and y > 425 and SCREEN == "main":
+            trophies_instruct = BASICFONT.render('Press ENTER to view your trophy/trophies!', True, 'brown')
+            recttrophies = trophies_instruct.get_rect()
+            recttrophies.center = (1470 // 2, 30)
+            window.blit(trophies_instruct, recttrophies)
         
         if x < 1075 and x > 775 and y < 1500 and y > 425 and SCREEN == "main":
             trophynum = 0 
@@ -1480,13 +1492,6 @@ def loop():
             trophyrect = trophies.get_rect()
             trophyrect.center = (1470 // 2, 30)
             window.blit(trophies, trophyrect)
-        
-
-        if x < 500 and x > 300 and y < 1500 and y > 425 and SCREEN == "main":
-            controls_instruct = BASICFONT.render('Press ENTER to view controls', True, 'brown')
-            rectcontrols = controls_instruct.get_rect()
-            rectcontrols.center = (1470 // 2, 30)
-            window.blit(controls_instruct, rectcontrols)
 
         # conditions in which screen changes
         if x < -5 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
