@@ -20,8 +20,8 @@ mixer.music.load("music/main_theme.mp3")
 mixer.music.set_volume(0.2)
 mixer.music.play()
 
-# main screen appears at the beginning of the game
-SCREEN = "main"
+# intro screen appears at the beginning of the game
+SCREEN = "intro"
 
 trophy1 = False
 trophy2 = False
@@ -1231,7 +1231,37 @@ def collected_all_trophies():
             run = False
         window.blit(video_surf, (0, 0))
         pygame.display.flip()
-        
+
+# def intro_screen():
+#     SCREEN = 'intro'
+#     window = pygame.display.set_mode((WIDTH, HEIGHT))
+#     pygame.display.set_caption('The Beginning of Your Journey!')
+#     bg = pygame.image.load("intro_screen_background.png")
+#     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+
+#     # play music
+
+#     text = BASICFONT.render('You are a Turkish Van cat living on Cat Isle.', True, 'brown')
+#     textRect = text.get_rect()
+#     textRect.center = (1470 // 2, 850 // 2)
+#     time.sleep(2)
+#     text = BASICFONT.render('Collect all 4 Season Trophies to win.', True, 'brown')
+#     textRect = text.get_rect()
+#     textRect.center = (1470 // 2, 850 // 2)
+#     time.sleep(2)
+#     text = BASICFONT.render('Press n to start your marvelous journey on this curious, quaint island!!', True, 'brown')
+#     textRect = text.get_rect()
+#     textRect.center = (1470 // 2, 850 // 2)
+
+#     for event in pygame.event.get():
+#                     if event.type == pygame.KEYDOWN:
+#                         if event.key == pygame.K_n:
+#                             # go back to main_screen
+#                             mixer.music.load("music/main_theme.mp3")
+#                             mixer.music.set_volume(0.2)
+#                             mixer.music.play()
+#                             SCREEN = 'main'
+#                             loop()
 
 # function for MAIN SCREEN
 def main_screen():
@@ -1291,6 +1321,9 @@ def loop():
     loop = True
     while loop:
         # switch screens
+        if SCREEN == 'intro':
+            intro_screen()
+
         if SCREEN == "main":
             main_screen()
         
@@ -1396,4 +1429,5 @@ def loop():
 
     terminate()
 
+# intro_screen()
 loop()
