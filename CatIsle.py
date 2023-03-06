@@ -1480,8 +1480,10 @@ def loop():
             if trophy4 == True:
                 trophynum += 1
             if trophynum == 1:
-                trophies = BASICFONT.render(f'You have obtained {trophynum} trophy', True, 'brown')
-            elif trophynum == 0 or trophynum >= 2:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophy. Not bad.', True, 'brown')
+            elif trophynum == 0:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophies?!?! Hurry up!', True, 'brown')
+            elif trophynum >= 2:
                 trophies = BASICFONT.render(f'You have obtained {trophynum} trophies', True, 'brown')
             trophyrect = trophies.get_rect()
             trophyrect.center = (1470 // 2, 30)
