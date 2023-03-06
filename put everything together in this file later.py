@@ -1,4 +1,4 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
+import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4, cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
@@ -998,7 +998,7 @@ def game4():
     word = ''
     buttons = []
     guessed = []
-    hangmanPics = [pygame.image.load('game4_images/hangman0.png'), pygame.image.load('game4_images/hangman1.png'), pygame.image.load('game4_images/hangman2.png'), pygame.image.load('game4_images/hangman3.png'), pygame.image.load('game4_images/hangman4.png'), pygame.image.load('game4_images/hangman5.png'), pygame.image.load('game4_images/hangman6.png')]
+    hangmanPics = [pygame.transform.scale(pygame.image.load('game4_images/hangman0.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman1.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman2.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman3.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman4.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman5.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman6.png'), (400, 410))]
 
 
 
@@ -1098,6 +1098,7 @@ def game4():
 
             win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
             win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))   
+            win.blit(hangmanPics[6], (winWidth/2 - hangmanPics[6].get_width()/2 + 20, 400))
 
             pygame.display.update()
 
