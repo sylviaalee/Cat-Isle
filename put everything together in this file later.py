@@ -956,6 +956,7 @@ def game3():
 
 # cat hang
 def game4():
+
     # music
     mixer.music.load("music/game4.mp3")
     mixer.music.set_volume(0.2)
@@ -963,7 +964,7 @@ def game4():
 
     # text
     pygame.display.set_caption('Cat Isle')
-    text = BASICFONT.render('HangCat', True, 'brown')
+    text = BASICFONT.render('HangCat?', True, 'brown')
     textRect = text.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
 
@@ -973,119 +974,239 @@ def game4():
 
     window.blit(bg, (0,0))
     window.blit(text, textRect)
+    
+    #########################################################
+    ## File Name: hangman.py                               ##
+    ## Description: Starter for Hangman project - ICS3U    ##
+    #########################################################
+    winHeight = 850
+    winWidth = 1470
+    win=pygame.display.set_mode((winWidth,winHeight))
+    #---------------------------------------#
+    # initialize global variables/constants #
+    #---------------------------------------#
+    BLACK = (0,0, 0)
+    WHITE = (255,255,255)
+    RED = (255,0, 0)
+    GREEN = (0,255,0)
+    BLUE = (0,0,255)
+    LIGHT_BLUE = (102,255,255)
 
-     
-    class Player:
-        x = 44
-        y = 44
-        speed = 1
-    
-        def moveRight(self):
-            self.x = self.x + self.speed
-    
-        def moveLeft(self):
-            self.x = self.x - self.speed
-    
-        def moveUp(self):
-            self.y = self.y - self.speed
-    
-        def moveDown(self):
-            self.y = self.y + self.speed
+    btn_font = pygame.font.SysFont("arial", 20)
+    guess_font = pygame.font.SysFont("monospace", 24)
+    lost_font = pygame.font.SysFont('arial', 45)
+    word = ''
+    buttons = []
+    guessed = []
+    hangmanPics = [pygame.image.load('game4_images/hangman0.png'), pygame.image.load('game4_images/hangman1.png'), pygame.image.load('game4_images/hangman2.png'), pygame.image.load('game4_images/hangman3.png'), pygame.image.load('game4_images/hangman4.png'), pygame.image.load('game4_images/hangman5.png'), pygame.image.load('game4_images/hangman6.png')]
 
-    class Maze:
-        def __init__(self):
-            self.M = 10
-            self.N = 8
-            self.maze = [1,1,1,1,1,1,1,1,0,1,
-                    1,0,0,0,0,0,0,0,0,1,
-                    1,0,0,0,0,0,0,0,0,1,
-                    1,0,1,1,1,1,1,1,0,1,
-                    1,0,1,0,0,0,0,0,0,1,
-                    1,0,1,0,1,1,1,1,0,1,
-                    1,0,0,0,0,0,0,0,0,1,
-                    1,0,1,1,1,1,1,1,1,1,]
 
-        def draw(self,display_surf,image_surf):
-            bx = 0
-            by = 0
-            for i in range(0,self.M*self.N):
-                if self.maze[ bx + (by*self.M) ] == 1:
-                    display_surf.blit(image_surf,( bx * 10 , by * 10))
+
+    def redraw_game_window():
+        win.blit(bg, (0,0))
+        # Buttons
+        for i in range(len(buttons)):
+            if buttons[i][4]:
+                pygame.draw.circle(win, BLACK, (buttons[i][1], buttons[i][2]), buttons[i][3])
+                pygame.draw.circle(win, buttons[i][0], (buttons[i][1], buttons[i][2]), buttons[i][3] - 2
+                                )
+                label = btn_font.render(chr(buttons[i][5]), 1, BLACK)
+                win.blit(label, (buttons[i][1] - (label.get_width() / 2), buttons[i][2] - (label.get_height() / 2)))
+
+        spaced = spacedOut(word, guessed)
+        label1 = guess_font.render(spaced, 1, BLACK)
+        rect = label1.get_rect()
+        length = rect[2]
         
-                bx = bx + 1
-                if bx > self.M-1:
-                    bx = 0
-                    by = by + 1
+        win.blit(label1,(winWidth/2 - length/2, 400))
 
-    class App:    
-        # windowWidth = 800
-        # windowHeight = 600
-        player = 0
-    
-        def __init__(self):
-            self.running = True
-            self.display_surf = None
-            self.image_surf = None
-            self.block_surf = None
-            self.player = Player()
-            self.maze = Maze()
-            self.windowWidth = WIDTH
-            self.windowHeight = HEIGHT
-    
-        def on_init(self):
-            pygame.init()
-            self.display_surf = pygame.display.set_mode((self.windowWidth,self.windowHeight), pygame.HWSURFACE)
-            
-            pygame.display.set_caption('CatMaze')
-            self.running = True
-            self.image_surf = pygame.image.load("FISHY.png").convert()
-            self.block_surf = pygame.image.load("game4_images/block.png").convert()
-            self.image_surf = pygame.transform.scale(self.image_surf,(50, 50))
-            self.block_surf = pygame.transform.scale(self.block_surf,(50, 50))
-    
-        def on_event(self, event):
-            if event.type == pygame.QUIT:
-                self.running = False
-    
-        def on_loop(self):
-            pass
+        pic = hangmanPics[limbs]
+        win.blit(pic, (winWidth/2 - pic.get_width()/2 + 20, 150))
+        pygame.display.update()
+
+
+    def randomWord():
+        file = open('words.txt')
+        f = file.readlines()
+        i = random.randrange(0, len(f) - 1)
+
+        return f[i][:-1]
+
+
+    def hang(guess):
+        if guess.lower() not in word.lower():
+            return True
+        else:
+            return False
+
+
+    def spacedOut(word, guessed=[]):
+        spacedWord = ''
+        guessedLetters = guessed
+        for x in range(len(word)):
+            if word[x] != ' ':
+                spacedWord += '_ '
+                for i in range(len(guessedLetters)):
+                    if word[x].upper() == guessedLetters[i]:
+                        spacedWord = spacedWord[:-2]
+                        spacedWord += word[x].upper() + ' '
+            elif word[x] == ' ':
+                spacedWord += ' '
+        return spacedWord
+                
+
+    def buttonHit(x, y):
+        for i in range(len(buttons)):
+            if x < buttons[i][1] + 20 and x > buttons[i][1] - 20:
+                if y < buttons[i][2] + 20 and y > buttons[i][2] - 20:
+                    return buttons[i][5]
+        return None
+
+
+    def end(winner=False):
+        global trophy3
+        while winner == True:
+            trophy3 = True
+            window.blit(bg, (0,0))
+            msg = BASICFONT.render("You won the Winter Trophy! Congratulations! Press Q to go back to the main screen.", True, "brown")
+            window.blit(msg, [350, 100]) 
+
+            wordTxt = lost_font.render(word.upper(), 1, BLACK)
+            wordWas = lost_font.render('The phrase was: ', 1, BLACK)
+
+            win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
+            win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))   
+
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        # go back to main_screen
+                        mixer.music.load("music/main_theme.mp3")
+                        mixer.music.set_volume(0.2)
+                        mixer.music.play()
+                        loop()
+        # player loses
+        while winner == False:
+            window.blit(bg, (0,0))
+            msg = BASICFONT.render("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", True, "brown")
+            window.blit(msg, [350, 100])
+
+            wordTxt = lost_font.render(word.upper(), 1, BLACK)
+            wordWas = lost_font.render('The phrase was: ', 1, BLACK)
+
+            win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
+            win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))   
+
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        # go back to main_screen
+                        loop()
+                    if event.key == pygame.K_c:
+                        reset()
+                        main_loop4()
+        """
+        lostTxt = 'You Lost... press any key to play again or Q to return to the main screen'
+        winTxt = 'You won! Press Q to return to the main screen'
+        redraw_game_window()
+        pygame.time.delay(1000)
+        win.blit(bg, (0, 0))
+
+        if winner == True:
+            trophy3 = True
+            label = lost_font.render(winTxt, 1, BLACK)
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.type == pygame.K_q:
+                        loop()
+        else:
+            label = lost_font.render(lostTxt, 1, BLACK)
+
+        wordTxt = lost_font.render(word.upper(), 1, BLACK)
+        wordWas = lost_font.render('The phrase was: ', 1, BLACK)
+
+        win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
+        win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))
+        win.blit(label, (winWidth / 2 - label.get_width() / 2, 140))
+        pygame.display.update()
+        again = True
+        while again:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.type == pygame.K_q:
+                        loop()
+                    if event.type == pygame.K_c:
+                        again = False
+        """
+
+
+    def reset():
+        for i in range(len(buttons)):
+            buttons[i][4] = True
+
+        limbs = 0
+        guessed = []
+        word = randomWord()
+
+    # MAINLINE
+
+    def main_loop4():
+        global limbs
+
+        limbs = 0
+        # Setup buttons
+        increase = round(winWidth / 13)
+        for i in range(26):
+            if i < 13:
+                y = 40
+                x = 25 + (increase * i)
+            else:
+                x = 25 + (increase * (i - 13))
+                y = 85
+            buttons.append([LIGHT_BLUE, x, y, 20, True, 65 + i])
+            # buttons.append([color, x_pos, y_pos, radius, visible, char])
+
+        word = randomWord()
+        inPlay = True
+
+        while inPlay:
+            redraw_game_window()
+            pygame.time.delay(10)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    inPlay = False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        inPlay = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    clickPos = pygame.mouse.get_pos()
+                    letter = buttonHit(clickPos[0], clickPos[1])
+                    if letter != None:
+                        guessed.append(chr(letter))
+                        buttons[letter - 65][4] = False
+                        if hang(chr(letter)):
+                            if limbs != 5:
+                                limbs += 1
+                            else:
+                                end()
+                        else:
+                            print(spacedOut(word, guessed))
+                            if spacedOut(word, guessed).count('_') == 0:
+                                end(True)
+
+        pygame.quit()
+
         
-        def on_render(self):
-            self.display_surf.fill((0,0,0))
-            self.display_surf.blit(self.image_surf,(self.player.x,self.player.y))
-            self.maze.draw(self.display_surf, self.block_surf)
-            pygame.display.flip()
-    
-        def on_cleanup(self):
-            pygame.quit()
-    
-        def on_execute(self):
-            if self.on_init() == False:
-                self.running = False
-    
-            while(self.running):
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        game_over = True
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_LEFT:
-                            self.player.moveLeft()
-                        elif event.key == pygame.K_RIGHT:
-                            self.player.moveRight()
-                        elif event.key == pygame.K_UP:
-                            self.player.moveUp()
-                        elif event.key == pygame.K_DOWN:
-                            self.player.moveDown()
-                        elif event.key == pygame.K_ESCAPE:
-                            self.running = False
-        
-                self.on_loop()
-                self.on_render()
-            self.on_cleanup()
-    
-    if __name__ == "__main__" :
-        theApp = App()
-        theApp.on_execute()
+        if __name__ == "__main__" :
+            theApp = App()
+            theApp.on_execute()
+
+    main_loop4()
 
 def collected_all_trophies():
     pass        
@@ -1159,7 +1280,7 @@ def loop():
             game3()
 
         if SCREEN == "game4":
-            screen_game4.game4()
+            game4()
         
         # quit?
         for event in pygame.event.get():
