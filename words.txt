@@ -6,3 +6,4 @@ sphynx
 bengal
 abyssinian
 turkish van
+tabby
