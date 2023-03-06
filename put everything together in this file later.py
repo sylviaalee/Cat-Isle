@@ -369,7 +369,7 @@ def game2():
             cell.value = val
 
             # Outline cell being changed in red
-            screen.fill(white)
+            screen.blit(bg, [0,0])
             draw_board(None, cells, game)
             cell_rect = cells[cell.row][cell.col]
             pygame.draw.rect(screen, red, cell_rect, 5)
@@ -382,7 +382,7 @@ def game2():
                 continue
 
             # If all recursive calls return True then board is solved
-            screen.fill(white)
+            screen.blit(bg, [0,0])
             pygame.draw.rect(screen, green, cell_rect, 5)
             draw_board(None, cells, game)
             pygame.display.update([cell_rect])
@@ -393,7 +393,7 @@ def game2():
             cell.value = None
 
         # No moves were successful
-        screen.fill(white)
+        screen.blit(bg, [0,0])
         pygame.draw.rect(screen, white, cell_rect, 5)
         draw_board(None, cells, game)
         pygame.display.update([cell_rect])
@@ -474,7 +474,7 @@ def game2():
 
                     # Solve button is pressed
                     if solve_btn.collidepoint(mouse_pos):
-                        screen.fill(white)
+                        screen.blit(bg, [0,0])
                         active_cell = None
                         draw_board(active_cell, cells, game)
                         reset_btn = draw_button(
@@ -539,7 +539,7 @@ def game2():
                         if event.key == pygame.K_BACKSPACE or event.key == pygame.K_DELETE:
                             game.board[active_cell.row][active_cell.col].value = None
 
-            screen.fill(white)
+            screen.blit(bg, [0,0])
 
             # Draw board
             draw_board(active_cell, cells, game)
