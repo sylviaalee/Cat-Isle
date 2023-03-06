@@ -1,4 +1,5 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4, cv2
+import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
+# import cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
@@ -1264,6 +1265,17 @@ def collected_all_trophies():
 #                             SCREEN = 'main'
 #                             loop()
 
+def credits():
+    credits = pygame.image.load("credits.png")
+    credits = pygame.transform.scale(credits, (700, 700))
+    window.blit(credits, (400, 80))
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_q]:
+        loop()
+
+
+
 # function for MAIN SCREEN
 def main_screen():
     # add text
@@ -1288,6 +1300,10 @@ def main_screen():
     trophy_case = pygame.image.load('trophy_case.png')
     trophy_case = pygame.transform.scale(trophy_case, (450, 325))
 
+    # credits
+    credits_block = pygame.image.load("credit_block.png")
+    credits_block = pygame.transform.scale(credits_block, (175, 130))
+
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
@@ -1304,6 +1320,9 @@ def main_screen():
 
     # trophy case
     window.blit(trophy_case, (870, 575))
+
+    # credits
+    window.blit(credits_block, (300, 650))
 
     # spawn cat
     cat = PLAYERIMAGES[currentImage]
@@ -1340,6 +1359,9 @@ def loop():
         if SCREEN == "game4":
             game4()
         
+        if SCREEN == "credits":
+            credits()
+        
         # quit?
         for event in pygame.event.get():
             if event.type == quit:
@@ -1362,6 +1384,7 @@ def loop():
             trophy = pygame.image.load('game4_winter.png')
             trophy = pygame.transform.scale(trophy, (65, 65))
             window.blit(trophy, (1153, 697))
+        
             
         # key pressed?
         keys = pygame.key.get_pressed()
@@ -1405,6 +1428,12 @@ def loop():
             rect4.center = (1470 // 2, 30)
             window.blit(game4_instruct, rect4)
 
+        if x < 300 and x > 50 and y < 1500 and y > 425 and SCREEN == "main":
+            credits_instruct = BASICFONT.render('Press ENTER to view our credits', True, 'brown')
+            rectcredit = credits_instruct.get_rect()
+            rectcredit.center = (1470 // 2, 30)
+            window.blit(credits_instruct, rectcredit)
+
         # conditions in which screen changes
         if x < -5 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
             SCREEN = "game1"
@@ -1417,6 +1446,9 @@ def loop():
 
         if x < -5 and x > -300 and y < 2000 and y > 475 and keys[pygame.K_RETURN]:
             SCREEN = "game4"
+
+        if x < 300 and x > 50 and y < 1500 and y > 425 and keys[pygame.K_RETURN]:
+            SCREEN = "credits"
 
         # collected all trophies?
         if trophy1 and trophy2 and trophy3 and trophy4:
