@@ -14,6 +14,8 @@ PLAYERIMAGES = [pygame.image.load('cat.png'),
                 pygame.image.load('cat_w_glasses.png'),
                 pygame.image.load('cat_w_clothes.png')]
 
+loop_runs = -1
+
 clock = pygame.time.Clock()
 
 mixer.music.load("music/main_theme.mp3")
@@ -1244,39 +1246,42 @@ def collected_all_trophies():
         window.blit(video_surf, (0, 0))
         pygame.display.flip()
 
-# def intro_screen():
-#     SCREEN = 'intro'
-#     window = pygame.display.set_mode((WIDTH, HEIGHT))
-#     pygame.display.set_caption('The Beginning of Your Journey!')
-#     bg = pygame.image.load("intro_screen_background.png")
-#     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+def intro_screen():
+    SCREEN = 'intro'
+    window = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption('The Beginning of Your Journey!')
+    bg = pygame.image.load("intro_screen_background.png")
+    bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
+    window.blit(bg, [0,0])
 
-#     # play music
-#     mixer.music.load("music/intro_theme.mp3")
-#     mixer.music.set_volume(0.2)
-#     mixer.music.play()
+    # play music
+    mixer.music.load("music/intro_theme.mp3")
+    mixer.music.set_volume(0.2)
+    mixer.music.play()
 
-#     text = BASICFONT.render('You are a Turkish Van cat living on Cat Isle.', True, 'brown')
-#     textRect = text.get_rect()
-#     textRect.center = (1470 // 2, 850 // 2)
-#     time.sleep(2)
-#     text = BASICFONT.render('Collect all 4 Season Trophies to win.', True, 'brown')
-#     textRect = text.get_rect()
-#     textRect.center = (1470 // 2, 850 // 2)
-#     time.sleep(2)
-#     text = BASICFONT.render('Press n to start your marvelous journey on this curious, quaint island!!', True, 'brown')
-#     textRect = text.get_rect()
-#     textRect.center = (1470 // 2, 850 // 2)
+    text = BASICFONT.render('You are a Turkish Van cat living on Cat Isle.', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
+    window.blit(text, textRect)
+    time.sleep(2)
+    text = BASICFONT.render('Collect all 4 Season Trophies to win.', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
+    window.blit(text, textRect)
+    time.sleep(2)
+    text = BASICFONT.render('Press n to start your marvelous journey on this curious, quaint island!!', True, 'brown')
+    textRect = text.get_rect()
+    textRect.center = (1470 // 2, 850 // 2)
+    window.blit(text, textRect)
 
-#     for event in pygame.event.get():
-#                     if event.type == pygame.KEYDOWN:
-#                         if event.key == pygame.K_n:
-#                             # go back to main_screen
-#                             mixer.music.load("music/main_theme.mp3")
-#                             mixer.music.set_volume(0.2)
-#                             mixer.music.play()
-#                             SCREEN = 'main'
-#                             loop()
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_n:
+                # go back to main_screen
+                mixer.music.load("music/main_theme.mp3")
+                mixer.music.set_volume(0.2)
+                mixer.music.play()
+                loop()
 
 def credits():
     credits = pygame.image.load("credits.png")
@@ -1355,19 +1360,23 @@ def main_screen():
     window.blit(cat, (x, y))
 
 def loop():
-    global SCREEN, x, y, cat, currentImage, PLAYERIMAGES
+    global SCREEN, x, y, cat, currentImage, PLAYERIMAGES, loop_runs
     SCREEN = "main"
     window = pygame.display.set_mode((WIDTH, HEIGHT))
     # create cat
     cat = PLAYERIMAGES[currentImage]
     cat = pygame.transform.scale(cat, (400, 300))
     x, y = 530, 110 
-    
+    loop_runs += 1
+
+    if loop_runs == 0:
+        SCREEN = "intro"
+
     loop = True
     while loop:
         # switch screens
-        # if SCREEN == 'intro':
-        #     intro_screen()
+        if SCREEN == 'intro':
+            intro_screen()
 
         if SCREEN == "main":
             main_screen()
