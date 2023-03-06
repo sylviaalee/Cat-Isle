@@ -1,4 +1,4 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4, cv2
+import pygame, random, time, cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
@@ -1287,7 +1287,14 @@ def credits():
     if keys[pygame.K_q]:
         loop()
 
+def controls():
+    controls = pygame.image.load("controls.png")
+    controls = pygame.transform.scale(controls, (700, 700))
+    window.blit(controls, (400, 80))
 
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_q]:
+        loop()
 
 # function for MAIN SCREEN
 def main_screen():
@@ -1317,6 +1324,10 @@ def main_screen():
     credits_block = pygame.image.load("credit_block.png")
     credits_block = pygame.transform.scale(credits_block, (175, 130))
 
+    # controls
+    controls_block = pygame.image.load("controls_block.png")
+    controls_block = pygame.transform.scale(controls_block, (175, 130))
+
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
@@ -1334,8 +1345,9 @@ def main_screen():
     # trophy case
     window.blit(trophy_case, (870, 575))
 
-    # credits
+    # credits & controls
     window.blit(credits_block, (300, 650))
+    window.blit(controls_block, (500, 650))
 
     # spawn cat
     cat = PLAYERIMAGES[currentImage]
@@ -1374,6 +1386,9 @@ def loop():
         
         if SCREEN == "credits":
             credits()
+
+        if SCREEN == "controls":
+            controls()
         
         # quit?
         for event in pygame.event.get():
