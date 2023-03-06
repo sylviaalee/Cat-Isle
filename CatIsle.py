@@ -1,4 +1,4 @@
-import pygame, random, time, cv2
+import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4, cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
@@ -20,11 +20,8 @@ mixer.music.load("music/main_theme.mp3")
 mixer.music.set_volume(0.2)
 mixer.music.play()
 
-# # intro screen appears at the beginning of the game
-# SCREEN = "intro"
-
-# main screen appears at the beginning of the game
-SCREEN = "main"
+# intro screen appears at the beginning of the game
+SCREEN = "intro"
 
 trophy1 = False
 trophy2 = False
@@ -1290,14 +1287,7 @@ def credits():
     if keys[pygame.K_q]:
         loop()
 
-def controls():
-    controls = pygame.image.load('controls.png')
-    controls = pygame.transform.scale(controls, (700, 700))
-    window.blit(controls, (400, 80))
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_q]:
-        loop()
 
 # function for MAIN SCREEN
 def main_screen():
@@ -1327,10 +1317,6 @@ def main_screen():
     credits_block = pygame.image.load("credit_block.png")
     credits_block = pygame.transform.scale(credits_block, (175, 130))
 
-    # controls
-    controls_block = pygame.image.load("controls_block.png")
-    controls_block = pygame.transform.scale(controls_block, (175, 130))
-
     # display bg, text, bushes, trees
     window.blit(bg, (0,0))
     window.blit(text, textRect) # create text
@@ -1348,10 +1334,8 @@ def main_screen():
     # trophy case
     window.blit(trophy_case, (870, 575))
 
-    # credits & controls
+    # credits
     window.blit(credits_block, (300, 650))
-    window.blit(controls_block, (490, 650))
-
 
     # spawn cat
     cat = PLAYERIMAGES[currentImage]
@@ -1390,9 +1374,6 @@ def loop():
         
         if SCREEN == "credits":
             credits()
-        
-        if SCREEN == "controls":
-            controls()
         
         # quit?
         for event in pygame.event.get():
@@ -1485,12 +1466,6 @@ def loop():
             window.blit(trophies, trophyrect)
         
 
-        if x < 500 and x > 300 and y < 1500 and y > 425 and SCREEN == "main":
-            controls_instruct = BASICFONT.render('Press ENTER to view controls', True, 'brown')
-            rectcontrols = controls_instruct.get_rect()
-            rectcontrols.center = (1470 // 2, 30)
-            window.blit(controls_instruct, rectcontrols)
-
         # conditions in which screen changes
         if x < -5 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
             SCREEN = "game1"
@@ -1506,9 +1481,6 @@ def loop():
 
         if x < 300 and x > 50 and y < 1500 and y > 425 and keys[pygame.K_RETURN]:
             SCREEN = "credits"
-
-        if x < 500 and x > 300 and y < 1500 and y > 425 and keys[pygame.K_RETURN]:
-            SCREEN = "controls"
 
         # collected all trophies?
         if trophy1 and trophy2 and trophy3 and trophy4:
