@@ -1439,7 +1439,7 @@ def loop():
             window.blit(game1_instruct, rect1)
 
         if x < 2000 and x > 1100 and y < 30 and y > -200 and SCREEN == "main":
-            game3_instruct = BASICFONT.render('Press ENTER to go to the Summer Mini-Game (#2), True, 'brown')
+            game3_instruct = BASICFONT.render('Press ENTER to go to the Summer Mini-Game (#2)', True, 'brown')
             rect3 = game3_instruct.get_rect()
             rect3.center = (1470 // 2, 30)
             window.blit(game3_instruct, rect3)    
@@ -1485,8 +1485,10 @@ def loop():
             if trophy4 == True:
                 trophynum += 1
             if trophynum == 1:
-                trophies = BASICFONT.render(f'You have obtained {trophynum} trophy', True, 'brown')
-            elif trophynum == 0 or trophynum >= 2:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophy. Not bad.', True, 'brown')
+            elif trophynum == 0:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophies?!?! Hurry up!', True, 'brown')
+            elif trophynum >= 2:
                 trophies = BASICFONT.render(f'You have obtained {trophynum} trophies', True, 'brown')
             trophyrect = trophies.get_rect()
             trophyrect.center = (1470 // 2, 30)
