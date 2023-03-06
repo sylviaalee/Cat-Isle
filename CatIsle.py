@@ -47,7 +47,7 @@ def game1():
 
     # snake
     snake_block = 20
-    snake_speed = 15
+    snake_speed = 20
 
     def your_score(score):
         value = BASICFONT.render("Your Score: " + str(score), True, 'gold')
@@ -72,8 +72,8 @@ def game1():
         food = pygame.image.load('FISHY.png')
         food = pygame.transform.scale(food, (100, 100))
 
-        foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-        foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
+        foodx = round(random.randrange(0, 1300 - snake_block) / 10.0) * 10.0
+        foody = round(random.randrange(0, 700 - snake_block) / 10.0) * 10.0
 
         x1 = WIDTH / 2
         y1 = HEIGHT / 2
@@ -133,9 +133,9 @@ def game1():
 
 
             # food
-            if (x1 + 70) > foodx and foodx > (x1 - 25) and (y1 + 25) > foody and foody > (y1 - 50):
-                foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-                foody = round(random.randrange(0, HEIGHT - snake_block) / 10.0) * 10.0
+            if (x1 + 40) > foodx and foodx > (x1 - 40) and (y1 + 10) > foody and foody > (y1 - 80):
+                foodx = round(random.randrange(0, 1350 - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, 700 - snake_block) / 10.0) * 10.0
                 length_of_snake += 1
             clock.tick(snake_speed)
 
@@ -595,7 +595,7 @@ def game2():
                 if check_sudoku(game):
                     trophy2 = True
                     # Set the text
-                    font = pygame.font.Font('gooddog.ttf', 36)
+                    font = pygame.font.Font('gooddog.ttf', 12)
                     text = font.render('Solved! You have won the Summer Trophy! Press Q.', 2, 'aquamarine4')
                     textbox = text.get_rect(center=(solve_rect.center))
                     screen.blit(text, textbox)
@@ -894,7 +894,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 10:
+        if playerScore >= 5:
             victory = True
         
         if victory == True:
@@ -1467,13 +1467,13 @@ def loop():
             rectcontrols = controls_instruct.get_rect()
             rectcontrols.center = (1470 // 2, 30)
             window.blit(controls_instruct, rectcontrols)
-
+        '''
         if x < 1075 and x > 775 and y < 1500 and y > 425 and SCREEN == "main":
             trophies_instruct = BASICFONT.render('Press ENTER to view your trophy/trophies!', True, 'brown')
             recttrophies = trophies_instruct.get_rect()
             recttrophies.center = (1470 // 2, 30)
             window.blit(trophies_instruct, recttrophies)
-        
+        '''
         if x < 1075 and x > 775 and y < 1500 and y > 425 and SCREEN == "main":
             trophynum = 0 
             if trophy1 == True:
@@ -1508,7 +1508,7 @@ def loop():
         if x < 300 and x > 50 and y < 1500 and y > 425 and keys[pygame.K_RETURN]:
             SCREEN = "credits"
 
-        if x < 500 and x > 30 and y < 1500 and y > 425 and keys[pygame.K_RETURN]:
+        if x < 500 and x > 300 and y < 1500 and y > 425 and keys[pygame.K_RETURN]:
             SCREEN = "controls"
 
         # collected all trophies?
