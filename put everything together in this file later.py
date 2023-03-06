@@ -197,16 +197,18 @@ def game2():
     height = cell_size*9 + minor_grid_size*6 + \
         major_grid_size*4 + button_height + buffer*3 + button_border*2
     size = width, height
-    white = 255, 255, 255
-    black = 0, 0, 0
-    gray = 200, 200, 200
-    green = 0, 175, 0
-    red = 200, 0, 0
-    inactive_btn = 51, 255, 255
-    active_btn = 51, 153, 255
+    white = 'lavender'
+    black = 'gray27'
+    gray = 'darkslategray4'
+    green = 'aquamarine3'
+    red = 'coral'
+    inactive_btn = 'lightgoldenrod1'
+    active_btn = 'lightgoldenrod2'
 
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption('Sudokat')
+    bg = pygame.image.load("game2_images/game2_background.png")
+    bg = pygame.transform.scale(bg,(width, height))
 
     class RectCell(pygame.Rect):
         '''
@@ -280,8 +282,7 @@ def game2():
 
     def fill_cells(cells, board):
         '''Fills in all the numbers for the game.'''
-        font = pygame.font.Font(None, 36)
-
+        font = pygame.font.Font('gooddog.ttf', 36)
         # Fill in all cells with correct value
         for row in range(9):
             for col in range(9):
@@ -328,7 +329,7 @@ def game2():
         pygame.draw.rect(screen, color, button)
 
         # Set the text
-        font = pygame.font.Font(None, 26)
+        font = pygame.font.Font('gooddog.ttf', 26)
         text = font.render(text, 1, black)
         xpos, ypos = button.center
         textbox = text.get_rect(center=(xpos, ypos))
@@ -594,8 +595,8 @@ def game2():
                 if check_sudoku(game):
                     trophy2 = True
                     # Set the text
-                    font = pygame.font.Font(None, 36)
-                    text = font.render('Solved! You have won the Summer Trophy! Press Q to go to Main Screen.', 1, green)
+                    font = pygame.font.Font('gooddog.ttf', 36)
+                    text = font.render('Solved! You have won the Summer Trophy! Press Q.', 2, 'aquamarine4')
                     textbox = text.get_rect(center=(solve_rect.center))
                     screen.blit(text, textbox)
                     keys = pygame.key.get_pressed()
