@@ -1,5 +1,4 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4
-# import cv2
+import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4, cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
@@ -1065,11 +1064,12 @@ def game4():
 
 
     def end(winner=False):
-        global trophy3
+    
         victory = True
         while victory:
             while winner == True:
-                trophy3 = True
+                global trophy4
+                trophy4 = True
                 window.blit(bg, (0,0))
                 msg = BASICFONT.render("You won the Winter Trophy! Congratulations! Press Q to go back to the main screen.", True, "brown")
                 window.blit(msg, [350, 100]) 
@@ -1399,13 +1399,13 @@ def loop():
         # key pressed?
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and x > -130:
-            x -= 20
+            x -= 35
         if keys[pygame.K_RIGHT] and x < 1220:
-            x += 20
+            x += 35
         if keys[pygame.K_UP] and y > -110:
-            y -= 20
+            y -= 35
         if keys[pygame.K_DOWN] and y < 615:
-            y += 20
+            y += 35
         if keys[pygame.K_p]:
                 # Change the player image to the next one.
                 currentImage += 1
