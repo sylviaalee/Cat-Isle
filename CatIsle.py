@@ -1,4 +1,4 @@
-import pygame, random, time, screen_game1, screen_game2, screen_game3, screen_game4, cv2
+import pygame, random, time, cv2
 from pygame import mixer
 pygame.init()
 mixer.init()
