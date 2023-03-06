@@ -1252,6 +1252,9 @@ def collected_all_trophies():
 #     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
 #     # play music
+#     mixer.music.load("music/intro_theme.mp3")
+#     mixer.music.set_volume(0.2)
+#     mixer.music.play()
 
 #     text = BASICFONT.render('You are a Turkish Van cat living on Cat Isle.', True, 'brown')
 #     textRect = text.get_rect()
@@ -1351,8 +1354,8 @@ def loop():
     loop = True
     while loop:
         # switch screens
-        if SCREEN == 'intro':
-            intro_screen()
+        # if SCREEN == 'intro':
+        #     intro_screen()
 
         if SCREEN == "main":
             main_screen()
