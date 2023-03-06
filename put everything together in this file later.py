@@ -1071,8 +1071,8 @@ def game4():
             msg = BASICFONT.render("You won the Winter Trophy! Congratulations! Press Q to go back to the main screen.", True, "brown")
             window.blit(msg, [350, 100]) 
 
-            wordTxt = lost_font.render(word.upper(), 1, BLACK)
-            wordWas = lost_font.render('The phrase was: ', 1, BLACK)
+            wordTxt = BASICFONT.render(word.upper(), 1, BLACK)
+            wordWas = BASICFONT.render('The phrase was: ', 1, BLACK)
 
             win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
             win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))   
@@ -1093,8 +1093,8 @@ def game4():
             msg = BASICFONT.render("You Lost! Press Q (Quit) to go back to main screen or C to Play Again", True, "brown")
             window.blit(msg, [350, 100])
 
-            wordTxt = lost_font.render(word.upper(), 1, BLACK)
-            wordWas = lost_font.render('The phrase was: ', 1, BLACK)
+            wordTxt = BASICFONT.render(word.upper(), 1, BLACK)
+            wordWas = BASICFONT.render('The phrase was: ', 1, BLACK)
 
             win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
             win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))   
@@ -1253,6 +1253,8 @@ def main_screen():
     window.blit(trophy_case, (870, 575))
 
     # spawn cat
+    cat = PLAYERIMAGES[currentImage]
+    cat = pygame.transform.scale(cat, (400, 300))
     window.blit(cat, (x, y))
 
 def loop():
@@ -1260,7 +1262,7 @@ def loop():
     SCREEN = "main"
     window = pygame.display.set_mode((WIDTH, HEIGHT))
     # create cat
-    cat = pygame.image.load('cat.png')
+    cat = PLAYERIMAGES[currentImage]
     cat = pygame.transform.scale(cat, (400, 300))
     x, y = 530, 110 
     
