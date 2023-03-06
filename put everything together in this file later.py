@@ -140,7 +140,7 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 2:
+            if score >= 15:
                 victory = True
 
             # player wins
@@ -894,7 +894,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 1:
+        if playerScore >= 10:
             victory = True
         
         if victory == True:
@@ -1446,6 +1446,25 @@ def loop():
             rectcredit = credits_instruct.get_rect()
             rectcredit.center = (1470 // 2, 30)
             window.blit(credits_instruct, rectcredit)
+        
+        if x < 1075 and x > 775 and y < 1500 and y > 425 and SCREEN == "main":
+            trophynum = 0 
+            if trophy1 == True:
+                trophynum += 1
+            if trophy2 == True:
+                trophynum += 1
+            if trophy3 == True:
+                trophynum += 1
+            if trophy4 == True:
+                trophynum += 1
+            if trophynum == 1:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophy', True, 'brown')
+            elif trophynum == 0 or trophynum >= 2:
+                trophies = BASICFONT.render(f'You have obtained {trophynum} trophies', True, 'brown')
+            trophyrect = trophies.get_rect()
+            trophyrect.center = (1470 // 2, 30)
+            window.blit(trophies, trophyrect)
+        
 
         # conditions in which screen changes
         if x < -5 and x > -300 and y < 15 and y > -300 and keys[pygame.K_RETURN]:
