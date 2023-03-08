@@ -1246,13 +1246,12 @@ def collected_all_trophies():
         window.blit(video_surf, (0, 0))
         pygame.display.flip()
 
+# play music
+mixer.music.load("music/intro_theme.mp3")
+mixer.music.set_volume(0.2)
+mixer.music.play()
 
 def intro_screen():
-    # play music
-    mixer.music.load("music/intro_theme.mp3")
-    mixer.music.set_volume(0.2)
-    mixer.music.play()
-
     pygame.display.set_caption('The Beginning of Your Journey!')
     bg = pygame.image.load("intro_screen_background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
