@@ -47,11 +47,6 @@ def game1():
     bg = pygame.image.load("game1_images/game1_background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-    text1 = BASICFONT.render('Collect 15 Salmon in the Sea!', True, 'brown')
-    text1Rect = text1.get_rect()
-    text1Rect.center = (750, 50)
-    # window.blit(text1, text1Rect)
-
     # snake
     snake_block = 20
     snake_speed = 20
