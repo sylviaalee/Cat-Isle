@@ -899,7 +899,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 5:
+        if playerScore >= 3:
             victory = True
         
         if victory == True:
@@ -1004,8 +1004,6 @@ def game4():
     buttons = []
     guessed = []
     hangmanPics = [pygame.transform.scale(pygame.image.load('game4_images/hangman0.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman1.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman2.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman3.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman4.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman5.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman6.png'), (400, 410))]
-
-
 
     def redraw_game_window():
         win.blit(bg, (0,0))
