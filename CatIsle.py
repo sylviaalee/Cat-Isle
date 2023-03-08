@@ -222,6 +222,11 @@ def game2():
     bg = pygame.image.load("game2_images/game2_background.png")
     bg = pygame.transform.scale(bg,(width, height))
 
+    # this part isn't working :(
+    catflying = pygame.image.load('game2_images/catflying.png')
+    catflying = pygame.transform.scale(catflying, (30, 40))
+    window.blit(catflying, (10, 40))
+
     class RectCell(pygame.Rect):
         '''
         A class built upon the pygame Rect class used to represent individual cells in the game.
@@ -1318,6 +1323,10 @@ def credits():
     credits = pygame.image.load("credits.png")
     credits = pygame.transform.scale(credits, (700, 700))
     window.blit(credits, (400, 80))
+    text1 = BASICFONT.render('Music credits go to The Legend of Zelda: Breath of the Wild, Nintendo', True, 'brown')
+    textRect1 = text1.get_rect()
+    textRect1.center = (735, 800)
+    window.blit(text1, textRect1)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_q]:
