@@ -47,8 +47,10 @@ def game1():
     bg = pygame.image.load("game1_images/game1_background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
-    goal = BASICFONT.render("Collect 15 Salmon in the Sea!", True, 'gold')
-    window.blit(goal, [735, 50])
+    text1 = BASICFONT.render('Collect 15 Salmon in the Sea!', True, 'brown')
+    text1Rect = text1.get_rect()
+    text1Rect.center = (750, 50)
+    window.blit(text1, text1Rect)
 
     # snake
     snake_block = 20
@@ -1268,9 +1270,15 @@ def intro_screen():
     text2Rect = text2.get_rect()
     text2Rect.center = (1470 // 2, 850 // 2)
 
-    text3 = BASICFONT.render('Press n to start your marvelous journey on this curious, quaint island!!', True, 'brown')
+    text3 = BASICFONT.render('Continue to start your marvelous journey on this curious, quaint island!!', True, 'brown')
     text3Rect = text3.get_rect()
     text3Rect.center = (1470 // 2, 525)
+
+    text4 = BASICFONT.render('Press n to continue', True, 'brown')
+    text4Rect = text4.get_rect()
+    text4Rect.center = (750, 750)
+    window.blit(text4, text4Rect)
+
     while next == 0:
         window.blit(text1, text1Rect)
         pygame.display.flip()
@@ -1300,10 +1308,7 @@ def intro_screen():
                     mixer.music.set_volume(0.2)
                     mixer.music.play()
                     loop()
-                    
-
-
-                
+                                  
 def credits():
     credits = pygame.image.load("credits.png")
     credits = pygame.transform.scale(credits, (700, 700))
