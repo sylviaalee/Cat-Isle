@@ -174,7 +174,7 @@ def game1():
 
     gameLoop()
 
-# cat sweeper
+# sudokat
 def game2():
     # music
     mixer.music.load("music/game2.mp3")
@@ -1246,6 +1246,7 @@ def collected_all_trophies():
         window.blit(video_surf, (0, 0))
         pygame.display.flip()
 
+'''
 def intro_screen():
     SCREEN = 'intro'
     window = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -1282,7 +1283,8 @@ def intro_screen():
                 mixer.music.set_volume(0.2)
                 mixer.music.play()
                 loop()
-
+'''
+                
 def credits():
     credits = pygame.image.load("credits.png")
     credits = pygame.transform.scale(credits, (700, 700))
@@ -1367,16 +1369,17 @@ def loop():
     cat = PLAYERIMAGES[currentImage]
     cat = pygame.transform.scale(cat, (400, 300))
     x, y = 530, 110 
+    '''
     loop_runs += 1
 
     if loop_runs == 0:
         SCREEN = "intro"
-
+    '''
     loop = True
     while loop:
         # switch screens
-        if SCREEN == 'intro':
-            intro_screen()
+        #if SCREEN == 'intro':
+            #intro_screen()
 
         if SCREEN == "main":
             main_screen()
