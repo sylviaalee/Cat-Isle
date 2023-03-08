@@ -50,7 +50,7 @@ def game1():
     text1 = BASICFONT.render('Collect 15 Salmon in the Sea!', True, 'brown')
     text1Rect = text1.get_rect()
     text1Rect.center = (750, 50)
-    window.blit(text1, text1Rect)
+    # window.blit(text1, text1Rect)
 
     # snake
     snake_block = 20
