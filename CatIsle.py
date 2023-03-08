@@ -1287,7 +1287,7 @@ def intro_screen():
                 mixer.music.set_volume(0.2)
                 mixer.music.play()
                 loop()
-
+    time.sleep(10)
                 
 def credits():
     credits = pygame.image.load("credits.png")
