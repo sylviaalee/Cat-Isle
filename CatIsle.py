@@ -1251,6 +1251,7 @@ def collected_all_trophies():
 
 
 def intro_screen():
+    next = 0
     # play music
     mixer.music.load("music/intro_theme.mp3")
     mixer.music.set_volume(0.2)
@@ -1272,24 +1273,37 @@ def intro_screen():
     text3 = BASICFONT.render('Press n to start your marvelous journey on this curious, quaint island!!', True, 'brown')
     text3Rect = text3.get_rect()
     text3Rect.center = (1470 // 2, 525)
+    while next == 0:
+        window.blit(text1, text1Rect)
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_n:
+                    next += 1
+    while next == 1:
+        window.blit(text1, text1Rect)
+        window.blit(text2, text2Rect)
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_n:
+                    next += 1
 
-    window.blit(text1, text1Rect)
-    pygame.display.flip()
-    time.sleep(2)
-    window.blit(text2, text2Rect)
-    pygame.display.flip()
-    time.sleep(2)
-    window.blit(text3, text3Rect)
-    pygame.display.flip()
+    while next == 2:
+        window.blit(text1, text1Rect)
+        window.blit(text2, text2Rect)
+        window.blit(text3, text3Rect)
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_n:
+                    # go back to main_screen
+                    mixer.music.load("music/main_theme.mp3")
+                    mixer.music.set_volume(0.2)
+                    mixer.music.play()
+                    loop()
+                    
 
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_n:
-                # go back to main_screen
-                mixer.music.load("music/main_theme.mp3")
-                mixer.music.set_volume(0.2)
-                mixer.music.play()
-                loop()
 
                 
 def credits():
