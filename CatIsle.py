@@ -43,10 +43,13 @@ def game1():
     textRect = text.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
 
-    text1 = BASICFONT.render('Collect 15 Salmon in the Sea!', True, 'brown')
-    text1Rect = text1.get_rect()
-    text1Rect.center = (750, 50)
-    # window.blit(text1, text1Rect)
+    text1 = BASICFONT.render("Collect 15 Salmon in the Sea!", True, 'brown')
+    textRect1 = text1.get_rect()
+    textRect1.center = (750, 50)
+
+    text2 = BASICFONT.render("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", True, 'brown')
+    textRect2 = text2.get_rect()
+    textRect2.center = (750, 750)
 
     # background
     bg = pygame.image.load("game1_images/game1_background.png")
@@ -116,7 +119,7 @@ def game1():
             y1 += y1_change
             window.blit(bg, (0,0))
             window.blit(text, textRect)
-            window.blit(text1, text1Rect)
+            window.blit(text1, textRect1)
             window.blit(food, (foodx, foody))
 
             # snake head
@@ -148,14 +151,15 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 15:
+            if score >= 1:
                 victory = True
 
             # player wins
             while victory == True:
                 trophy1 = True
-                window.blit(bg, (0,0))
-                message("You Won the Spring Trophy! Congratulations! Press Q to go back to the main screen.", "brown")          
+                window.blit(text2, textRect2)
+                pygame.display.update()
+
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
