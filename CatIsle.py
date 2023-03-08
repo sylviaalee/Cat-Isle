@@ -47,6 +47,9 @@ def game1():
     bg = pygame.image.load("game1_images/game1_background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
+    goal = BASICFONT.render("Collect 15 Salmon in the Sea!", True, 'gold')
+    window.blit(goal, [735, 50])
+
     # snake
     snake_block = 20
     snake_speed = 20
@@ -57,7 +60,7 @@ def game1():
 
     def our_snake(snake_block, snake_list):
         for x in snake_list:
-            pygame.draw.rect(window, "brown", [x[0], x[1], snake_block, snake_block])
+            pygame.draw.rect(window, "pink", [x[0], x[1], snake_block, snake_block])
     
     # message function
     def message(msg, color):
@@ -896,7 +899,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 5:
+        if playerScore >= 3:
             victory = True
         
         if victory == True:
@@ -1001,8 +1004,6 @@ def game4():
     buttons = []
     guessed = []
     hangmanPics = [pygame.transform.scale(pygame.image.load('game4_images/hangman0.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman1.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman2.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman3.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman4.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman5.png'), (400, 410)), pygame.transform.scale(pygame.image.load('game4_images/hangman6.png'), (400, 410))]
-
-
 
     def redraw_game_window():
         win.blit(bg, (0,0))
