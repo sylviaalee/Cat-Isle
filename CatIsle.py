@@ -1299,8 +1299,6 @@ def intro_screen():
         window.blit(text1, text1Rect)
         window.blit(text2, text2Rect)
         window.blit(text3, text3Rect)
-        window.blit(cat, [1300, 325])
-        window.blit(trophycase, [1600, 420])
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
