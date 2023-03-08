@@ -47,6 +47,9 @@ def game1():
     bg = pygame.image.load("game1_images/game1_background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
+    goal = BASICFONT.render("Collect 15 Salmon in the Sea!", True, 'gold')
+    window.blit(goal, [735, 50])
+
     # snake
     snake_block = 20
     snake_speed = 20
@@ -57,7 +60,7 @@ def game1():
 
     def our_snake(snake_block, snake_list):
         for x in snake_list:
-            pygame.draw.rect(window, "brown", [x[0], x[1], snake_block, snake_block])
+            pygame.draw.rect(window, "pink", [x[0], x[1], snake_block, snake_block])
     
     # message function
     def message(msg, color):
