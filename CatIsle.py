@@ -151,7 +151,7 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 1:
+            if score >= 5:
                 victory = True
 
             # player wins
@@ -911,7 +911,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 3:
+        if playerScore >= 2:
             victory = True
         
         if victory == True:
