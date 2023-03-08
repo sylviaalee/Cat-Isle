@@ -1260,19 +1260,20 @@ def intro_screen():
 
     text1 = BASICFONT.render('You are a Turkish Van cat living on Cat Isle.', True, 'brown')
     text1Rect = text1.get_rect()
-    text1Rect.center = (1470 // 2, 850 // 2)
-    window.blit(text1, text1Rect)
-    time.sleep(2)
+    text1Rect.center = (1470 // 2, 325)
+
     text2 = BASICFONT.render('Collect all 4 Season Trophies to win.', True, 'brown')
     text2Rect = text2.get_rect()
     text2Rect.center = (1470 // 2, 850 // 2)
-    window.blit(bg, [0,0])
-    window.blit(text2, text2Rect)
-    time.sleep(2)
+
     text3 = BASICFONT.render('Press n to start your marvelous journey on this curious, quaint island!!', True, 'brown')
     text3Rect = text3.get_rect()
-    text3Rect.center = (1470 // 2, 850 // 2)
-    window.blit(bg, [0,0])
+    text3Rect.center = (1470 // 2, 525)
+
+    window.blit(text1, text1Rect)
+    # time.sleep(2)
+    window.blit(text2, text2Rect)
+    # time.sleep(2)
     window.blit(text3, text3Rect)
 
     for event in pygame.event.get():
