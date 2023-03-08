@@ -43,14 +43,15 @@ def game1():
     textRect = text.get_rect()
     textRect.center = (1470 // 2, 850 // 2)
 
-    # background
-    bg = pygame.image.load("game1_images/game1_background.png")
-    bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
-
     text1 = BASICFONT.render('Collect 15 Salmon in the Sea!', True, 'brown')
     text1Rect = text1.get_rect()
     text1Rect.center = (750, 50)
     # window.blit(text1, text1Rect)
+
+
+    # background
+    bg = pygame.image.load("game1_images/game1_background.png")
+    bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
 
     # snake
     snake_block = 20
@@ -116,6 +117,7 @@ def game1():
             y1 += y1_change
             window.blit(bg, (0,0))
             window.blit(text, textRect)
+            window.blit(text1, text1Rect)
             window.blit(food, (foodx, foody))
 
             # snake head
