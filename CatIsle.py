@@ -1262,11 +1262,11 @@ def intro_screen():
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
     window.blit(bg, [0,0])
 
-    text1 = BASICFONT.render('You are a Turkish Van cat living on Cat Isle (press n to continue)', True, 'brown')
+    text1 = BASICFONT.render('You are a Turkish Van cat living on Cat Isle', True, 'brown')
     text1Rect = text1.get_rect()
     text1Rect.center = (1470 // 2, 325)
 
-    text2 = BASICFONT.render('Collect all 4 Season Trophies to win (press n to continue)', True, 'brown')
+    text2 = BASICFONT.render('Collect all 4 Season Trophies to win', True, 'brown')
     text2Rect = text2.get_rect()
     text2Rect.center = (1470 // 2, 850 // 2)
 
