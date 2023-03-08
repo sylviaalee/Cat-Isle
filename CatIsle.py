@@ -1257,6 +1257,7 @@ def intro_screen():
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
     window.blit(bg, [0,0])
 
+
     text1 = BASICFONT.render('You are a Turkish Van cat living on Cat Isle.', True, 'brown')
     text1Rect = text1.get_rect()
     text1Rect.center = (1470 // 2, 325)
