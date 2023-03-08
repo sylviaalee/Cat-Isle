@@ -48,7 +48,6 @@ def game1():
     text1Rect.center = (750, 50)
     # window.blit(text1, text1Rect)
 
-
     # background
     bg = pygame.image.load("game1_images/game1_background.png")
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
