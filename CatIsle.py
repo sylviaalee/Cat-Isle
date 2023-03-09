@@ -151,7 +151,7 @@ def game1():
             clock.tick(snake_speed)
 
             # if score is over 15
-            if score >= 1:
+            if score >= 5:
                 victory = True
 
             # player wins
@@ -221,6 +221,11 @@ def game2():
     pygame.display.set_caption('Sudokat')
     bg = pygame.image.load("game2_images/game2_background.png")
     bg = pygame.transform.scale(bg,(width, height))
+
+    # this part isn't working :(
+    catflying = pygame.image.load('game2_images/catflying.png')
+    catflying = pygame.transform.scale(catflying, (30, 40))
+    window.blit(catflying, (10, 40))
 
     class RectCell(pygame.Rect):
         '''
@@ -906,7 +911,7 @@ def game3():
             birdFlying = False  
 
         # check if player has score of 10 or higher
-        if playerScore >= 3:
+        if playerScore >= 2:
             victory = True
         
         if victory == True:
@@ -1319,6 +1324,10 @@ def credits():
     credits = pygame.image.load("credits.png")
     credits = pygame.transform.scale(credits, (700, 700))
     window.blit(credits, (400, 80))
+    text1 = BASICFONT.render('Music credits go to The Legend of Zelda: Breath of the Wild, Nintendo', True, 'brown')
+    textRect1 = text1.get_rect()
+    textRect1.center = (735, 800)
+    window.blit(text1, textRect1)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_q]:
