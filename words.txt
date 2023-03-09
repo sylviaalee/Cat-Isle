@@ -5,9 +5,6 @@ persian
 sphynx
 bengal
 abyssinian
-<<<<<<< HEAD
 calico
-=======
 turkish van
 tabby
->>>>>>> 37b339f2c46d8f8be754b908d2d5711cfb629515

@@ -1121,11 +1121,11 @@ def game4():
                             # go back to main_screen
                             loop()
                         if event.key == pygame.K_c:
+                            reset()
                             replay()
                         
                     
     def replay():
-
         limbs = 0
         # Setup buttons
         increase = round(winWidth / 13)
@@ -1170,6 +1170,7 @@ def game4():
 
 
     def reset():
+        global limbs, guessed, word
         for i in range(len(buttons)):
             buttons[i][4] = True
 
